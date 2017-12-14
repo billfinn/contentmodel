@@ -16,6 +16,7 @@
 #
 default: &default
   adapter: postgresql
+  host: localhost
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
@@ -81,8 +82,8 @@ test:
 production:
   <<: *default
   database: contentmodel_production
-  username: root
-  password: <%= ENV['CONTENTMODEL_DATABASE_PASSWORD'] %>
+  # username: root
+  # password: <%= ENV['CONTENTMODEL_DATABASE_PASSWORD'] %>
 
 
 # SQLite version 3.x
