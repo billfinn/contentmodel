@@ -13,6 +13,10 @@ gem 'cancan' # or cancancan
 gem 'draper'
 gem 'pundit'
 
+gem 'bootstrap-sass'
+gem 'active_bootstrap_skin'
+gem 'jquery-rails'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 

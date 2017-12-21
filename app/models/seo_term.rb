@@ -1,0 +1,2 @@
+class SeoTerm < ApplicationRecord
+end

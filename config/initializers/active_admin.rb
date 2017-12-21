@@ -3,7 +3,7 @@ ActiveAdmin.setup do |config|
   config.namespace :admin do |admin|
     admin.build_menu do |menu|
       menu.add label: 'Atomic', priority: 1
-      menu.add label: 'Flow', priority: 2
+      menu.add label: 'Sites & Flow', priority: 2
       menu.add label: 'Messaging', priority: 3
       menu.add label: 'Taxonomy', priority: 4
     end

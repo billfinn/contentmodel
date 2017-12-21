@@ -1,0 +1,2 @@
+class ActualTextJoin < ApplicationRecord
+end

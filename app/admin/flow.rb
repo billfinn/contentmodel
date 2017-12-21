@@ -3,8 +3,9 @@ ActiveAdmin.register Flow do
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
 permit_params :list, :of, :attributes, :on, :model, :name, :description
+permit_params template_flows_attributes: [:id, :template_id, :flow_id, :destroy]
 
-menu parent: 'Flow'
+menu parent: 'Sites & Flow'
 #
 # or
 #
@@ -12,6 +13,44 @@ menu parent: 'Flow'
 #   permitted = [:permitted, :attributes]
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
+# end
+index do
+  column :name do |flow|
+    link_to flow.name, admin_flow_path(flow)
+  end
+
+  actions
+end
+# filter only by title
+filter :title
+
+show do |flow|
+  attributes_table do
+    row :template do |flow|
+      flow.templates.map { |d| d.name }.join("&nbsp;&nbsp;>&nbsp;&nbsp;").html_safe
+    end
+  end
+end
+
+form do |f|
+  f.semantic_errors *f.object.errors.keys
+  f.inputs "Flow" do
+    f.label :name, "Name"
+    f.text_field :name
+    f.has_many :template_flows, :allow_destroy => true do |deg|
+      deg.input :template
+    end
+  end
+  f.actions
+end
+
+# show :name => :name do
+#   panel "Templates" do
+#     table_for flow.templates do |t|
+#       t.column("Name") { |template| link_to template.name, admin_template_path(template) }
+#       t.column("Order") { |template| template.order }
+#     end
+#   end
 # end
 
 end
