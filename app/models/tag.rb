@@ -9,7 +9,7 @@ class Tag < ApplicationRecord
   scope :product_brand, ->{where(ancestry: 5)}
   scope :audience, ->{where(ancestry: 2)}
   scope :industry, ->{where(ancestry: 7)}
-  scope :installation, ->{where(ancestry: 'Installation')}
-  scope :region, ->{where(ancestry: 'Region')}
-  scope :lead_type, ->{where(ancestry: 'Lead Type')}
+  scope :installation, ->{where(name: 'Installation')}
+  scope :region, ->{where(name: 'Region')}
+  scope :lead_type, ->{where(name: 'Lead Type')}
 end
