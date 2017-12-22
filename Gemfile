@@ -16,6 +16,7 @@ gem 'pundit'
 gem 'bootstrap-sass'
 gem 'active_bootstrap_skin'
 gem 'jquery-rails'
+gem 'ancestry'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
