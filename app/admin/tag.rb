@@ -5,6 +5,10 @@ ActiveAdmin.register Tag do
 permit_params :list, :of, :attributes, :on, :model, :name, :description, :ancestry, :parent_id
 
 menu parent: 'Taxonomy'
+
+scope :content_type
+scope :expertise
+scope :offering_type
 #
 # or
 #
