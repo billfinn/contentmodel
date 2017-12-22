@@ -7,16 +7,16 @@ permit_params :list, :of, :attributes, :on, :model, :name, :description, :ancest
 menu parent: 'Taxonomy'
 
 scope :all
-scope :content_type
+# scope :content_type
 scope :expertise
-scope :offering_type
-scope :brand_architecture
+scope :offering
+scope :brand_arch
 scope :product_brand
-scope :audience
+# scope :audience
 scope :industry
 scope :installation
 scope :region
-scope :lead_type
+# scope :lead_type
 #
 # or
 #
