@@ -35,8 +35,7 @@ end
 form do |f|
   f.semantic_errors *f.object.errors.keys
   f.inputs "Flow" do
-    f.label :name, "Name"
-    f.text_field :name
+    f.input :name
     f.has_many :template_flows, :allow_destroy => true do |deg|
       deg.input :template
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171222153718) do
+ActiveRecord::Schema.define(version: 20171222214706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,8 @@ ActiveRecord::Schema.define(version: 20171222153718) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_hierarchies_on_ancestry"
   end
 
   create_table "molecules", force: :cascade do |t|
@@ -104,6 +106,9 @@ ActiveRecord::Schema.define(version: 20171222153718) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "ancestry"
+    t.integer "site_id"
+    t.index ["ancestry"], name: "index_pages_on_ancestry"
   end
 
   create_table "seo_terms", force: :cascade do |t|
