@@ -11,5 +11,6 @@ ActiveAdmin.register SeoTerm do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+menu parent: 'Messaging'
 
 end

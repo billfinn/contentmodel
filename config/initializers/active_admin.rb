@@ -5,7 +5,6 @@ ActiveAdmin.setup do |config|
       menu.add label: 'Atomic', priority: 1
       menu.add label: 'Sites & Flow', priority: 2
       menu.add label: 'Messaging', priority: 3
-      menu.add label: 'Taxonomy', priority: 4
     end
   end
 

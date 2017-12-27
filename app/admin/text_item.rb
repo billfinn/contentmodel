@@ -12,6 +12,9 @@ permit_params :list, :of, :attributes, :on, :model, :name, :text_id, :itemtext, 
 #   permitted
 # end
 
+menu parent: 'Messaging'
+
+
 form do |f|
   f.inputs do
     f.input :name, :label => 'Name'

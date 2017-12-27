@@ -4,7 +4,8 @@ ActiveAdmin.register Site do
 #
 permit_params :list, :of, :attributes, :on, :model, :name, :description
 
-menu parent: 'Sites & Flow'#
+menu parent: 'Sites & Flow'
+#
 # or
 #
 # permit_params do

@@ -1,4 +1,5 @@
 class Page < ApplicationRecord
-  has_many :text_items
   has_ancestry
+  has_many :text_items
+
 end
