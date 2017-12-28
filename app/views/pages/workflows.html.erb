@@ -16,18 +16,12 @@
 		<div class="col-xs-8">
 			<h1>Workflows</h1>
 
-      <% @flows = Flow.all %>
+      <% @flows = Flow.order(:name) %>
       <% @flows.each do |flow|  %>
-
-      <h2><%= flow.name %></h2> <p><%= admin_flow_path(flow) %></p>
-
-      <% flow.attributes do
-        row :template do |flow|
-          flow.templates.map { |d| d.name }.join("&nbsp;&nbsp;>&nbsp;&nbsp;").html_safe
-        end
-      end %>
-
-
+      <h2><%= flow.name %></h2></h5>
+      <p>
+        <%= flow.templates.map { |d| d.name }.join("&nbsp;&nbsp;>&nbsp;&nbsp;").html_safe %>
+      </p>
       <% end %>
 
 
