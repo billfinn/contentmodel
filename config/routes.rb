@@ -5,4 +5,11 @@ Rails.application.routes.draw do
   # root :to => 'index#index'
   get "/pages/:page" => "pages#show"
   root "pages#show", page: "home"
+
+  get  '/home', to: 'pages#home'
+  get  '/workflows', to: 'pages#workflows'
+  get  '/site', to: 'pages#site'
+  get  '/taxonomy', to: 'pages#taxonomy'
+
+
 end

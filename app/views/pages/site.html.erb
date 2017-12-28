@@ -14,12 +14,17 @@
       <h3>Desired Actions</h3>
 		</div>
 		<div class="col-xs-8">
-      <p>Page title</p>
-			<h1>HOME Heading 1</h1>
-      <p>Sub-message text</p>
-      <h2>H2 Heading</h2>
-      <p>Paragraph
-      <p><a href="#" class="btn btn-success">Calls-To-Action &raquo;</a></p>
+			<h1>Sitemap</h1>
+
+        <% @pages = Page.arrange %>
+
+        <%= arranged_tree_as_list(@pages, {:list_style => :bootstrap_list_group}) do |page| %>
+
+            <%= page.name %>
+
+        <% end %>
+
+
 		</div>
 	</div>
   	<hr>
@@ -30,5 +35,3 @@
       </footer>
     </div>
   </div>
-
-</div>
