@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get  '/workflows', to: 'pages#workflows'
   get  '/site', to: 'pages#site'
   get  '/taxonomy', to: 'pages#taxonomy'
+  get  '/page', to: 'pages#page'
 
 
 end

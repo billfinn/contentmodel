@@ -4,7 +4,7 @@ ActiveAdmin.register Flow do
 #
 permit_params :list, :of, :attributes, :on, :model, :name, :description, template_flows_attributes: [:id, :template_id, :flow_id, :destroy]
 
-menu parent: 'Sites & Flow'
+menu parent: 'Atomic'
 #
 # or
 #
