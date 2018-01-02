@@ -4,8 +4,4 @@ class Page < ApplicationRecord
 
   validates :name, :presence => true
 
-  def show
-    @page = Page.find(params[:id])
-  end
-
 end
