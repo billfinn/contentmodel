@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171229000337) do
+ActiveRecord::Schema.define(version: 20180102222035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,13 @@ ActiveRecord::Schema.define(version: 20171229000337) do
     t.index ["ancestry"], name: "index_hierarchies_on_ancestry"
   end
 
+  create_table "hierarchy_mappings", force: :cascade do |t|
+    t.integer "hierarchy_id"
+    t.integer "page_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "molecules", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -118,6 +125,13 @@ ActiveRecord::Schema.define(version: 20171229000337) do
     t.index ["ancestry"], name: "index_pages_on_ancestry"
   end
 
+  create_table "seo_mappings", force: :cascade do |t|
+    t.integer "seo_term_id"
+    t.integer "page_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "seo_terms", force: :cascade do |t|
     t.text "term"
     t.integer "iacategory_id"
@@ -130,6 +144,14 @@ ActiveRecord::Schema.define(version: 20171229000337) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "tag_mappings", force: :cascade do |t|
+    t.integer "tag_id"
+    t.integer "page_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "order"
   end
 
   create_table "tags", force: :cascade do |t|

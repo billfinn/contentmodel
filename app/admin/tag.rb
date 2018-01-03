@@ -2,9 +2,13 @@ ActiveAdmin.register Tag do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
+
 permit_params :list, :of, :attributes, :on, :model, :name, :description, :ancestry, :parent_id
 
 menu parent: 'Messaging'
+
+
+
 
 scope :all
 # scope :content_type

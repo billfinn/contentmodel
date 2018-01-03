@@ -1,6 +1,11 @@
 class Tag < ApplicationRecord
   has_ancestry
 
+  has_many :tag_mappings
+  has_many :pages, :through => :tag_mappings
+  accepts_nested_attributes_for :tag_mappings
+  
+
   # scope :content_type, ->{where(ancestry: 6)}
   scope :expertise, ->{where(ancestry: 1)}
   scope :offering, ->{where(ancestry: 3)}
