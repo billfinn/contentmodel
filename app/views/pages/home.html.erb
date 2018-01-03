@@ -2,18 +2,27 @@
 
   <div class="row">
 		<div class="col-xs-4">
-      <p>Client > Site
-      <p>User Flow > Template
-      <p>Breadcrumbs > Information Architecture path
-        <hr>
-			<h3>Messaging</h3>
-			<p>Messaging direction for this page, at the given level within the IA.</p>
-        <hr>
-      <h3>Tags</h3>
-      <h3>SEO Terms</h3>
-      <h3>Desired Actions</h3>
+      <p>Johnson Controls > JohnsonControls.com
 		</div>
 		<div class="col-xs-8">
+      <h1>Content and Messaging Model</h1>
+      <h2>Overview</h2>
+      <p>This content model demonstrates pages within a user workflow context. Each page will be associated with:
+        <ul>
+          <li>User <strong><%= link_to "Workflows", workflows_path %></strong> (containing a series of pages or experience states)</li>
+          <li>Messaging (within a messaging hierarchy)</li>
+          <li>Tags (from taxonomy)</li>
+          <li>SEO terms</li>
+          <li>Desired user actions</li>
+        </ul>
+      <p>Soon, this layout will be suitable for sharing in real-time with clients.
+      <p><strong><%= link_to "Sitemap", site_path %></strong> and <strong><%= link_to "Taxonomy", taxonomy_path %></strong> are also managed here, so we can easily visualize and manage those foundational elements at any time.
+      <h2>Managing the Elements</h2>
+      <p>Configuration, management and update of all elements displayed here is performed in the <a href="/admin" target="_blank"><strong>Admin</strong></a> area, linked above, with username/password of <pre>admin@example.com/password</pre>.
+      <h2>Current Status</h2>
+      <p>Workflows are connected to page elements, and we can now administer association of tags, SEO terms and messaging hierarchy to pages in a workflow. Immediate next steps include wiring up tags, SEO, messaging hierarchy and individual page-level messaging elements to the front-end display. Each of those elements is currently available for configuration in the admin area.
+      <p>Atomic Pattern development area is available for this project at: <a href="https://rp-jci.herokuapp.com/" target="_blank">https://rp-jci.herokuapp.com/</a>
+      <hr>
       <p>Page title</p>
 			<h1>HOME Heading 1</h1>
       <p>Sub-message text</p>

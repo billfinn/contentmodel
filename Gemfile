@@ -17,7 +17,6 @@ gem 'bootstrap-sass'
 gem 'active_bootstrap_skin'
 gem 'jquery-rails'
 gem 'ancestry'
-gem 'active_admin-sortable_tree'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
