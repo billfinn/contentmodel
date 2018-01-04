@@ -37,12 +37,22 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="nav navbar-nav">
             <li><%= link_to "Home", home_path %></li>
-            <li><%= link_to "Workflows", workflows_path %></li>
-            <li><%= link_to "Sitemap", site_path %></li>
-            <li><%= link_to "Taxonomy", taxonomy_path %></li>
+            <li class="dropdown">
+              <a data-target="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Migration & Publishing <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Taxonomy", taxonomy_path %></li>
+                <li><%= link_to "Sitemap", site_path %></li>
+                <li role="separator" class="divider"></li>
+                <li style="padding-left:20px;"><strong>TBD</strong></li>
+                <li><a href="#">Content Mapping</a></li>
+                <li><a href="#">Creation, Edit, Update Process</a></li>
+              </ul>
+            </li>
+            <li><%= link_to "Creation", home_path %></li>
+            <li><%= link_to "Governance", home_path %></li>
+            <li><%= link_to "Measurement", home_path %></li>
+            <!-- <li><%= link_to "Workflows", workflows_path %></li> -->
             <li><a href="/admin">Admin</a></li>
-            <!-- <li><a href="#" target="_blank">Flow 2</a></li>
-            <li><a href="#" target="_blank">Flow 3</a></li> -->
           </ul>
         </div>
       </div>
