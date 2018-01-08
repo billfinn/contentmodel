@@ -11,6 +11,11 @@
 			<p>Messaging direction for this page, at the given level within the IA.</p>
         <hr>
       <h3>Tags</h3>
+      <% @pagetags = TagMapping.where page_id: (params[:id]) %>
+      <% @pagetags.each do |t| %>
+          <%= t.tag.name + (", ").html_safe %>
+      <% end %>
+
       <h3>SEO Terms</h3>
       <h3>Desired Actions</h3>
 		</div>
@@ -20,7 +25,10 @@
 
       <h2><%= @thispage.name %></h2></h5>
       <p>
-
+        <% @pagetext = TextItem.where page_id: (params[:id]) %>
+        <% @pagetext.each do |pt| %>
+            <<%= pt.text.name %>><%= pt.itemtext %></<%= pt.text.name %>>
+        <% end %>
       </p>
 
 
