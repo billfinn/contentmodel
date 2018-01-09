@@ -1,14 +1,23 @@
 
+<% @thispage = Page.find(params[:id])
 
+
+    %>
   <div class="row">
 		<div class="col-xs-4">
-      <p>Johnson Controls > JohnsonControls.com
+      <p>Johnson Controls >
+        <%= @thispage.site.name %>
+
         <hr>
-      <p>User Flow > Template
+      <!-- <p>User Workflow > Template
       <p>Breadcrumbs > Information Architecture path
-        <hr>
+        <hr> -->
 			<h3>Messaging</h3>
 			<p>Messaging direction for this page, at the given level within the IA.</p>
+      <% @pagemessage = HierarchyMapping.where page_id: (params[:id]) %>
+      <% @pagemessage.each do |h| %>
+          <%= h.hierarchy.name.html_safe %><br>
+      <% end %>
         <hr>
       <h3>Tags</h3>
       <% @pagetags = TagMapping.where page_id: (params[:id]) %>
@@ -17,17 +26,22 @@
       <% end %>
 
       <h3>SEO Terms</h3>
-      <h3>Desired Actions</h3>
+      <% @pageterms = SeoMapping.where page_id: (params[:id]) %>
+      <% @pageterms.each do |s| %>
+          <%= s.term.name + (", ").html_safe %>
+      <% end %>
+
+      <!-- <h3>Desired Actions</h3> -->
 		</div>
 		<div class="col-xs-8">
-      <% @thispage = Page.find(params[:id]) %>
+
       <h1>Page</h1>
 
       <h2><%= @thispage.name %></h2></h5>
       <p>
-        <% @pagetext = TextItem.where page_id: (params[:id]) %>
+        <% @pagetext = TextItem.order(:order).where page_id: (params[:id]) %>
         <% @pagetext.each do |pt| %>
-            <<%= pt.text.name %>><%= pt.itemtext %></<%= pt.text.name %>>
+            <<%= pt.text.name %>><%#= pt.order %><%= pt.itemtext %></<%= pt.text.name %>>
         <% end %>
       </p>
 

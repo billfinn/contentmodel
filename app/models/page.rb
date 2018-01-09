@@ -14,6 +14,10 @@ class Page < ApplicationRecord
   has_many :seo_terms, :through => :seo_mappings
   accepts_nested_attributes_for :seo_mappings, :allow_destroy => true
 
+  belongs_to :site
+  belongs_to :page_workflow
+  belongs_to :workflows
+
   validates :name, :presence => true
 
 end
