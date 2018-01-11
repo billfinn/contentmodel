@@ -16,7 +16,7 @@ class Page < ApplicationRecord
 
   belongs_to :site
   belongs_to :page_workflow
-  belongs_to :workflows
+  belongs_to :workflow
 
   validates :name, :presence => true
 
