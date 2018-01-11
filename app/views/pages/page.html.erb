@@ -13,10 +13,10 @@
       <p>Breadcrumbs > Information Architecture path
         <hr> -->
 			<h3>Messaging</h3>
-			<p>Messaging direction for this page, at the given level within the IA.</p>
       <% @pagemessage = HierarchyMapping.where page_id: (params[:id]) %>
       <% @pagemessage.each do |h| %>
-          <%= h.hierarchy.name.html_safe %><br>
+          <p><%= h.hierarchy.name.html_safe %>
+          <p><%= h.hierarchy.description.html_safe %>
       <% end %>
         <hr>
       <h3>Tags</h3>
