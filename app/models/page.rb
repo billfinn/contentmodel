@@ -15,8 +15,8 @@ class Page < ApplicationRecord
   accepts_nested_attributes_for :seo_mappings, :allow_destroy => true
 
   belongs_to :site
-  belongs_to :page_workflow
-  belongs_to :workflow
+  # belongs_to :page_workflow
+  # belongs_to :workflow
 
   validates :name, :presence => true
 
