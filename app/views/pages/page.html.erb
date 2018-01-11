@@ -34,16 +34,16 @@
       <!-- <h3>Desired Actions</h3> -->
 		</div>
 		<div class="col-xs-8">
-
-      <h1>Page</h1>
-
-      <h2><%= @thispage.name %></h2></h5>
+      <% @workflow = Workflow.find(params[:workflow_id]) %>
+      <h6><%= @workflow.name %> / <%= @thispage.name %></h6>
       <p>
+        <%= safe_join(@workflow.pages.map { |d| link_to(d.name, page_path(d, workflow_id: @workflow.id), :class => "btn btn-info align-center") }, "&nbsp;&nbsp;>&nbsp;&nbsp;".html_safe) %>
+      </p>
+      <hr>
         <% @pagetext = TextItem.order(:order).where page_id: (params[:id]) %>
         <% @pagetext.each do |pt| %>
             <<%= pt.text.name %>><%#= pt.order %><%= pt.itemtext %></<%= pt.text.name %>>
         <% end %>
-      </p>
 
 
 
