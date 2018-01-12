@@ -2,7 +2,7 @@ ActiveAdmin.register Page do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :list, :of, :attributes, :on, :model, :name, :description, :ancestry, :parent_id, :site_id, :tag_ids => [], tag_mappings_attributes: [:id, :tag_id, :page_id, :destroy], :hierarchy_ids => [], hierarchy_mappings_attributes: [:id, :hierarchy_id, :page_id, :destroy], :seo_term_ids => [], seo_mappings_attributes: [:id, :seo_term_id, :page_id, :destroy]
+permit_params :list, :of, :attributes, :on, :model, :name, :description, :ancestry, :parent_id, :site_id, :image, :tag_ids => [], tag_mappings_attributes: [:id, :tag_id, :page_id, :destroy], :hierarchy_ids => [], hierarchy_mappings_attributes: [:id, :hierarchy_id, :page_id, :destroy], :seo_term_ids => [], seo_mappings_attributes: [:id, :seo_term_id, :page_id, :destroy]
 
 menu parent: 'Sites & Flow'
 #
@@ -21,6 +21,7 @@ index do
   column :name
   column :ancestry
   column :site_id
+  # column 'Image', sortable: :image_file_name do |page| link_to page.image_file_name, page.image.url end
   actions
 end
 
@@ -35,7 +36,7 @@ form do |f|
     f.input :name
     f.input :parent_id, :label => 'Page Parent ID', :as => :select, :collection => Page.all.map{|u| ["#{u.name}", u.id, include_blank: true]}
     f.input :site_id, :label => 'Site ID', :as => :select, :collection => Site.all.map{|s| ["#{s.name}", s.id, include_blank: true]}
-
+    # f.input :image, required: true, as: :file
     tabs do
       tab :Tags do
         f.input :tag_ids, as: :check_boxes, collection: Tag.all.map{|tag| [tag.name, tag.id]}
