@@ -42,11 +42,39 @@
         <% @thistemplate.components.each do |c| %>
             <a id="<%= c.name %>"></a>
             <h3><%= c.name %> <small class="text-muted">Component</small></h3>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Attribute</th>
+                  <th scope="col">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td scope="row">Goal</td>
+                  <td><i><%= c.goal %></i></td>
+                </tr>
+                <tr>
+                  <td scope="row">Description</td>
+                  <td><i><%= c.description %></i></td>
+                </tr>
+                <tr>
+                  <td scope="row">CTA</td>
+                  <td><i><%= c.cta %></i></td>
+                </tr>
+                <tr>
+                  <td scope="row">Content Assets</td>
+                  <td><i><%= c.content_assets %></i></td>
+                </tr>
+              </tbody>
+            </table>
 
-                <% c.text_items.each do |t| %>
+
+
+                <!-- <% c.text_items.each do |t| %>
                       <h5 class="text-info"><%= t.name %> <small class='text-muted'>Item</small></h5>
                          <p><%= t.itemtext %> </p>
-                <% end %>
+                <% end %> -->
         <% end %>
 
 

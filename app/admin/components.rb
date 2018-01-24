@@ -34,7 +34,10 @@ form do |f|
   f.semantic_errors *f.object.errors.keys
   f.inputs "Component" do
     f.input :name
-    # f.input :description
+    f.input :goal
+    f.input :cta
+    f.input :content_assets
+    f.input :description
   f.inputs "Text Items" do
     f.has_many :component_items, :allow_destroy => true do |deg|
       deg.input :text_item
