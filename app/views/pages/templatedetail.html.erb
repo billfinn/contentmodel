@@ -1,0 +1,63 @@
+
+<% @thistemplate = ::Template.find(params[:id])
+
+
+
+    %>
+  <div class="row">
+		<div class="col-xs-4">
+      <p>Johnson Controls >
+
+        <hr>
+      <!-- <p>User Workflow > Template
+      <p>Breadcrumbs > Information Architecture path
+        <hr> -->
+			<h4>Page Purpose</h4>
+      <%= @thistemplate.page_purpose %>
+        <hr>
+			<h4>Audience</h4>
+      <%= @thistemplate.audience %>
+        <hr>
+      <h4>KPI</h4>
+        <%= @thistemplate.kpi %>
+      <hr>
+      <h4>Likely Task</h4>
+      <%= @thistemplate.likely_task %>
+        <hr>
+      <h4>Personalization Needs</h4>
+      <%= @thistemplate.personalization_needs %>
+        <hr>
+      <h4>Creation Guidelines</h4>
+      <%= @thistemplate.creation_guidelines %>
+
+		</div>
+		<div class="col-xs-8">
+      <h1><%= @thistemplate.name %> <small class="text-muted">Page Template</small></h1>
+          <ol class="breadcrumb">
+          <% @thistemplate.components.each do |b| %>
+              <li class="breadcrumb-item"><a href="#<%= b.name %>"><%= b.name %></a></li>
+          <% end %>
+          </ol>
+
+        <% @thistemplate.components.each do |c| %>
+            <a id="<%= c.name %>"></a>
+            <h3><%= c.name %> <small class="text-muted">Component</small></h3>
+
+                <% c.text_items.each do |t| %>
+                      <h5 class="text-info"><%= t.name %> <small class='text-muted'>Item</small></h5>
+                         <p><%= t.itemtext %> </p>
+                <% end %>
+        <% end %>
+
+
+
+		</div>
+	</div>
+  	<hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <footer>
+        <p>Content Model v.0.1</p>
+      </footer>
+    </div>
+  </div>

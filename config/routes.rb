@@ -8,9 +8,11 @@ Rails.application.routes.draw do
 
   get  '/home', to: 'pages#home'
   get  '/workflows', to: 'pages#workflows'
+  get  '/templates', to: 'pages#templates'
   get  '/site', to: 'pages#site'
   get  '/taxonomy', to: 'pages#taxonomy'
   get '/page/:id', to: 'pages#page', as: 'page'
+  get '/templatedetail/:id', to: 'pages#templatedetail', as: 'templatedetail'
 
 
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180112034943) do
+ActiveRecord::Schema.define(version: 20180124151106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,24 @@ ActiveRecord::Schema.define(version: 20180112034943) do
 
   create_table "atoms", force: :cascade do |t|
     t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "component_items", force: :cascade do |t|
+    t.integer "component_id"
+    t.integer "text_item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "components", force: :cascade do |t|
+    t.string "name"
+    t.string "goal"
+    t.string "cta"
+    t.string "content_assets"
+    t.string "image"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -167,6 +185,13 @@ ActiveRecord::Schema.define(version: 20180112034943) do
     t.index ["ancestry"], name: "index_tags_on_ancestry"
   end
 
+  create_table "template_components", force: :cascade do |t|
+    t.integer "template_id"
+    t.integer "component_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "template_flows", force: :cascade do |t|
     t.integer "template_id"
     t.integer "flow_id"
@@ -179,6 +204,12 @@ ActiveRecord::Schema.define(version: 20180112034943) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "page_purpose"
+    t.string "audience"
+    t.string "likely_task"
+    t.string "personalization_needs"
+    t.text "creation_guidelines"
+    t.string "kpi"
   end
 
   create_table "text_items", force: :cascade do |t|

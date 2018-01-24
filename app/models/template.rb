@@ -1,8 +1,6 @@
 class Template < ApplicationRecord
-   # has_many :template_flows
-   # has_many :flows, :through => template_flows
-
-   validates :name, :presence => true
-   # validates :inclusion => { :in => [true, false]}
+   has_many :template_components
+   has_many :components, :through => :template_components
+   accepts_nested_attributes_for :template_components, :allow_destroy => true
 
 end
