@@ -2,7 +2,7 @@ ActiveAdmin.register Component do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :list, :of, :attributes, :on, :model, :name, :existing, :goal, :cta, :content_assets, :image, :description, component_items_attributes: [:id, :component_id, :text_item_id, :destroy]
+permit_params :list, :of, :attributes, :on, :model, :name, :existing, :goal, :cta, :content_assets, :image, :description, component_items_attributes: [:id, :component_id, :text_item_id, :_destroy]
 #
 # or
 #
@@ -42,8 +42,9 @@ form do |f|
     f.input :content_assets
     f.input :description
   f.inputs "Text Items" do
-    f.has_many :component_items, :allow_destroy => true do |deg|
+    f.has_many :component_items do |deg|
       deg.input :text_item
+      deg.input :_destroy, :as => :boolean, :label => "Remove?"
       end
     end
   end

@@ -2,8 +2,7 @@ ActiveAdmin.register Template do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :list, :of, :attributes, :on, :model, :name, :existing, :description, :flow_id, :order, :page_purpose, :audience, :kpi, :likely_task, :personalization_needs, :creation_guidelines, template_components_attributes: [:id, :template_id, :component_id, :destroy]
-
+permit_params :list, :of, :attributes, :on, :model, :name, :existing, :description, :flow_id, :order, :page_purpose, :audience, :kpi, :likely_task, :personalization_needs, :creation_guidelines, template_components_attributes: [:id, :template_id, :component_id, :_destroy, :update]
 
 menu parent: 'Content Model'
 #
@@ -46,8 +45,9 @@ form do |f|
     f.input :creation_guidelines
     # f.input :description
   f.inputs "Components" do
-    f.has_many :template_components, :allow_destroy => true do |deg|
+    f.has_many :template_components do |deg|
       deg.input :component
+      deg.input :_destroy, :as => :boolean, :label => "Remove?"
       end
     end
   end
