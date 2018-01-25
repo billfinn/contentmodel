@@ -5,7 +5,7 @@ ActiveAdmin.register Template do
 permit_params :list, :of, :attributes, :on, :model, :name, :description, :flow_id, :order, :page_purpose, :audience, :kpi, :likely_task, :personalization_needs, :creation_guidelines, template_components_attributes: [:id, :template_id, :component_id, :destroy]
 
 
-menu parent: 'Atomic'
+menu parent: 'Content Model'
 #
 # or
 #

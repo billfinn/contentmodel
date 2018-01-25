@@ -13,8 +13,8 @@ gem 'cancan' # or cancancan
 gem 'draper'
 gem 'pundit'
 
-gem 'bootstrap-sass'
-gem 'active_bootstrap_skin'
+
+gem 'bootstrap-sass', '~> 3.3.7'
 gem 'jquery-rails'
 gem 'ancestry'
 gem 'paperclip'

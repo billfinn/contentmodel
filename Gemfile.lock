@@ -24,8 +24,6 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
-    active_bootstrap_skin (0.1.4)
-      bootstrap-sass (~> 3.3.6)
     activeadmin (1.2.0)
       arbre (>= 1.1.1)
       coffee-rails
@@ -63,7 +61,7 @@ GEM
     arbre (1.1.1)
       activesupport (>= 3.0.0)
     arel (8.0.0)
-    autoprefixer-rails (7.2.3)
+    autoprefixer-rails (7.2.5)
       execjs
     bcrypt (3.1.11)
     bindex (0.5.0)
@@ -271,10 +269,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_bootstrap_skin
   activeadmin
   ancestry
-  bootstrap-sass
+  bootstrap-sass (~> 3.3.7)
   byebug
   cancan
   capybara (~> 2.13)

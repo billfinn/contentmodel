@@ -12,6 +12,8 @@ permit_params :list, :of, :attributes, :on, :model, :name, :goal, :cta, :content
 #   permitted
 # end
 
+menu parent: 'Content Model'
+
 index do
   column :name do |component|
     link_to component.name, admin_component_path(component)

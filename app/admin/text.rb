@@ -11,7 +11,7 @@ permit_params :list, :of, :attributes, :on, :model, :name, :example, :descriptio
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-menu parent: 'Messaging'
+menu parent: 'Content Model'
 
 
 end
