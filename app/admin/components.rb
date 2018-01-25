@@ -2,7 +2,7 @@ ActiveAdmin.register Component do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :list, :of, :attributes, :on, :model, :name, :goal, :cta, :content_assets, :image, :description, component_items_attributes: [:id, :component_id, :text_item_id, :destroy]
+permit_params :list, :of, :attributes, :on, :model, :name, :existing, :goal, :cta, :content_assets, :image, :description, component_items_attributes: [:id, :component_id, :text_item_id, :destroy]
 #
 # or
 #
@@ -36,6 +36,7 @@ form do |f|
   f.semantic_errors *f.object.errors.keys
   f.inputs "Component" do
     f.input :name
+    f.input :existing
     f.input :goal
     f.input :cta
     f.input :content_assets

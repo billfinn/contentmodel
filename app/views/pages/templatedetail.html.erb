@@ -32,7 +32,12 @@
 
 		</div>
 		<div class="col-xs-8">
-      <h1><%= @thistemplate.name %> <small class="text-muted">Page Template</small></h1>
+      <h1><%= @thistemplate.name %>
+        <% if @thistemplate.existing == true %>
+        <span class="badge badge-light">Existing</span>
+        <% else %>
+        <% end %>
+        <small class="text-muted">Page Template</small></h1>
           <ol class="breadcrumb">
           <% @thistemplate.components.each do |b| %>
               <li class="breadcrumb-item"><a href="#<%= b.name %>"><%= b.name %></a></li>
@@ -41,7 +46,11 @@
 
         <% @thistemplate.components.each do |c| %>
             <a id="<%= c.name %>"></a>
-            <h3><%= c.name %> <small class="text-muted">Component</small></h3>
+            <h3><%= c.name %>   <% if c.existing == true %>
+              <span class="badge badge-light">Existing</span>
+              <% else %>
+              <% end %><small class="text-muted">Component</small></h3>
+
             <table class="table table-hover">
               <thead>
                 <tr>

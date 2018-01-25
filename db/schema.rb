@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180124151106) do
+ActiveRecord::Schema.define(version: 20180125144901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 20180124151106) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "existing"
   end
 
   create_table "flows", force: :cascade do |t|
@@ -210,6 +211,7 @@ ActiveRecord::Schema.define(version: 20180124151106) do
     t.string "personalization_needs"
     t.text "creation_guidelines"
     t.string "kpi"
+    t.boolean "existing"
   end
 
   create_table "text_items", force: :cascade do |t|

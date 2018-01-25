@@ -22,11 +22,22 @@
       <% @templates = ::Template.order(:name) %>
       <% @templates.each do |templateitem|  %>
       <div class="card border-secondary mb-3" style="width: 40rem;">
-        <h3 class="card-header"><%= link_to templateitem.name, templatedetail_path(templateitem) %> <small class="text-muted">Page Template</small></h3>
+        <h3 class="card-header"><%= link_to templateitem.name, templatedetail_path(templateitem) %>
+          <% if templateitem.existing == true %>
+          <span class="badge badge-light">Existing</span>
+          <% else %>
+          <% end %>
+          <small class="text-muted">Page Template</small>
+        </h3>
         <ul class="list-group list-group-flush">
           <li class="list-group-item disabled">Components</li>
           <% templateitem.components.each do |n| %>
-          <li class="list-group-item"><%= n.name %></li>
+          <li class="list-group-item"><%= n.name %>
+            <% if n.existing == true %>
+            <span class="badge badge-light">Existing</span>
+            <% else %>
+            <% end %>
+          </li>
           <% end %>
         </ul>
       </div>

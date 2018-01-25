@@ -2,7 +2,7 @@ ActiveAdmin.register Template do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :list, :of, :attributes, :on, :model, :name, :description, :flow_id, :order, :page_purpose, :audience, :kpi, :likely_task, :personalization_needs, :creation_guidelines, template_components_attributes: [:id, :template_id, :component_id, :destroy]
+permit_params :list, :of, :attributes, :on, :model, :name, :existing, :description, :flow_id, :order, :page_purpose, :audience, :kpi, :likely_task, :personalization_needs, :creation_guidelines, template_components_attributes: [:id, :template_id, :component_id, :destroy]
 
 
 menu parent: 'Content Model'
@@ -37,6 +37,7 @@ form do |f|
   f.semantic_errors *f.object.errors.keys
   f.inputs "Page Template" do
     f.input :name
+    f.input :existing
     f.input :page_purpose
     f.input :audience
     f.input :kpi
