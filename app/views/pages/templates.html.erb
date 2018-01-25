@@ -20,6 +20,7 @@
 			<h1>Content Model</h1>
 
       <% @templates = ::Template.order(:name) %>
+
       <% @templates.each do |templateitem|  %>
       <div class="card border-secondary mb-3" style="width: 40rem;">
         <h3 class="card-header"><%= link_to templateitem.name, templatedetail_path(templateitem) %>
@@ -29,6 +30,7 @@
           <% end %>
           <small class="text-muted">Page Template</small>
         </h3>
+
         <ul class="list-group list-group-flush">
           <li class="list-group-item disabled">Components</li>
           <% templateitem.components.each do |n| %>

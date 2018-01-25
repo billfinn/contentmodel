@@ -2,7 +2,7 @@ ActiveAdmin.register Flow do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :list, :of, :attributes, :on, :model, :name, :description, template_flows_attributes: [:id, :template_id, :flow_id, :_destroy]
+permit_params :list, :of, :attributes, :on, :model, :name, :description, template_flows_attributes: [:id, :template_id, :flow_id, :position, :_destroy, :_update]
 
 menu parent: 'Content Model'
 #
@@ -37,7 +37,7 @@ form do |f|
     f.input :name
     # f.input :description
   f.inputs "Templates" do
-    f.has_many :template_flows do |deg|
+    f.has_many :template_flows, sortable: :position, sortable_start: 1 do |deg|
       deg.input :template
       deg.input :_destroy, :as => :boolean, :label => "Remove?"
       end
