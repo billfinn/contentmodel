@@ -12,8 +12,15 @@
       <!-- <p>User Workflow > Template
       <p>Breadcrumbs > Information Architecture path
         <hr> -->
-			<h4>Page Purpose</h4>
-      <%= @thistemplate.page_purpose %>
+      <h4>Page Purpose</h4>
+      <p><%= @thistemplate.page_purpose %></p>
+      <hr>
+      <h4>Messaging</h4>
+      <% @templatemessage = HierarchyMapping.where template_id: (params[:id]) %>
+      <% @templatemessage.each do |h| %>
+          <p><%= h.hierarchy.name.html_safe %>
+          <p><%= h.hierarchy.description.html_safe %>
+      <% end %>
         <hr>
 			<h4>Audience</h4>
       <%= @thistemplate.audience %>

@@ -2,7 +2,7 @@ ActiveAdmin.register Template do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :list, :of, :attributes, :on, :model, :name, :existing, :description, :flow_id, :order, :page_purpose, :audience, :kpi, :likely_task, :personalization_needs, :creation_guidelines, template_components_attributes: [:id, :template_id, :component_id, :position, :_destroy, :_update]
+permit_params :list, :of, :attributes, :on, :model, :name, :existing, :description, :flow_id, :order, :page_purpose, :audience, :kpi, :likely_task, :personalization_needs, :creation_guidelines, template_components_attributes: [:id, :template_id, :component_id, :position, :_destroy, :_update], :hierarchy_ids => [], hierarchy_mappings_attributes: [:id, :hierarchy_id, :template_id, :destroy]
 
 menu parent: 'Content Model'
 #
@@ -44,15 +44,21 @@ form do |f|
     f.input :personalization_needs
     f.input :creation_guidelines
     # f.input :description
-  f.inputs "Components" do
-    f.has_many :template_components, sortable: :position, sortable_start: 1 do |deg|
-      deg.input :component
-      deg.input :_destroy, :as => :boolean, :label => "Remove?"
+  tabs do
+    tab :Components do
+      f.inputs "Components" do
+          f.has_many :template_components, sortable: :position, sortable_start: 1 do |deg|
+            deg.input :component
+            deg.input :_destroy, :as => :boolean, :label => "Remove?"
+          end
       end
+    end
+    tab :Messaging_Hierarchy do
+      f.input :hierarchy_ids, as: :check_boxes, collection: Hierarchy.all.map{|hierarchy| [hierarchy.name, hierarchy.id]}
     end
   end
   f.actions
+  end
 end
-
 
 end

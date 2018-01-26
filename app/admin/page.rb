@@ -41,11 +41,6 @@ form do |f|
       tab :Tags do
         f.input :tag_ids, as: :check_boxes, collection: Tag.all.map{|tag| [tag.name, tag.id]}
       end
-
-      tab :Messaging_Hierarchy do
-        f.input :hierarchy_ids, as: :check_boxes, collection: Hierarchy.all.map{|hierarchy| [hierarchy.name, hierarchy.id]}
-      end
-
       tab :S_E_O do
         f.input :seo_term_ids, as: :check_boxes, collection: SeoTerm.all.map{|seo_term| [seo_term.term, seo_term.id]}
       end
