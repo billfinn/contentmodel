@@ -4,7 +4,8 @@ ActiveAdmin.setup do |config|
     admin.build_menu do |menu|
       menu.add label: 'Atomic', priority: 1
       menu.add label: 'Sites & Flow', priority: 2
-      menu.add label: 'Messaging', priority: 3
+      menu.add label: 'Messaging', priority: 4
+      menu.add label: 'Content Model', priority: 3
     end
   end
 
@@ -13,8 +14,8 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Contentmodel"
-  # config.site_title = "<%= Rails.application.class.name.split("::").first.titlecase %>"
+  config.site_title = "Content Cookbook"
+  config.site_title = "<%= Rails.application.class.name.split("::").first.titlecase %>"
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
@@ -133,7 +134,7 @@ ActiveAdmin.setup do |config|
   # This allows your users to comment on any resource registered with Active Admin.
   #
   # You can completely disable comments:
-  # config.comments = false
+  config.comments = false
   #
   # You can change the name under which comments are registered:
   # config.comments_registration_name = 'AdminComment'
