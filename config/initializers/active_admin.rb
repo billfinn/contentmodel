@@ -4,8 +4,9 @@ ActiveAdmin.setup do |config|
     admin.build_menu do |menu|
       menu.add label: 'Atomic', priority: 1
       menu.add label: 'Sites & Flow', priority: 2
-      menu.add label: 'Messaging', priority: 4
       menu.add label: 'Content Model', priority: 3
+      menu.add label: 'Messaging', priority: 4
+      menu.add label: "App", url: "/", priority: 5
     end
   end
 
@@ -15,7 +16,7 @@ ActiveAdmin.setup do |config|
   # for each of the active admin pages.
   #
   config.site_title = "Content Cookbook"
-  config.site_title = "<%= Rails.application.class.name.split("::").first.titlecase %>"
+  # config.site_title = "<%= Rails.application.class.name.split("::").first.titlecase %>"
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
