@@ -44,7 +44,14 @@
         <span class="badge badge-light">Existing</span>
         <% else %>
         <% end %>
-        <small class="text-muted">Page Template</small></h1>
+        <small class="text-muted">Page Template
+          <% if @thistemplate.image.blank? == false %>
+           / <a href="<%= @thistemplate.image %>" target="_blank">view layout</a> 
+          <% else %>
+          <% end %>
+        </small>
+      </h1>
+
           <ol class="breadcrumb">
           <% @thistemplate.components.each do |b| %>
               <li class="breadcrumb-item"><a href="#<%= b.name %>"><%= b.name %></a></li>
