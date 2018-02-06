@@ -3,7 +3,7 @@ ActiveAdmin.register Tag do
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
 
-permit_params :list, :of, :attributes, :on, :model, :name, :description, :ancestry, :parent_id
+permit_params :list, :of, :attributes, :on, :model, :name, :description, :ancestry, :parent_id, :site_ids => [], site_tag_mappings_attributes: [:id, :site_id, :tag_id, :destroy]
 
 menu parent: 'Messaging'
 
@@ -33,6 +33,8 @@ scope :region
 form do |f|
   f.inputs do
     f.input :name
+    f.input :site_ids, as: :check_boxes, collection: Site.all.map{|site| [site.name, site.id]}
+    # f.input :site_id, :label => 'Site ID', :as => :select, :collection => Site.all.map{|s| ["#{s.name}", s.id, include_blank: true]}
     f.input :parent_id, :label => 'Parent ID', :as => :select, :collection => Tag.all.map{|u| ["#{u.name}", u.id, include_blank: true]}
     f.input :description
   end

@@ -4,7 +4,10 @@ class Tag < ApplicationRecord
   has_many :tag_mappings
   has_many :pages, :through => :tag_mappings
   accepts_nested_attributes_for :tag_mappings
-  
+
+  has_many :site_tag_mappings
+  has_many :sites, :through => :site_tag_mappings
+  accepts_nested_attributes_for :site_tag_mappings, :allow_destroy => true
 
   # scope :content_type, ->{where(ancestry: 6)}
   scope :expertise, ->{where(ancestry: 1)}

@@ -1,0 +1,3 @@
+class SiteTaxonomyMapping < ApplicationRecord
+
+end

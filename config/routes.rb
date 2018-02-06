@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get  '/templates', to: 'pages#templates'
   get  '/sitemap', to: 'pages#sitemap'
   get  '/taxonomy', to: 'pages#taxonomy'
+  get  '/taxonomysite/:id', to: 'pages#taxonomysite', as: 'taxonomysite'
   get '/page/:id', to: 'pages#page', as: 'page'
   get '/templatedetail/:id', to: 'pages#templatedetail', as: 'templatedetail'
   get '/templatelist/:id', to: 'pages#templatelist', as: 'templatelist'

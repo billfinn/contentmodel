@@ -2,18 +2,18 @@
 
   <div class="row">
 		<div class="col-xs-4">
-
-        <%= render "siteTaxonomy" %>
-        
+      <p>Johnson Controls > JohnsonControls.com
         <hr>
 			<h3>Notes</h3>
 
 
 		</div>
 		<div class="col-xs-8">
+      <% @taglist = SiteTagMapping.where site_id: (params[:id]) %>
+      <% @site = Site.find(params[:id]) %>
 			<h1>Taxonomy</h1>
 
-              <% @tags = Tag.arrange %>
+              <% @tags = @taglist.arrange %>
 
               <%= arranged_tree_as_list(@tags, {:list_style => :bootstrap_list_group}) do |tag| %>
 
