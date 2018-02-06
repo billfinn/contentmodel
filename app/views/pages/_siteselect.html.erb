@@ -1,0 +1,5 @@
+<p>Johnson Controls
+  <% @sites = ::Site.order(:name) %>
+  <% @sites.each do |site|  %>
+    <p><%= link_to site.name, templatelist_path(site) %>
+  <% end %>

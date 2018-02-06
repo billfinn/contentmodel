@@ -1,7 +1,9 @@
 
 
   <div class="row">
+    <!-- left column -->
 		<div class="col-sm-4">
+
       <%= render "siteselect" %>
 
         <div class="well">
@@ -14,18 +16,19 @@
             <li>Intent, logic and rules for page templates, components and attributes</li>
           </ul>
         </div>
+
 		</div>
+    <!-- right column -->
 		<div class="col-sm-8">
-			<h1>Content Model</h1>
-
-      <% @templates = ::Template.order(:name) %>
-
-      <% @templates.each do |templateitem|  %>
+      <% @templatelist = SiteTemplateMapping.where site_id: (params[:id]) %>
+      <% @site = Site.find(params[:id]) %>
+      <h1>Template List<small class="text-muted"> <%= @site.name %></small></h1>
+      <% @templatelist.each do |tl| %>
       <div class="row">
         <div class="col-8 col-sm-8">
           <div class="card border-secondary mb-3">
-            <h3 class="card-header"><%= link_to templateitem.name, templatedetail_path(templateitem) %>
-              <% if templateitem.existing == true %>
+            <h3 class="card-header"><%= link_to tl.template.name, templatedetail_path(tl.template) %>
+              <% if tl.template.existing == true %>
               <span class="badge badge-light">Existing</span>
               <% else %>
               <% end %>
@@ -33,7 +36,7 @@
             </h3>
             <ul class="list-group list-group-flush">
               <li class="list-group-item disabled">Components</li>
-              <% templateitem.components.each do |n| %>
+              <% tl.template.components.each do |n| %>
               <li class="list-group-item"><%= n.name %>
                 <% if n.existing == true %>
                 <span class="badge badge-light">Existing</span>
@@ -45,11 +48,16 @@
           </div>
         </div>
         <div class="col-8 col-sm-2">
-          <img style="margin-top:30px;" src="<%= templateitem.image %>" height="200">
+          <img style="margin-top:30px;" src="<%= tl.template.image %>" height="200">
         </div>
       </div>
 
+
+
       <% end %>
+    </div>
+
+
     </div>
 
 		</div>

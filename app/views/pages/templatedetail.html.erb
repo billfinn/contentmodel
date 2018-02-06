@@ -6,7 +6,8 @@
     %>
   <div class="row">
 		<div class="col-xs-4">
-      <p>Johnson Controls >
+
+            <%= render "siteselect" %>
 
         <hr>
       <!-- <p>User Workflow > Template
@@ -46,7 +47,7 @@
         <% end %>
         <small class="text-muted">Page Template
           <% if @thistemplate.image.blank? == false %>
-           / <a href="<%= @thistemplate.image %>" target="_blank">view layout</a> 
+           / <a href="<%= @thistemplate.image %>" target="_blank">view layout</a>
           <% else %>
           <% end %>
         </small>

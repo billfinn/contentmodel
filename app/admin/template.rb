@@ -2,7 +2,7 @@ ActiveAdmin.register Template do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :list, :of, :attributes, :on, :model, :name, :image, :existing, :description, :flow_id, :order, :page_purpose, :audience, :kpi, :likely_task, :personalization_needs, :creation_guidelines, template_components_attributes: [:id, :template_id, :component_id, :position, :_destroy, :_update], :hierarchy_ids => [], hierarchy_mappings_attributes: [:id, :hierarchy_id, :template_id, :destroy]
+permit_params :list, :of, :attributes, :on, :model, :name, :image, :existing, :description, :flow_id, :order, :page_purpose, :audience, :kpi, :likely_task, :personalization_needs, :creation_guidelines, template_components_attributes: [:id, :template_id, :component_id, :position, :_destroy, :_update], :hierarchy_ids => [], hierarchy_mappings_attributes: [:id, :hierarchy_id, :template_id, :destroy], :site_ids => [], site_template_mappings_attributes: [:id, :site_id, :template_id, :destroy]
 
 menu parent: 'Content Model'
 #
@@ -50,6 +50,14 @@ form do |f|
       f.inputs "Components" do
           f.has_many :template_components, sortable: :position, sortable_start: 1 do |deg|
             deg.input :component
+            deg.input :_destroy, :as => :boolean, :label => "Remove?"
+          end
+      end
+    end
+    tab :Sites do
+      f.inputs "Sites" do
+          f.has_many :site_template_mappings do |deg|
+            deg.input :site
             deg.input :_destroy, :as => :boolean, :label => "Remove?"
           end
       end
