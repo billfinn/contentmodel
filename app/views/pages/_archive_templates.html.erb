@@ -1,0 +1,64 @@
+
+
+  <div class="row">
+		<div class="col-sm-4">
+      <%= render "siteContentModel" %>
+
+        <div class="well">
+    			<h3>What is a Content Model?</h3>
+          <p>A Content Model the result of business requirements and design decisions. It captures several elements that make up the digital experience:</p>
+          <ul>
+            <li>Page templates</li>
+            <li>Components that make up each template</li>
+            <li>Attributes of each component</li>
+            <li>Intent, logic and rules for page templates, components and attributes</li>
+          </ul>
+        </div>
+		</div>
+		<div class="col-sm-8">
+			<h1>Content Model</h1>
+
+      <% @templates = ::Template.order(:name) %>
+
+      <% @templates.each do |templateitem|  %>
+      <div class="row">
+        <div class="col-8 col-sm-8">
+          <div class="card border-secondary mb-3">
+            <h3 class="card-header"><%= link_to templateitem.name, templatedetail_path(templateitem) %>
+              <% if templateitem.existing == true %>
+              <span class="badge badge-light">Existing</span>
+              <% else %>
+              <% end %>
+              <small class="text-muted">Page Template</small>
+            </h3>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item disabled">Components</li>
+              <% templateitem.components.each do |n| %>
+              <li class="list-group-item"><%= n.name %>
+                <% if n.existing == true %>
+                <span class="badge badge-light">Existing</span>
+                <% else %>
+                <% end %>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+        <div class="col-8 col-sm-2">
+          <img style="margin-top:30px;" src="<%= templateitem.image %>" height="200">
+        </div>
+      </div>
+
+      <% end %>
+    </div>
+
+		</div>
+	</div>
+  	<hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <footer>
+        <p>Content Model v.0.1</p>
+      </footer>
+    </div>
+  </div>
