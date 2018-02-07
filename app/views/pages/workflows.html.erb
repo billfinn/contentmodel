@@ -2,7 +2,8 @@
 
   <div class="row">
 		<div class="col-xs-4">
-      <p>Johnson Controls > JohnsonControls.com
+
+      <%= render "siteWorkflow" %>
 
 
         <hr>
@@ -11,13 +12,13 @@
 
 		</div>
 		<div class="col-xs-8">
-			<h1>Workflows</h1>
+			<h1>Site Flows</h1>
 
-      <% @workflows = Workflow.order(:name) %>
-      <% @workflows.each do |workflow|  %>
-      <h5><%= workflow.name %></h5>
+      <% @flows = Flow.order(:name) %>
+      <% @flows.each do |flow|  %>
+      <h5><%= flow.name %></h5>
       <p>
-        <%= safe_join(workflow.pages.map { |d| link_to(d.name, page_path(d, workflow_id: workflow.id), :class => "btn btn-info align-center") }, "&nbsp;&nbsp;>&nbsp;&nbsp;".html_safe) %>
+        <%= safe_join(flow.templates.map { |d| link_to(d.name, templatedetail_path(d, flow: flow.id), :class => "btn btn-info align-center") }, "&nbsp;&nbsp;>&nbsp;&nbsp;".html_safe) %>
       </p>
       <% end %>
 

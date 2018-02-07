@@ -2,7 +2,7 @@ ActiveAdmin.register Flow do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :list, :of, :attributes, :on, :model, :name, :description, template_flows_attributes: [:id, :template_id, :flow_id, :position, :_destroy, :_update]
+permit_params :list, :of, :attributes, :on, :model, :name, :description, template_flows_attributes: [:id, :template_id, :flow_id, :position, :_destroy, :_update], :site_ids => [], site_flow_mappings_attributes: [:id, :site_id, :flow_id, :_destroy, :_update]
 
 menu parent: 'Content Model'
 #
@@ -35,6 +35,7 @@ form do |f|
   f.semantic_errors *f.object.errors.keys
   f.inputs "Flow" do
     f.input :name
+    f.input :site_ids, as: :check_boxes, collection: Site.all.map{|site| [site.name, site.id]}
     # f.input :description
   f.inputs "Templates" do
     f.has_many :template_flows, sortable: :position, sortable_start: 1 do |deg|

@@ -19,4 +19,5 @@ class Tag < ApplicationRecord
   scope :installation, ->{where(ancestry: 8)}
   scope :region, ->{where(ancestry: 12)}
   # scope :lead_type, ->{where(ancestry: 11)}
+
 end
