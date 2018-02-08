@@ -10,15 +10,15 @@
 		</div>
     <!-- right column -->
 		<div class="col-sm-8">
-      <% @templatelist = SiteTemplateMapping.where site_id: (params[:id]) %>
+      <% @templatelist = ::Template.joins( :site_template_mappings ).where( site_template_mappings: { site_id: (params[:id]) }).order(:name) %>
       <% @site = Site.find(params[:id]) %>
       <h1>Template List<small class="text-muted"> <%= @site.name %></small></h1>
       <% @templatelist.each do |tl| %>
       <div class="row">
         <div class="col-8 col-sm-8">
           <div class="card border-secondary mb-3">
-            <h3 class="card-header"><%= link_to tl.template.name, templatedetail_path(tl.template) %>
-              <% if tl.template.existing == true %>
+            <h3 class="card-header"><%= link_to tl.name, templatedetail_path(tl.id) %>
+              <% if tl.existing == true %>
               <span class="badge badge-light">Existing</span>
               <% else %>
               <% end %>
@@ -26,7 +26,7 @@
             </h3>
             <ul class="list-group list-group-flush">
               <li class="list-group-item disabled">Components</li>
-              <% tl.template.components.each do |n| %>
+              <% tl.components.each do |n| %>
               <li class="list-group-item"><%= n.name %>
                 <% if n.existing == true %>
                 <span class="badge badge-light">Existing</span>
@@ -38,7 +38,7 @@
           </div>
         </div>
         <div class="col-8 col-sm-2">
-          <img style="margin-top:30px;" src="<%= tl.template.image %>" height="200">
+          <img style="margin-top:30px;" src="<%= tl.image %>" height="200">
         </div>
       </div>
 
@@ -48,15 +48,12 @@
     </div>
 
 
-    </div>
-
-		</div>
 	</div>
   	<hr>
   <div class="row">
     <div class="col-xs-12">
-      <footer>
-        <p>Content Model v.0.1</p>
-      </footer>
+
+        <%= render "footer" %>
+
     </div>
   </div>
