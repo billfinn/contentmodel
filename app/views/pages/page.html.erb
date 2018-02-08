@@ -4,20 +4,22 @@
 
     %>
   <div class="row">
+    <div class="col-xs-12">
+      <div class="alert alert-warning" role="alert">
+        This page is under development for functional enhancements. Areas may appear empty or broken.
+      </div>
+    </div>
+  </div>
+  <div class="row">
 		<div class="col-xs-4">
-      <p>Johnson Controls >
-        <%= @thispage.site.name %>
 
-        <hr>
+            <%= render "siteMap" %>
+
       <!-- <p>User Workflow > Template
       <p>Breadcrumbs > Information Architecture path
         <hr> -->
 			<h3>Messaging</h3>
-      <% @pagemessage = HierarchyMapping.where page_id: (params[:id]) %>
-      <% @pagemessage.each do |h| %>
-          <p><%= h.hierarchy.name.html_safe %>
-          <p><%= h.hierarchy.description.html_safe %>
-      <% end %>
+
         <hr>
       <h3>Tags</h3>
       <% @pagetags = TagMapping.where page_id: (params[:id]) %>
@@ -34,11 +36,7 @@
       <!-- <h3>Desired Actions</h3> -->
 		</div>
 		<div class="col-xs-8">
-      <% @workflow = Workflow.find(params[:workflow_id]) %>
-      <h6><%= @workflow.name %> / <%= @thispage.name %></h6>
-      <p>
-        <%= safe_join(@workflow.pages.map { |d| link_to(d.name, page_path(d, workflow_id: @workflow.id), :class => "btn btn-info align-center") }, "&nbsp;&nbsp;>&nbsp;&nbsp;".html_safe) %>
-      </p>
+      <h6><%= @thispage.name %></h6>
       <hr>
         <% @pagetext = TextItem.order(:order).where page_id: (params[:id]) %>
         <% @pagetext.each do |pt| %>

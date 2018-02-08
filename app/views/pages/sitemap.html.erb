@@ -9,17 +9,10 @@
 
 		</div>
 		<div class="col-xs-8">
-			<h1>Sitemap</h1>
+			<h1>Site Map</h1>
 
 
 
-        <% @pages = Page.arrange %>
-
-        <%= arranged_tree_as_list(@pages, {:list_style => :bootstrap_list_group}) do |page| %>
-
-            <%= page.name %>
-
-        <% end %>
 
 
 		</div>

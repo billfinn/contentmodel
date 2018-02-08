@@ -12,12 +12,12 @@
 
       <% @site = Site.find(params[:id]) %>
       <% @sitepages = Page.where( site_id: (params[:id]) ) %>
-      <h1>Taxonomy<small class="text-muted"> <%= @site.name %></small></h1>
+      <h1>Site Map<small class="text-muted"> <%= @site.name %></small></h1>
 
               <% @pages = @sitepages.arrange %>
               <%= arranged_tree_as_list(@pages, {:list_style => :bootstrap_list_group}) do |page| %>
 
-                  <%= page.name %>
+                  <%= link_to page.name, page_path(page.id) %>
 
               <% end %>
 
