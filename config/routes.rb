@@ -7,10 +7,11 @@ Rails.application.routes.draw do
   root "pages#show", page: "home"
 
   get  '/home', to: 'pages#home'
-  get  '/workflows', to: 'pages#workflows'
-  get  '/workflowdetail/:id', to: 'pages#workflowdetail', as: 'workflowdetail'
+  get  '/flows', to: 'pages#flows'
+  get  '/flowdetail/:id', to: 'pages#flowdetail', as: 'flowdetail'
   get  '/templates', to: 'pages#templates'
   get  '/sitemap', to: 'pages#sitemap'
+  get  '/sitemapdetail/:id', to: 'pages#sitemapdetail', as: 'sitemapdetail'
   get  '/taxonomy', to: 'pages#taxonomy'
   get  '/taxonomysite/:id', to: 'pages#taxonomysite', as: 'taxonomysite'
   get '/page/:id', to: 'pages#page', as: 'page'

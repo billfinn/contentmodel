@@ -1,0 +1,33 @@
+
+
+  <div class="row">
+		<div class="col-xs-4">
+
+      <%= render "siteMap" %>
+
+			<h3>Notes</h3>
+
+		</div>
+		<div class="col-xs-8">
+
+      <% @site = Site.find(params[:id]) %>
+      <% @sitepages = Page.where( site_id: (params[:id]) ) %>
+      <h1>Taxonomy<small class="text-muted"> <%= @site.name %></small></h1>
+
+              <% @pages = @sitepages.arrange %>
+              <%= arranged_tree_as_list(@pages, {:list_style => :bootstrap_list_group}) do |page| %>
+
+                  <%= page.name %>
+
+              <% end %>
+
+		</div>
+	</div>
+  	<hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <footer>
+        <p>Content Model v.0.1</p>
+      </footer>
+    </div>
+  </div>

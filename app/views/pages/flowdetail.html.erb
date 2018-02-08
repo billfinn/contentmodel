@@ -3,19 +3,21 @@
   <div class="row">
 		<div class="col-xs-4">
 
-      <%= render "siteWorkflow" %>
+      <%= render "siteFlow" %>
 
 
-        <hr>
 			<h3>Notes</h3>
 
 
 		</div>
 		<div class="col-xs-8">
-			<h1>Site Flows</h1>
 
-      <% @flows = Flow.order(:name) %>
-      <% @flows.each do |flow|  %>
+      <% @site = Site.find(params[:id]) %>
+      <% @siteflows = Flow.joins( :site_flow_mappings ).where( site_flow_mappings: { site_id: (params[:id]) }).order(:name) %>
+
+      <h1>Site Flows<small class="text-muted"> <%= @site.name %></small></h1>
+
+      <% @siteflows.each do |flow|  %>
       <h5><%= flow.name %></h5>
       <p>
         <%= safe_join(flow.templates.map { |d| link_to(d.name, templatedetail_path(d, flow: flow.id), :class => "btn btn-info align-center") }, "&nbsp;&nbsp;>&nbsp;&nbsp;".html_safe) %>

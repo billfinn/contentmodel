@@ -4,8 +4,7 @@
 		<div class="col-xs-4">
 
         <%= render "siteTaxonomy" %>
-        
-        <hr>
+
 			<h3>Notes</h3>
 
 
@@ -13,13 +12,7 @@
 		<div class="col-xs-8">
 			<h1>Taxonomy</h1>
 
-              <% @tags = Tag.arrange %>
 
-              <%= arranged_tree_as_list(@tags, {:list_style => :bootstrap_list_group}) do |tag| %>
-
-                  <%= tag.name %>
-
-              <% end %>
 
 		</div>
 	</div>

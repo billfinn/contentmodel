@@ -1,5 +1,7 @@
-<p>Johnson Controls
+<div class="well">
+<h4>View IA for</h4>
   <% @sites = ::Site.order(:name) %>
   <% @sites.each do |site|  %>
     <p><%= link_to site.name, templatelist_path(site) %>
   <% end %>
+</div>

@@ -1,7 +1,7 @@
 <div class="well">
-<h4>View Taxonomy for</h4>
+<h4>View Flows for</h4>
   <% @sites = ::Site.order(:name) %>
   <% @sites.each do |site|  %>
-    <p><%= link_to site.name, taxonomysite_path(site) %>
+    <p><%= link_to site.name, flowdetail_path(site) %>
   <% end %>
 </div>
