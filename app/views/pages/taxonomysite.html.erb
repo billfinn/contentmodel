@@ -10,6 +10,9 @@
 
 		</div>
 		<div class="col-xs-8">
+
+
+
       <% @site = Site.find(params[:id]) %>
       <% @sitetags = Tag.joins( :site_tag_mappings ).where( site_tag_mappings: { site_id: (params[:id]) }) %>
 			<h1>Taxonomy<small class="text-muted"> <%= @site.name %></small></h1>
@@ -20,6 +23,9 @@
                   <%= tag.name %>
 
               <% end %>
+
+
+              <div id="tree-container"></div>
 
 		</div>
 	</div>

@@ -6,11 +6,14 @@ Rails.application.routes.draw do
   get "/pages/:page" => "pages#show"
   root "pages#show", page: "home"
 
+  get  '/webfootprint', to: 'pages#webfootprint'
+  get  '/contentmapping', to: 'pages#contentmapping'
   get  '/home', to: 'pages#home'
   get  '/flows', to: 'pages#flows'
   get  '/flowdetail/:id', to: 'pages#flowdetail', as: 'flowdetail'
   get  '/templates', to: 'pages#templates'
   get  '/sitemap', to: 'pages#sitemap'
+
   get  '/sitemapdetail/:id', to: 'pages#sitemapdetail', as: 'sitemapdetail'
   get  '/taxonomy', to: 'pages#taxonomy'
   get  '/taxonomysite/:id', to: 'pages#taxonomysite', as: 'taxonomysite'
@@ -18,6 +21,15 @@ Rails.application.routes.draw do
   get '/templatedetail/:id', to: 'pages#templatedetail', as: 'templatedetail'
   get '/templatelist/:id', to: 'pages#templatelist', as: 'templatelist'
 
-
+  #api
+  namespace :api do
+    namespace :v1 do
+      # resources :sessions, only: [:create, :show]
+      resources :tag, only: [:index, :create, :show, :update, :destroy] do
+        post :activate, on: :collection
+        # resource :feed, only: [:show]
+      end
+    end
+  end
 
 end

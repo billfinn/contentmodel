@@ -20,6 +20,8 @@ gem 'ancestry'
 gem 'paperclip'
 gem 'ancestry-treeview'
 gem 'font-awesome-rails'
+gem 'active_model_serializers'
+gem 'd3-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'

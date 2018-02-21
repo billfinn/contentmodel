@@ -28,8 +28,12 @@
               <li class="list-group-item disabled">Components</li>
               <% tl.components.each do |n| %>
               <li class="list-group-item"><%= n.name %>
-                <% if n.existing == true %>
-                <span class="badge badge-light">Existing</span>
+                <% if n.componenttype_id == 1 %>
+                  <span class="badge badge-light">Existing</span>
+                <% else %>
+                <% end %>
+                <% if n.componenttype_id == 2 %>
+                  <span class="badge badge-light">Existing->Update</span>
                 <% else %>
                 <% end %>
               </li>

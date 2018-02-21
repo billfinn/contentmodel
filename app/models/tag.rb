@@ -20,4 +20,16 @@ class Tag < ApplicationRecord
   scope :region, ->{where(ancestry: 12)}
   # scope :lead_type, ->{where(ancestry: 11)}
 
+  # def self.json_tree(nodes)
+  #     nodes.map do |node, sub_nodes|
+  #       {:name => node.name, :id => node.id, :children => Tag.json_tree(sub_nodes).compact}
+  #     end
+  # end
+
+  def self.json_tree(nodes)
+      nodes.map do |node, sub_nodes|
+        {:name => node.name, :id => node.id, :children => Tag.json_tree(sub_nodes).compact}
+      end
+  end
+
 end

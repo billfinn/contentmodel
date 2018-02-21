@@ -41,6 +41,7 @@
 		</div>
 		<div class="col-xs-8">
       <h1><%= @thistemplate.name %>
+
         <% if @thistemplate.existing == true %>
         <span class="badge badge-light">Existing</span>
         <% else %>
@@ -61,10 +62,14 @@
 
         <% @thistemplate.components.each do |c| %>
             <a id="<%= c.name %>"></a>
-            <h3><%= c.name %>   <% if c.existing == true %>
-              <span class="badge badge-light">Existing</span>
-              <% else %>
-              <% end %><small class="text-muted">Component</small></h3>
+            <h3><%= c.name %> <% if c.componenttype_id == 1 %>
+                      <span class="badge badge-light">Existing</span>
+                    <% else %>
+                    <% end %>
+                    <% if c.componenttype_id == 2 %>
+                      <span class="badge badge-light">Existing->Update</span>
+                    <% else %>
+                    <% end %><small class="text-muted">Component</small></h3>
 
             <table class="table table-hover">
               <thead>
@@ -110,6 +115,6 @@
     <div class="col-xs-12">
 
         <%= render "footer" %>
-      
+
     </div>
   </div>

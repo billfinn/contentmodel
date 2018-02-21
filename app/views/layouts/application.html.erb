@@ -15,9 +15,54 @@
         	padding-top: 70px;
         }
     </style>
+    <meta charset="utf-8">
+    <style type="text/css">
+
+	.node {
+    cursor: pointer;
+  }
+
+  .overlay{
+      background-color:#EEE;
+  }
+
+  .node circle {
+    fill: #fff;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+  }
+
+  .node text {
+    font-size:10px;
+    font-family:sans-serif;
+  }
+
+  .link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 1.5px;
+  }
+
+  .templink {
+    fill: none;
+    stroke: red;
+    stroke-width: 3px;
+  }
+
+  .ghostCircle.show{
+      display:block;
+  }
+
+  .ghostCircle, .activeDrag .ghostCircle{
+       display: none;
+  }
+
+</style>
+
   </head>
 
   <body>
+
     <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="container">
@@ -42,9 +87,10 @@
               <ul class="dropdown-menu">
                 <li><%= link_to "Taxonomy", taxonomy_path %></li>
                 <li><%= link_to "Sitemap", sitemap_path %></li>
+                <li><%= link_to "Web Footprint (Sites)", webfootprint_path %></li>
+                <li><%= link_to "Content Mapping", contentmapping_path %></li>
                 <li role="separator" class="divider"></li>
                 <li style="padding-left:20px;"><strong>TBD</strong></li>
-                <li><a href="#">Content Mapping</a></li>
                 <li><a href="#">Creation, Edit, Update Process</a></li>
               </ul>
             </li>

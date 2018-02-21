@@ -15,6 +15,7 @@
 //= require_tree .
 //= require jquery
 //= require bootstrap-sprockets
+//= require d3
 $(document).ready(function(){
     $('.navbar .dropdown').hover(function() {
         $(this).find('.dropdown-menu').first().stop(true, true).delay(250).slideDown();

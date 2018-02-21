@@ -28,7 +28,7 @@
       <h3>Tags</h3>
       <% @pagetags = TagMapping.where page_id: (params[:id]) %>
       <% @pagetags.each do |t| %>
-          <%= t.tag.name + (", ").html_safe %>
+            <a href="#" class="badge badge-info"><%= t.tag.name %></a>
       <% end %>
 
       <h3>SEO Terms</h3>
