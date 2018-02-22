@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180214142315) do
+ActiveRecord::Schema.define(version: 20180222131653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -116,6 +116,17 @@ ActiveRecord::Schema.define(version: 20180214142315) do
   create_table "hierarchy_mappings", force: :cascade do |t|
     t.integer "hierarchy_id"
     t.integer "template_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "legacy_sites", force: :cascade do |t|
+    t.string "name"
+    t.string "url"
+    t.integer "domain_authority"
+    t.integer "traffic"
+    t.integer "page_count"
+    t.integer "referring_domains"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  url: MyString
+  domain_authority: 1
+  traffic: 1
+  page_count: 1
+  referring_domains: 1
+
+two:
+  name: MyString
+  url: MyString
+  domain_authority: 1
+  traffic: 1
+  page_count: 1
+  referring_domains: 1

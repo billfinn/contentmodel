@@ -1,0 +1,2 @@
+class LegacySite < ApplicationRecord
+end
