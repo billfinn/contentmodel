@@ -18,4 +18,15 @@ menu parent: 'Sites & Flow'
 #   permitted
 # end
 
+index do
+  selectable_column
+  column :id
+  column :name do |legacy_site|
+    link_to legacy_site.name, admin_legacy_site_path(legacy_site)
+  end
+  column :created_at
+
+  actions
+end
+
 end
