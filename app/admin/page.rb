@@ -4,7 +4,7 @@ ActiveAdmin.register Page do
 #
 permit_params :list, :of, :attributes, :on, :model, :name, :description, :ancestry, :parent_id, :site_id, :image, :tag_ids => [], tag_mappings_attributes: [:id, :tag_id, :page_id, :destroy], :hierarchy_ids => [], hierarchy_mappings_attributes: [:id, :hierarchy_id, :page_id, :destroy], :seo_term_ids => [], seo_mappings_attributes: [:id, :seo_term_id, :page_id, :destroy]
 
-menu parent: 'Sites & Flow'
+menu parent: 'Sites & Flow', priority: 5
 #
 # or
 #

@@ -4,7 +4,7 @@ ActiveAdmin.register Flow do
 #
 permit_params :list, :of, :attributes, :on, :model, :name, :description, template_flows_attributes: [:id, :template_id, :flow_id, :position, :_destroy, :_update], :site_ids => [], site_flow_mappings_attributes: [:id, :site_id, :flow_id, :_destroy, :_update]
 
-menu parent: 'Content Model'
+menu parent: 'Content Model', priority: 1
 #
 # or
 #

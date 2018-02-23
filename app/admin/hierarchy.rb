@@ -4,7 +4,7 @@ ActiveAdmin.register Hierarchy do
 #
 permit_params :list, :of, :attributes, :on, :model, :name, :description, :ancestry, :parent_id
 
-menu parent: 'Messaging'
+menu parent: 'Messaging', label: 'Message Hierarchies', priority: 2
 #
 # or
 #

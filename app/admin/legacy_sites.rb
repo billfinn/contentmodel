@@ -8,7 +8,7 @@ ActiveAdmin.register LegacySite do
 #
 permit_params :list, :of, :attributes, :on, :model, :name, :url, :domain_authority, :traffic, :referring_domains
 
-menu parent: 'Sites & Flow'
+menu parent: 'Sites & Flow', priority: 2
 #
 # or
 #

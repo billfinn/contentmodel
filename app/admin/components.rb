@@ -12,7 +12,7 @@ permit_params :list, :of, :attributes, :on, :model, :name, :componenttype_id, :g
 #   permitted
 # end
 
-menu parent: 'Content Model'
+menu parent: 'Content Model', priority: 1
 
 index do
   column :name do |component|

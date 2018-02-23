@@ -2,11 +2,10 @@ ActiveAdmin.setup do |config|
 
   config.namespace :admin do |admin|
     admin.build_menu do |menu|
-      menu.add label: 'Atomic', priority: 1
-      menu.add label: 'Sites & Flow', priority: 2
-      menu.add label: 'Content Model', priority: 3
-      menu.add label: 'Messaging', priority: 4
-      menu.add label: "App", url: "/", priority: 5
+      menu.add label: 'Sites & Flow', priority: 1
+      menu.add label: 'Content Model', priority: 2
+      menu.add label: 'Messaging', priority: 3
+      menu.add label: "App", url: "/", priority: 4
     end
   end
 

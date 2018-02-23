@@ -4,7 +4,7 @@ ActiveAdmin.register Template do
 #
 permit_params :list, :of, :attributes, :on, :model, :name, :image, :existing, :description, :flow_id, :order, :page_purpose, :audience, :kpi, :likely_task, :personalization_needs, :creation_guidelines, template_components_attributes: [:id, :template_id, :component_id, :position, :_destroy, :_update], :hierarchy_ids => [], hierarchy_mappings_attributes: [:id, :hierarchy_id, :template_id, :destroy], site_template_mappings_attributes: [:id, :site_id, :template_id, :_destroy, :_update]
 
-menu parent: 'Content Model'
+menu parent: 'Content Model', priority: 0
 #
 # or
 #

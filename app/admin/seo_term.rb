@@ -11,6 +11,6 @@ permit_params :list, :of, :attributes, :on, :model, :term
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-menu parent: 'Messaging'
+menu parent: 'Messaging', priority: 1
 
 end

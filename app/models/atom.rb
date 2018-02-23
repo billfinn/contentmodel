@@ -1,2 +1,0 @@
-class Atom < ApplicationRecord
-end

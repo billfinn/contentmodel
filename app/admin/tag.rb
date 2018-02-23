@@ -5,7 +5,7 @@ ActiveAdmin.register Tag do
 
 permit_params :list, :of, :attributes, :on, :model, :name, :description, :ancestry, :parent_id, :site_ids => [], site_tag_mappings_attributes: [:id, :site_id, :tag_id, :destroy]
 
-menu parent: 'Messaging'
+menu parent: 'Messaging', priority: 0
 
 
 

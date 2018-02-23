@@ -9,6 +9,9 @@ ActiveAdmin.register SiteCrawl do
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
 permit_params :list, :of, :attributes, :on, :model, :site_id, :address, :content, :status_code, :status, :title_1, :title_1_length, :title_1_pixel_width, :meta_description_1, :meta_description_1_length, :meta_description_1_pixel_width, :meta_keyword_1, :meta_keywords_1_length, :h1_1, :h1_1_length, :h1_2, :h1_2_length, :h2_1, :h2_2, :h2_1_length, :h2_2_length, :meta_robots_1, :meta_refresh_1, :canonical_link_element_1, :size, :word_count, :text_ratio, :level, :inlinks, :outlinks, :external_outlinks, :response_time, :last_modified, :redirect_uri
+
+menu parent: 'Sites & Flow', priority: 3
+
 # or
 #
 # permit_params do

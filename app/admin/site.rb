@@ -4,7 +4,7 @@ ActiveAdmin.register Site do
 #
 permit_params :list, :of, :attributes, :on, :model, :name, :description, :template_ids => [], site_template_mappings_attributes: [:id, :site_id, :template_id, :destroy]
 
-menu parent: 'Sites & Flow'
+menu parent: 'Sites & Flow', priority: 4
 #
 # or
 #
