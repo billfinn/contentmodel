@@ -1,0 +1,2 @@
+class SiteCrawl < ApplicationRecord
+end
