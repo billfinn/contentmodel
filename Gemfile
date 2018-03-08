@@ -25,7 +25,6 @@ gem 'd3-rails'
 gem "active_admin_import" , github: "Fivell/active_admin_import"
 gem 'activerecord-import'
 gem 'rchardet', '~> 1.7'
-gem 'rack-cors'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
