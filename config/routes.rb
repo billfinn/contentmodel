@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+  get 'tree/' => 'tree#index'
+  get 'tree/data', :defaults => { :format => 'json' }
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  # root :to => 'index#index'
+
   get "/pages/:page" => "pages#show"
   root "pages#show", page: "home"
 
@@ -17,9 +20,11 @@ Rails.application.routes.draw do
   get  '/sitemapdetail/:id', to: 'pages#sitemapdetail', as: 'sitemapdetail'
   get  '/taxonomy', to: 'pages#taxonomy'
   get  '/taxonomysite/:id', to: 'pages#taxonomysite', as: 'taxonomysite'
+  # get '/taxonomysite/:id/data', to:'pages#taxonomysite', as: 'taxonomysite/data', :defaults => { :format => 'json' }
   get '/page/:id', to: 'pages#page', as: 'page'
   get '/templatedetail/:id', to: 'pages#templatedetail', as: 'templatedetail'
   get '/templatelist/:id', to: 'pages#templatelist', as: 'templatelist'
+  get '/api/v1/tag/data', :defaults => { :format => 'json' }
 
   #api
   namespace :api do

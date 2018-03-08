@@ -1,32 +1,15 @@
-// ajax call to fetch json
-// var loadData = function(){
-//                 $.ajax({
-//                   type: 'GET',
-//                   contentType: 'application/json; charset=utf-8',
-//                   url: '/api/v1/tag',
-//                   dataType: 'json',
-//                   success: function(data){
-//                     drawBarPlot(data);
-//                   },
-//                   failure: function(result){
-//                     error();
-//                   }
-//                 });
-//               };
-//
-// function error() {
-//     console.log("Something went wrong!");
-// }
-//
-// // draw bar plot
-// function drawBarPlot(data){};
-//
-// // fetch data on page load
-// $(document).ready(function(){
-//   loadData();
-// });
-
-
+// $.ajax({
+//            type: "GET",
+//            contentType: "application/json; charset=utf-8",
+//            url: 'data',
+//            dataType: 'json',
+//            success: function (data) {
+//                draw(data);
+//            },
+//            error: function (result) {
+//                error();
+//            }
+//        });
 
 var margin = {top: 20, right: 120, bottom: 20, left: 120},
     width = 960 - margin.right - margin.left,
@@ -42,16 +25,16 @@ var tree = d3.layout.tree()
 var diagonal = d3.svg.diagonal()
     .projection(function(d) { return [d.y, d.x]; });
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#d3").append("svg")
     .attr("width", width + margin.right + margin.left)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.json("/api/v1/tag.json", function(error, flare) {
+d3.json(data, function(error, tag) {
   if (error) throw error;
 
-  root = flare;
+  root = tag;
   root.x0 = height / 2;
   root.y0 = 0;
 

@@ -1,0 +1,25 @@
+// Place all the styles related to the tree controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+    .node {
+      cursor: pointer;
+    }
+
+    .node circle {
+      fill: #fff;
+      stroke: steelblue;
+      stroke-width: 1.5px;
+    }
+
+    .node text {
+      font: 10px sans-serif;
+    }
+
+    .link {
+      fill: none;
+      stroke: #ccc;
+      stroke-width: 1.5px;
+    }
+
+  
