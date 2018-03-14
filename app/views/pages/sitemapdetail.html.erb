@@ -11,15 +11,14 @@
 		<div class="col-xs-8">
 
       <% @site = Site.find(params[:id]) %>
-      <% @sitepages = Page.where( site_id: (params[:id]) ) %>
+      <%= content_tag "div", id: "site", data: {site: @site.id} do %>
+      <% end %>
+      <%= content_tag "div", id: "type", data: {type: "sitemap"} do %>
+      <% end %>
+
       <h1>Site Map<small class="text-muted"> <%= @site.name %></small></h1>
-
-              <% @pages = @sitepages.arrange %>
-              <%= arranged_tree_as_list(@pages, {:list_style => :bootstrap_list_group}) do |page| %>
-
-                  <%= link_to page.name, page_path(page.id) %>
-
-              <% end %>
+              
+            <div id="tree"></div>
 
 		</div>
 	</div>

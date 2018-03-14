@@ -1,4 +1,40 @@
+document.addEventListener("turbolinks:load", function() {
+
+
 $(function() {
+//get the site id
+var site_id = $('#site').data('site');
+console.log(site_id);
+
+var data_type = $('#type').data('type');
+console.log(data_type);
+
+//create a variable to hold the JSON site data URL
+var site_data;
+
+//based on the site_id passed from the view, switch the JSON url used to populate the tree
+switch (site_id) {
+    case 1:
+        if (data_type == "taxonomy") {
+          site_data = "/tree/jcitags"
+        } else if (data_type == "sitemap") {
+          site_data = "/tree/jcimap"
+        } else {
+
+        }
+        break;
+    case 2:
+        if (data_type == "taxonomy") {
+          site_data = "/tree/tycotags"
+        } else if (data_type == "sitemap") {
+          site_data = "/tree/tycomap"
+        } else {
+
+        }
+        break;
+}
+
+console.log(site_data);
 
 //set the dimensions
 var m = [20, 120, 20, 120],
@@ -14,14 +50,21 @@ var diagonal = d3.svg.diagonal()
     .projection(function(d) { return [d.y, d.x]; });
 
 var vis = d3.select("#tree").append("svg")
+
+  .attr("class","svg_container")
   .attr("width", w + m[1] + m[3])
   .attr("height", h + m[0] + m[2])
+  .style("overflow", "scroll")
+  // .append("svg:g")
+  // .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
   .append("svg:g")
-  .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
+    .attr("class","drawarea")
+  .append("svg:g")
+    .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
 
 
 
-$.getJSON("tree/data", function(tag, error) {
+$.getJSON(site_data, function(tag, error) {
   // if (error) throw error;
   console.log(tag);
   root = tag[0];
@@ -68,14 +111,19 @@ function update(source) {
 
   nodeEnter.append("svg:circle")
       .attr("r", 1e-6)
-      .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+      .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; }).on("click", click);;
 
   nodeEnter.append("svg:text")
       .attr("x", function(d) { return d.children || d._children ? -10 : 10; })
       .attr("dy", ".35em")
       .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
       .text(function(d) { return d.name; })
-      .style("fill-opacity", 1e-6);
+      .style("fill-opacity", 1e-6)
+      .attr("class", "hyper").on("click", clack);;
+
+      function clack(d) {
+        alert(d.name);
+    }
 
   // Transition nodes to their new position.
   var nodeUpdate = node.transition()
@@ -135,10 +183,27 @@ function update(source) {
     d.x0 = d.x;
     d.y0 = d.y;
   });
+
+  d3.select("svg")
+    .call(d3.behavior.zoom()
+          .scaleExtent([0.5, 5])
+          .on("zoom", zoom));
+
 }
 
 // Toggle children.
-function toggle(d) {
+// function toggle(d) {
+//   if (d.children) {
+//     d._children = d.children;
+//     d.children = null;
+//   } else {
+//     d.children = d._children;
+//     d._children = null;
+//   }
+// }
+
+// Toggle children on click. This is add-on code from https://stackoverflow.com/questions/14951392/add-hyperlink-to-node-text-on-a-collapsible-tree, Check out my fiddle here: http://jsfiddle.net/empie/EX83X/
+function click(d) {
   if (d.children) {
     d._children = d.children;
     d.children = null;
@@ -146,6 +211,33 @@ function toggle(d) {
     d.children = d._children;
     d._children = null;
   }
+  update(d);
+}
+
+function clack(d) {
+    alert(d.id);
+    return "http://google.com";
+}
+
+// based on code updates found here:  https://stackoverflow.com/questions/17405638/d3-js-zooming-and-panning-a-collapsible-tree-diagram ///http://jsfiddle.net/nrabinowitz/fF4L4/2/
+function zoom() {
+    var scale = d3.event.scale,
+        translation = d3.event.translate,
+        tbound = -h * scale,
+        bbound = h * scale,
+        lbound = (-w + m[1]) * scale,
+        rbound = (w - m[3]) * scale;
+    // limit translation to thresholds
+    translation = [
+        Math.max(Math.min(translation[0], rbound), lbound),
+        Math.max(Math.min(translation[1], bbound), tbound)
+    ];
+    d3.select(".drawarea")
+        .attr("transform", "translate(" + translation + ")" +
+              " scale(" + scale + ")");
 }
 
 });
+
+//my_func();
+})

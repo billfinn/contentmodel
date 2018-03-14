@@ -14,4 +14,14 @@ class Page < ApplicationRecord
 
   validates :name, :presence => true
 
+  # scope :for_site, -> { Page.where( site_id: (params[:id]) ) }
+  scope :for_jci, -> { where( site_id: 1 ) }
+  scope :for_tyco, -> { where( site_id: 2 ) }
+
+  def self.json_tree(nodes)
+      nodes.map do |node, sub_nodes|
+        {:name => node.name, :id => node.id, :children => Page.json_tree(sub_nodes).compact}
+      end
+  end
+
 end

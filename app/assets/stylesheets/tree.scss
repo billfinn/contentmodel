@@ -2,11 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+    svg {
+        pointer-events: all;
+    }
+
     .node {
       cursor: pointer;
     }
 
     .node circle {
+      cursor: pointer;
       fill: #fff;
       stroke: steelblue;
       stroke-width: 1.5px;
@@ -22,4 +27,12 @@
       stroke-width: 1.5px;
     }
 
-  
+    .hyper {
+  	color: blue;
+  	text-decoration: underline;
+    }
+
+  .hyper:hover {
+  	color: yellow;
+  	text-decoration: none;
+  }

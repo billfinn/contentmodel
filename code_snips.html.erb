@@ -1,0 +1,20 @@
+<!-- ## CODE SNIPS  ## -->
+
+<!-- # for generating a styled list tree, from app/views/pages/taxonomysite.html.erb -->
+
+<% @sitetags = Tag.joins( :site_tag_mappings ).where( site_tag_mappings: { site_id: (params[:id]) }) %>
+<% @tags = @sitetags.arrange %>
+<%= arranged_tree_as_list(@tags, {:list_style => :bootstrap_list_group}) do |tag| %>
+
+    <%= tag.name %>
+
+<% end %>
+
+<!-- # for generating a styled sitemap tree, from app/views/pages/sitemapdetail.html.erb -->
+<% @sitepages = Page.where( site_id: (params[:id]) ) %>
+        <% @pages = @sitepages.arrange %>
+        <%= arranged_tree_as_list(@pages, {:list_style => :bootstrap_list_group}) do |page| %>
+
+            <%= link_to page.name, page_path(page.id) %>
+
+        <% end %>

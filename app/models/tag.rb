@@ -20,6 +20,11 @@ class Tag < ApplicationRecord
   scope :region, ->{where(ancestry: 12)}
   # scope :lead_type, ->{where(ancestry: 11)}
 
+  # scope :for_site, -> { joins( :site_tag_mappings ).where( site_tag_mappings: { site_id: (params[:id]) }) }
+  scope :for_jci, -> { joins( :site_tag_mappings ).where( site_tag_mappings: { site_id: 1 }) }
+  scope :for_tyco, -> { joins( :site_tag_mappings ).where( site_tag_mappings: { site_id: 2 }) }
+
+  # Tag.joins( :site_tag_mappings ).where( site_tag_mappings: { site_id: (params[:id]) })
   # def self.json_tree(nodes)
   #     nodes.map do |node, sub_nodes|
   #       {:name => node.name, :id => node.id, :children => Tag.json_tree(sub_nodes).compact}

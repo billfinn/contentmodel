@@ -14,18 +14,14 @@
 
 
       <% @site = Site.find(params[:id]) %>
-      <% @sitetags = Tag.joins( :site_tag_mappings ).where( site_tag_mappings: { site_id: (params[:id]) }) %>
+      <%= content_tag "div", id: "site", data: {site: @site.id} do %>
+      <% end %>
+      <%= content_tag "div", id: "type", data: {type: "taxonomy"} do %>
+      <% end %>
+
 			<h1>Taxonomy<small class="text-muted"> <%= @site.name %></small></h1>
 
-              <% @tags = @sitetags.arrange %>
-              <%= arranged_tree_as_list(@tags, {:list_style => :bootstrap_list_group}) do |tag| %>
-
-                  <%= tag.name %>
-
-              <% end %>
-
-
-              <svg id="flare"></svg>
+              <div id="tree"></div>
 
 		</div>
 	</div>

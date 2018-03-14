@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   get 'tree/' => 'tree#index'
   get 'tree/data', :defaults => { :format => 'json' }
-
+  get 'tree/jcitags', :defaults => { :format => 'json' }
+  get 'tree/tycotags', :defaults => { :format => 'json' }
+  get 'tree/jcimap', :defaults => { :format => 'json' }
+  get 'tree/tycomap', :defaults => { :format => 'json' }
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
