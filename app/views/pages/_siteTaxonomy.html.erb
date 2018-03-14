@@ -1,7 +1,7 @@
 <div class="well">
-<h4>View Taxonomy for</h4>
-  <% @sites = ::Site.order(:name) %>
-  <% @sites.each do |site|  %>
-    <p><%= link_to site.name, taxonomysite_path(site) %>
-  <% end %>
+    View Taxonomy for&nbsp;
+    <% @sites = ::Site.order(:name) %>
+    <% @sites.each do |site|  %>
+      <%= link_to site.name, taxonomysite_path(site) %>&nbsp;&nbsp;
+    <% end %>
 </div>

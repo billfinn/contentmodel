@@ -1,7 +1,7 @@
 <div class="well">
-<h4>View Site Map for</h4>
-  <% @sites = ::Site.order(:name) %>
-  <% @sites.each do |site|  %>
-    <p><%= link_to site.name, sitemapdetail_path(site) %>
-  <% end %>
+    View Site Map for&nbsp;
+      <% @sites = ::Site.order(:name) %>
+      <% @sites.each do |site|  %>
+        <%= link_to site.name, sitemapdetail_path(site) %>&nbsp;&nbsp;
+      <% end %>
 </div>

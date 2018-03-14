@@ -1,17 +1,10 @@
 
 
   <div class="row">
-		<div class="col-xs-4">
 
-              <%= render "siteTaxonomy" %>
+		<div class="col-xs-12">
 
-			<h3>Notes</h3>
-
-
-		</div>
-		<div class="col-xs-8">
-
-
+      <%= render "siteTaxonomy" %>
 
       <% @site = Site.find(params[:id]) %>
       <%= content_tag "div", id: "site", data: {site: @site.id} do %>
