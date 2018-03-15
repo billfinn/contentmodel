@@ -13,6 +13,7 @@ console.log(data_type);
 var site_data;
 
 //based on the site_id passed from the view, switch the JSON url used to populate the tree
+//also, get the type of data we want, such as taxonomy data or sitemap data; we should be able to access multiple trees from one codeset
 switch (site_id) {
     case 1:
         if (data_type == "taxonomy") {
@@ -38,6 +39,8 @@ console.log(site_data);
 
 //set the dimensions
 var m = [20, 120, 20, 120],
+    // w = d3.select('.col-xs-12').node();
+    //     element.getBoundingClientRect().width;
     w = 1280 - m[1] - m[3],
     h = 800 - m[0] - m[2],
     i = 0,
