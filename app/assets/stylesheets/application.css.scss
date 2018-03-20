@@ -17,3 +17,16 @@
  @import "ancestry-treeview";
  @import "font-awesome";
  @import "tree";
+
+ ol {
+   counter-reset: item;
+ }
+ li.recipe {
+   display: block;
+ }
+ li.recipe:before {
+   content: counters(item, ".") ".";
+   counter-increment: item;
+   padding-right:10px;
+   margin-left:-20px;
+ }

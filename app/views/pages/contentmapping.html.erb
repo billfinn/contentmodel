@@ -1,5 +1,4 @@
 
-
   <div class="row">
 		<div class="col-sm-4">
       <%= render "siteContentModel" %>
@@ -7,27 +6,39 @@
 		</div>
 		<div class="col-sm-8">
 			<h1>Content Mapping</h1>
-      <p>Insert definition of content mapping, and how it builds on the web footprint.</p>
+      <p class="text-muted"><em>Insert definition of content mapping, and how it builds on the web footprint.</em></p>
       <div class="panel panel-primary">
         <div class="panel-heading">
           Legacy Domain Page Mapping
         </div>
         <div class="panel-body">
-          <p>3.	For each legacy domain (Johnson Controls tasks)
-INCLUDE LIST ITEMS NEEDED TO PERFORM TASKS - "before you begin" list
-INCLUDE PEOPLE/ROLES INVOLVED - roles, instructions, process
-a.	List - Assign migration specialists to legacy domains
-b.	301 redirect mapping (map each existing Tyco URL to new JCI URL)
-i.	Detailed Legacy Sitemap
-ii.	Detailed Destination Sitemap
-iii.	New/As-Is/Update/Delete
-iv.	Redirect Options
-1.	Page to Page - where ranking value maps to ranking value
-a.	Note - special marketing pages for Eloqua?
-2.	Page to Parent - where legacy item is phasing out
-3.	Page to Root - where batch mapping of legacy to destination root is most efficient
-c.	Map to JohnsonControls.com Page Type (see Content Model)
-i.	Punchlist of Page Type Components for JCI migration specialist
+          <h4>For each legacy domain (Johnson Controls tasks):</h4>
+          <p>
+          <em class="text-muted"><small>INCLUDE LIST ITEMS NEEDED TO PERFORM TASKS - "before you begin" list<br>
+          INCLUDE PEOPLE/ROLES INVOLVED - roles, instructions, process</small></em>
+          <ol>
+            <li class="recipe">List - Assign migration specialists to legacy domains</li>
+            <li class="recipe">301 redirect mapping (map each existing Tyco URL to new JCI URL)
+              <ol>
+                <li class="recipe">Detailed Legacy Sitemap</li>
+                <li class="recipe">Detailed Destination Sitemap</li>
+                <li class="recipe">New/As-Is/Update/Delete</li>
+                <li class="recipe">Redirect Options
+                  <ol>
+                    <li class="recipe">Page to Page - where ranking value maps to ranking value<br><mark>Note - special marketing pages for Eloqua?</mark></li>
+                    <li class="recipe">Page to Parent - where legacy item is phasing out</li>
+                    <li class="recipe">Page to Root - where batch mapping of legacy to destination root is most efficient</li>
+                  </ol>
+                </li>
+              </ol>
+              <li class="recipe">Map to JohnsonControls.com Page Type (see Content Model)
+                <ol>
+                  <li class="recipe">Punchlist of Page Type Components for JCI migration specialist</li>
+                </ol>
+                </li>
+           </ol>
+
+
 
         </div>
       </div>
@@ -36,41 +47,61 @@ i.	Punchlist of Page Type Components for JCI migration specialist
           Page-to-Page Mapping
         </div>
         <div class="panel-body">
-          <p>i.	Content Map to Page Components
-1.	Identify components
-2.	List text
-3.	List images
-ii.	Documents
-1.	Load documents
-2.	Tag documents
-3.	Link documents to page, if appropriate
-iii.	Page Links
-1.	Reconnect links to targets
-iv.	Images
-1.	Evaluate image disposition: Keep/Find New
-2.	Image pixel and resolution sizing
-3.	Image format compression (JPEG hi-med-low, PNG, etc)
-4.	Image naming standard
-5.	Alt Tag and Description
-v.	SEO Meta Data
-1.	page titles
-2.	meta descriptions
-3.	keywords
-4.	header tags
-vi.	Content Tagging
-1.	Industry
-2.	Project Size
-3.	Business Size
-4.	Brand Architecture (Product areas)
-5.	Product, Service, Solution…
-6.	Expertise (LEED, Sustainabiity, Design, etc)
-7.	Geography
-8.	Others as needed
+          <h4>For each page mapped to a destination:</h4>
+          <p>
+          <ol>
+            <li class="recipe">Content Map to Page Components
+              <ol>
+                <li class="recipe">Identify components</li>
+                <li class="recipe">List text</li>
+                <li class="recipe">List images</li>
+              </ol></li>
+            <li class="recipe">Documents
+              <ol>
+                <li class="recipe">Load documents</li>
+                <li class="recipe">Tag documents</li>
+                <li class="recipe">Link documents to page, if appropriate</li>
+              </ol></li>
+            <li class="recipe">Page Links
+              <ol>
+                <li class="recipe">Reconnect links to targets</li>
+              </ol></li>
+            <li class="recipe">Images
+                <ol>
+                  <li class="recipe">Evaluate image disposition: Keep/Find New</li>
+                  <li class="recipe">Image pixel and resolution sizing</li>
+                  <li class="recipe">Image format compression (JPEG hi-med-low, PNG, etc)</li>
+                  <li class="recipe">Image naming standard</li>
+                  <li class="recipe">Alt Tag and Description</li>
+                </ol></li>
+            <li class="recipe">SEO Meta Data
+              <ol>
+                <li class="recipe">page titles</li>
+                <li class="recipe">meta descriptions</li>
+                <li class="recipe">keywords</li>
+                <li class="recipe">header tags</li>
+              </ol></li>
+            <li class="recipe">Content Tagging
+              <ol>
+                <li class="recipe">Industry</li>
+                <li class="recipe">Project Size</li>
+                <li class="recipe">Business Size</li>
+                <li class="recipe">Brand Architecture (Product areas)</li>
+                <li class="recipe">Product</li>
+                <li class="recipe">Service</li>
+                <li class="recipe">Solution</li>
+                <li class="recipe">Expertise (LEED, Sustainabiity, Design, etc)</li>
+                <li class="recipe">Geography</li>
+                <li class="recipe text-muted"><em>Others as needed...</em></li>
+              </ol></li>
+          </ol>
+
+
 
 
         </div>
       </div>
-      
+
 
 
 		</div>
