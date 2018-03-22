@@ -9,7 +9,7 @@ gem 'activeadmin'
 gem 'pg'
 # Plus integrations with:
 gem 'devise'
-gem 'cancan' # or cancancan
+gem 'cancancan' # or cancancan
 gem 'draper'
 gem 'pundit'
 
@@ -26,6 +26,7 @@ gem "active_admin_import" , github: "Fivell/active_admin_import"
 gem 'activerecord-import'
 gem 'rchardet', '~> 1.7'
 gem 'pg_search'
+gem 'active_admin_role'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'

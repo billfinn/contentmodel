@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180223051835) do
+ActiveRecord::Schema.define(version: 20180322195933) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,20 @@ ActiveRecord::Schema.define(version: 20180223051835) do
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
   end
 
+  create_table "active_admin_managed_resources", force: :cascade do |t|
+    t.string "class_name", null: false
+    t.string "action", null: false
+    t.string "name"
+    t.index ["class_name", "action", "name"], name: "active_admin_managed_resources_index", unique: true
+  end
+
+  create_table "active_admin_permissions", force: :cascade do |t|
+    t.integer "managed_resource_id", null: false
+    t.integer "role", limit: 2, default: 0, null: false
+    t.integer "state", limit: 2, default: 0, null: false
+    t.index ["managed_resource_id", "role"], name: "active_admin_permissions_index", unique: true
+  end
+
   create_table "actual_text_joins", force: :cascade do |t|
     t.integer "text_id"
     t.integer "textitem_id"
@@ -58,6 +72,10 @@ ActiveRecord::Schema.define(version: 20180223051835) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "company"
+    t.integer "role", limit: 2, default: 0, null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
@@ -212,7 +230,6 @@ ActiveRecord::Schema.define(version: 20180223051835) do
     t.integer "inlinks"
     t.integer "outlinks"
     t.integer "external_outlinks"
-    t.string "hash"
     t.integer "response_time"
     t.string "last_modified"
     t.string "redirect_uri"
@@ -319,6 +336,16 @@ ActiveRecord::Schema.define(version: 20180223051835) do
     t.text "example"
     t.text "description"
     t.integer "site_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "username"
+    t.string "password"
+    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

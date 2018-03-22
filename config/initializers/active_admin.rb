@@ -5,7 +5,9 @@ ActiveAdmin.setup do |config|
       menu.add label: 'Sites & Flow', priority: 1
       menu.add label: 'Content Model', priority: 2
       menu.add label: 'Messaging', priority: 3
-      menu.add label: "App", url: "/", priority: 4
+      menu.add label: "Users", url: "/", priority: 4
+      menu.add label: "App", url: "/", priority: 5
+
     end
   end
 
@@ -76,7 +78,7 @@ ActiveAdmin.setup do |config|
   # method in a before filter of all controller actions to
   # ensure that there is a user with proper rights. You can use
   # CanCanAdapter or make your own. Please refer to documentation.
-  # config.authorization_adapter = ActiveAdmin::CanCanAdapter
+  config.authorization_adapter = ActiveAdmin::CanCanAdapter
 
   # In case you prefer Pundit over other solutions you can here pass
   # the name of default policy class. This policy will be used in every
