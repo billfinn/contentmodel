@@ -64,7 +64,7 @@
             <li><a href="/admin">Admin</a></li>
             <li style="margin: 15px 0 0 0;"><small style="color: white;">
               <% if admin_user_signed_in? %>
-                Logged in as <strong><%= current_admin_user.email %></strong>
+                Logged in as <strong><% if current_admin_user.first_name? %><%= current_admin_user.first_name %> <%= current_admin_user.last_name %><% else %><%= current_admin_user.email %><% end %></strong>
                 <%#= link_to 'Edit profile', edit_admin_user_password_path, :class => 'navbar-link' %> |
                 <%= link_to "Logout", destroy_admin_user_session_path, method: :delete, :class => 'navbar-link'  %>
               <% else %>
