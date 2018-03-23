@@ -31,15 +31,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">
-            <span style="margin: 0 10px 0 0;"><img height="25px" alt="Johnson Controls Content Plan" src="http://contentmodel-jci-assets.s3.amazonaws.com/images/jci_logo_black_and_white.png"></span>
-            Content Cookbook
-          </a>
+            <img  class="navbar-brand" height="25px" style="margin: 0px 0px 0px 0;" alt="Johnson Controls Content Plan" src="http://contentmodel-jci-assets.s3.amazonaws.com/images/jci_logo_black_and_white.png">
+            <%= link_to "Content Cookbook", home_path, :class => "navbar-brand" %>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="nav navbar-nav">
-            <li><%= link_to "Home", home_path %></li>
             <li class="dropdown">
               <a data-target="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Migration & Publishing <span class="caret"></span></a>
               <ul class="dropdown-menu">
