@@ -110,7 +110,7 @@ function update(source) {
   var nodeEnter = node.enter().append("svg:g")
       .attr("class", "node")
       .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
-      .on("click", function(d) { toggle(d); update(d); });
+      // .on("click", function(d) { toggle(d); update(d); });
 
   nodeEnter.append("svg:circle")
       .attr("r", 1e-6)
@@ -124,8 +124,16 @@ function update(source) {
       .style("fill-opacity", 1e-6)
       .attr("class", "hyper").on("click", clack);;
 
+      //options for the click-action of the text label on tree nodes. one for sitemap, one for taxonomy
       function clack(d) {
-        alert(d.name);
+        if (data_type == "taxonomy") {
+            alert(d.name);
+        } else if (data_type == "sitemap") {
+            window.location.href = "/page/" + d.id;
+        } else {
+            alert("An error occurred. Please contact a site administrator.");
+        }
+
     }
 
   // Transition nodes to their new position.
@@ -217,10 +225,10 @@ function click(d) {
   update(d);
 }
 
-function clack(d) {
-    alert(d.id);
-    return "http://google.com";
-}
+// function clack(d) {
+//     alert(d.id);
+//     return "http://google.com";
+// }
 
 // based on code updates found here:  https://stackoverflow.com/questions/17405638/d3-js-zooming-and-panning-a-collapsible-tree-diagram ///http://jsfiddle.net/nrabinowitz/fF4L4/2/
 function zoom() {
