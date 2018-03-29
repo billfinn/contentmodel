@@ -2,6 +2,9 @@
 <% @thispage = Page.find(params[:id])
 
 
+
+
+
     %>
   <div class="row">
     <div class="col-xs-12">
@@ -40,7 +43,12 @@
       <!-- <h3>Desired Actions</h3> -->
 		</div>
 		<div class="col-xs-8">
-      <h6><%= @thispage.name %></h6>
+      <% @thispage.templates.each do |c| %>
+          <span class="pill">Template <%= link_to c.name, templatedetail_path(c.id) %></span>
+      <% end %>
+      <h1><%= @thispage.name %></h1>
+
+
       <hr>
         <% @pagetext = TextItem.order(:order).where page_id: (params[:id]) %>
         <% @pagetext.each do |pt| %>

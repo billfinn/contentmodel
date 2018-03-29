@@ -12,14 +12,14 @@ menu parent: 'Messaging', priority: 0
 
 scope :all
 # scope :content_type
-scope :expertise
-scope :offering
-scope :brand_arch
-scope :product_brand
-# scope :audience
-scope :industry
-scope :installation
-scope :region
+# scope :expertise
+# scope :offering
+# scope :brand_arch
+# scope :product_brand
+# # scope :audience
+# scope :industry
+# # scope :installation
+# scope :region
 # scope :lead_type
 #
 # or

@@ -1,5 +1,4 @@
 class Site < ApplicationRecord
-  has_many :pages
 
   has_many :site_template_mappings
   has_many :templates, :through => :site_template_mappings
@@ -12,6 +11,5 @@ class Site < ApplicationRecord
   has_many :site_flow_mappings
   has_many :flows, :through => :site_flow_mappings
   accepts_nested_attributes_for :site_flow_mappings, :allow_destroy => true
-
 
 end
