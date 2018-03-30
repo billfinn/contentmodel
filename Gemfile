@@ -28,6 +28,7 @@ gem 'rchardet', '~> 1.7'
 gem 'pg_search'
 gem 'active_admin_role'
 
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 

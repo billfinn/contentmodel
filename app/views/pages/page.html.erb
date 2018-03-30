@@ -9,7 +9,7 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="alert alert-warning" role="alert">
-        This page is under development for functional enhancements. Areas may appear empty or broken.
+        This page is under development for information display.
       </div>
     </div>
   </div>
@@ -27,12 +27,18 @@
 
       <h3>Tags</h3>
       <% @pagetags = TagMapping.where page_id: (params[:id]) %>
+        <% if @pagetags.empty? %>
+          <p class="text-muted">No tags assigned.</p>
+        <% end %>
       <% @pagetags.each do |t| %>
             <a href="#" class="badge badge-info"><%= t.tag.name %></a>
       <% end %>
           <hr>
       <h3>SEO Terms</h3>
       <% @pageterms = SeoMapping.where page_id: (params[:id]) %>
+        <% if @pageterms.empty? %>
+          <p class="text-muted">No SEO terms assigned.</p>
+        <% end %>
       <% @pageterms.each do |s| %>
           <%= s.term.name + (", ").html_safe %>
       <% end %>
@@ -43,6 +49,7 @@
       <!-- hack to display the page name if not yet associated with a template (all pages should be associated with a template) -->
       <% if @thispage.templates.empty? %>
         <h1><%= @thispage.name %></h1>
+        <p class="text-muted">This page requires template and content configuration.</p>
       <% end %>
       <% @thispage.templates.each do |c| %>
           <span class="badge badge-light">Template</span> <%= link_to c.name, templatedetail_path(c.id) %>

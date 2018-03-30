@@ -1,4 +1,4 @@
-class Tag < ApplicationRecord
+class Tag < ApplicationRecord  
   has_ancestry
 
   has_many :tag_mappings
