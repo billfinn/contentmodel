@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get  '/flows', to: 'pages#flows'
   get  '/flowdetail/:id', to: 'pages#flowdetail', as: 'flowdetail'
   get  '/legacysites', to: 'pages#legacysites'
+  get  '/legacysitedetail/:id', to: 'pages#legacysitedetail', as: 'legacysitedetail'
   get  '/page/:id', to: 'pages#page', as: 'page'
   get   "/pages/:page" => "pages#show"
   get  '/searchtest', to: 'pages#searchtest'

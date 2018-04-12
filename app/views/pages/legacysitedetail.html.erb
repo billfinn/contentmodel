@@ -1,4 +1,4 @@
-
+<% @thislegacysite = ::LegacySite.find(params[:id])%>
 
   <div class="row">
 		<div class="col-xs-4">
@@ -9,25 +9,21 @@
 
 		</div>
 		<div class="col-xs-8">
-			<h1>Legacy Sites</h1>
-      <% @sitelist = LegacySite.order(:name) %>
+			<h1><%= @thislegacysite.name %></h1>
+      <% @sitepages = SiteCrawl.order(:address).where site_id: (params[:id]) %>
 
       <table class="table table-hover">
         <thead>
           <tr>
-            <th scope="col">Site</th>
-            <th scope="col">Pages</th>
-            <th scope="col">URL</th>
+            <th scope="col">Page</th>
             <th scope="col">ID</th>
           </tr>
         </thead>
         <tbody>
 
-        <% @sitelist.each do |site|  %>
+        <% @sitepages.each do |site|  %>
         <tr>
-          <td scope="row"><%= site.name %></td>
-          <td><%= link_to "pages", legacysitedetail_path(site.id), target: :_blank %></td>
-          <td><%= link_to site.name, site.url, target: :_blank %></td>
+          <td><%= link_to site.address, site.address, target: :_blank %></td>
           <td><%= site.id %></td>
         </tr>
 
