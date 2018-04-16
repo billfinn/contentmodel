@@ -11,10 +11,13 @@
 		<div class="col-xs-8">
 			<h1><%= @thislegacysite.name %></h1>
       <% @sitepages = SiteCrawl.order(:address).where site_id: (params[:id]) %>
-
+      <%= semantic_form_for @sitecrawl do |f| %>
       <table class="table table-hover">
         <thead>
           <tr>
+            <th scope="col">Retain</th>
+            <th scope="col">Update</th>
+            <th scope="col">Retire</th>
             <th scope="col">Page</th>
             <th scope="col">ID</th>
           </tr>
@@ -23,6 +26,9 @@
 
         <% @sitepages.each do |site|  %>
         <tr>
+          <td><%= f.input :rot, :as => :radio %></td>
+          <td><%= f.input :rot, :as => :radio %></td>
+          <td><%= f.input :rot, :as => :radio %></td>
           <td><%= link_to site.address, site.address, target: :_blank %></td>
           <td><%= site.id %></td>
         </tr>
@@ -30,7 +36,7 @@
         <% end %>
         </tbody>
       </table>
-
+      <% end %>
 		</div>
 	</div>
   	<hr>
