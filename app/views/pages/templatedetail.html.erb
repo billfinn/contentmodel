@@ -1,12 +1,18 @@
 
 <% @thistemplate = ::Template.find(params[:id])
+   @site = SiteTemplateMapping.joins(:site).where(site_template_mappings: { template_id: (params[:id]) })
+   # @site = Site.joins( :site_template_mappings ).where( site_template_mappings: { template_id: (params[:id]) })
+
 
 
 
     %>
   <div class="row">
 		<div class="col-xs-4">
-
+      <p>
+        <% @site.each do |s| %>
+          <p><%= s.site.name %><%= s.site.id %>
+        <% end %>
       <%= render "siteContentModel" %>
 
         <hr>
@@ -19,12 +25,44 @@
       <h4>Messaging</h4>
       <% @templatemessage = HierarchyMapping.where template_id: (params[:id]) %>
       <% @templatemessage.each do |h| %>
-          <p><%= h.hierarchy.name.html_safe %>
+          <h5><%= h.hierarchy.name.html_safe %></h5>
           <p><%= h.hierarchy.description.html_safe %>
+              <p><%= link_to "Audience Message Guide", "#myModal", :class => "btn btn-info align-center", "data-toggle" => "modal" %>
+                <!-- , "#my-modal", :class => "btn", "data-toggle" => "modal"  -->
+                      <!-- Modal -->
+                      <div id="myModal" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+
+                          <!-- Modal content-->
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h3 class="modal-title"><%= h.hierarchy.name.html_safe %>: Audience Messaging</h3>
+                            </div>
+                            <div class="modal-body">
+
+                                <% @audiencemessage = AudienceMessage.joins(:audience, :site).where(hierarchy_id: h.hierarchy.id) %>
+                                <% @audiencemessage.each do |m| %>
+                                  <h4><%= m.audience.name %> <small class="text-muted"><%= m.site.name %></small></h4>
+                                  <p><%= m.message %></p>
+                                <% end %>
+
+
+
+                              <!-- <p><img style="width:100%;" src="http://contentmodel-jci-assets.s3.amazonaws.com/images/WebFootprint_HighLevel_v4.png"></p> -->
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+
+
+
+
       <% end %>
-        <hr>
-			<h4>Audience</h4>
-      <%= @thistemplate.audience %>
         <hr>
       <h4>KPI</h4>
         <%= @thistemplate.kpi %>

@@ -5,4 +5,6 @@ class Hierarchy < ApplicationRecord
   has_many :templates, :through => :hierarchy_mappings
   accepts_nested_attributes_for :hierarchy_mappings
 
+  has_many :audience_messages
+
 end

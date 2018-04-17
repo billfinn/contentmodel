@@ -12,4 +12,6 @@ class Site < ApplicationRecord
   has_many :flows, :through => :site_flow_mappings
   accepts_nested_attributes_for :site_flow_mappings, :allow_destroy => true
 
+  has_many :audience_messages
+
 end
