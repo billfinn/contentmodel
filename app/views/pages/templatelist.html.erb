@@ -17,7 +17,7 @@
       <div class="row">
         <div class="col-8 col-sm-8">
           <div class="card border-secondary mb-3">
-            <h3 class="card-header"><%= link_to tl.name, templatedetail_path(tl.id) %>
+            <h3 class="card-header"><%= link_to tl.name, templatedetail_path(:id => tl.id, :site => @site.id) %>
               <% if tl.existing == true %>
               <span class="badge badge-light">Existing</span>
               <% else %>

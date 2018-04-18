@@ -1,21 +1,16 @@
 
 <% @thistemplate = ::Template.find(params[:id])
-   @site = SiteTemplateMapping.joins(:site).where(site_template_mappings: { template_id: (params[:id]) })
-   # @site = Site.joins( :site_template_mappings ).where( site_template_mappings: { template_id: (params[:id]) })
-
+   @site = Site.find(params[:site])
 
 
 
     %>
   <div class="row">
 		<div class="col-xs-4">
-      <p>
-        <% @site.each do |s| %>
-          <p><%= s.site.name %><%= s.site.id %>
-        <% end %>
+
+
       <%= render "siteContentModel" %>
 
-        <hr>
       <!-- <p>User Workflow > Template
       <p>Breadcrumbs > Information Architecture path
         <hr> -->
@@ -37,16 +32,30 @@
                           <div class="modal-content">
                             <div class="modal-header">
                               <button type="button" class="close" data-dismiss="modal">&times;</button>
-                              <h3 class="modal-title"><%= h.hierarchy.name.html_safe %>: Audience Messaging</h3>
+                              <h3 class="modal-title"><small><%= @site.name %></small><br><%= h.hierarchy.name.html_safe %></h3>
                             </div>
                             <div class="modal-body">
 
-                                <% @audiencemessage = AudienceMessage.joins(:audience, :site).where(hierarchy_id: h.hierarchy.id) %>
+                              <table class="table table-hover">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">Audience</th>
+                                    <th scope="col">Message</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+
+
+                                <% @audiencemessage = AudienceMessage.joins(:audience, :site).where(hierarchy_id: h.hierarchy.id, site_id: @site.id) %>
                                 <% @audiencemessage.each do |m| %>
-                                  <h4><%= m.audience.name %> <small class="text-muted"><%= m.site.name %></small></h4>
-                                  <p><%= m.message %></p>
+                                  <tr>
+                                    <td scope="row" width="30%"><h4><%= m.audience.name %></h4></td>
+                                    <td><p><%= m.message %></p></td>
+                                  </tr>
                                 <% end %>
 
+                              </tbody>
+                            </table>
 
 
                               <!-- <p><img style="width:100%;" src="http://contentmodel-jci-assets.s3.amazonaws.com/images/WebFootprint_HighLevel_v4.png"></p> -->
