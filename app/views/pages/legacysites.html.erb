@@ -26,7 +26,7 @@
         <% @sitelist.each do |site|  %>
         <tr>
           <td scope="row"><%= site.name %></td>
-          <td><%= link_to "pages", legacysitedetail_path(site.id), target: :_blank %></td>
+          <td><%= link_to "pages", legacysitedetail_path(site.id)%></td>
           <td><%= link_to site.name, site.url, target: :_blank %></td>
           <td><%= site.id %></td>
         </tr>

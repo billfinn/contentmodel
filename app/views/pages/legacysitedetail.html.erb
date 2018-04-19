@@ -1,17 +1,12 @@
-<% @thislegacysite = ::LegacySite.find(params[:id])%>
+<% @thislegacysite = LegacySite.find(params[:id])%>
 
   <div class="row">
-		<div class="col-xs-4">
-
-
-
-			<h3>Notes</h3>
-
-		</div>
-		<div class="col-xs-8">
+		<div class="col-xs-12">
+      <div class="alert alert-warning" role="alert">
+        This page is under development for information display.
+      </div>
 			<h1><%= @thislegacysite.name %></h1>
       <% @sitepages = SiteCrawl.order(:address).where site_id: (params[:id]) %>
-      <%= semantic_form_for @sitecrawl do |f| %>
       <table class="table table-hover">
         <thead>
           <tr>
@@ -26,17 +21,17 @@
 
         <% @sitepages.each do |site|  %>
         <tr>
-          <td><%= f.input :rot, :as => :radio %></td>
-          <td><%= f.input :rot, :as => :radio %></td>
-          <td><%= f.input :rot, :as => :radio %></td>
-          <td><%= link_to site.address, site.address, target: :_blank %></td>
+          <td>select</td>
+          <td>select</td>
+          <td>select</td>
+          <td><%= link_to truncate(site.address, :length => 100), site.address, target: :_blank %></td>
           <td><%= site.id %></td>
         </tr>
 
         <% end %>
         </tbody>
       </table>
-      <% end %>
+
 		</div>
 	</div>
   	<hr>
