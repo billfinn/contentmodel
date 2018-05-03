@@ -2,7 +2,7 @@
 
 
   <div class="row">
-		<div class="col-xs-4">
+		<div class="col-sm-3">
 
       <%= render "siteFlow" %>
 
@@ -11,7 +11,7 @@
 
 
 		</div>
-		<div class="col-xs-8">
+		<div class="col-sm-9">
 
       <% @site = Site.find(params[:id]) %>
       <% @siteflows = Flow.joins( :site_flow_mappings ).where( site_flow_mappings: { site_id: (params[:id]) }).order(:name) %>
@@ -30,7 +30,7 @@
 	</div>
   	<hr>
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-sm">
 
               <%= render "footer" %>
 

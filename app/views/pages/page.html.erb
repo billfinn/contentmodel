@@ -1,5 +1,6 @@
 
 <% @thispage = Page.find(params[:id])
+   @site = Site.find(params[:site])
 
 
 
@@ -52,7 +53,7 @@
         <p class="text-muted">This page requires template and content configuration.</p>
       <% end %>
       <% @thispage.templates.each do |c| %>
-          <span class="badge badge-light">Template</span> <%= link_to c.name, templatedetail_path(c.id) %>
+          <span class="badge badge-light">Template</span> <%= link_to c.name, templatedetail_path(:id => c.id, :site => @site.id) %>
 
       <h1><%= @thispage.name %></h1>
 
@@ -62,7 +63,12 @@
             <%= h.description %>
           <% end %>
 
-
+          <h5>Template Components - click to view detail and customize for page</h5>
+          <ol>
+          <% c.components.each do |b| %>
+              <li><%= link_to b.name, component_path(:id => b.id, :template => c.id, :page => @thispage.id, :site => @site.id) %></li>
+          <% end %>
+          </ol>
 
       <hr>
         <% @pagetext = TextItem.order(:order).where page_id: (params[:id]) %>

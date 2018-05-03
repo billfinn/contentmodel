@@ -2,14 +2,14 @@
 
   <div class="row">
     <!-- left column -->
-		<div class="col-sm-4">
+		<div class="col-sm-3">
 
       <%= render "siteContentModel" %>
 
 
 		</div>
     <!-- right column -->
-		<div class="col-sm-8">
+		<div class="col-sm-9">
       <% @templatelist = ::Template.joins( :site_template_mappings ).where( site_template_mappings: { site_id: (params[:id]) }).order(:name) %>
       <% @site = Site.find(params[:id]) %>
       <h1>Template List<small class="text-muted"> <%= @site.name %></small></h1>
@@ -55,7 +55,7 @@
 	</div>
   	<hr>
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-sm">
 
         <%= render "footer" %>
 

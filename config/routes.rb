@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "pages#show", page: "home"
 
+  get  '/component/:id', to: 'pages#component', as: 'component'
   get  '/contentmapping', to: 'pages#contentmapping'
   get  '/home', to: 'pages#home'
   get  '/flows', to: 'pages#flows'
@@ -16,6 +17,8 @@ Rails.application.routes.draw do
   resources :search, only: [:index]
   get  '/sitemap', to: 'pages#sitemap'
   get  '/sitemapdetail/:id', to: 'pages#sitemapdetail', as: 'sitemapdetail'
+  resources :sitepage
+  get  '/smart_listing/' => 'smart_listing#index'
   get  '/taxonomy', to: 'pages#taxonomy'
   get  '/taxonomysite/:id', to: 'pages#taxonomysite', as: 'taxonomysite'
   get  '/templates', to: 'pages#templates'

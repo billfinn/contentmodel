@@ -1,7 +1,7 @@
 <div class="well">
-<h4>View Content Model for</h4>
+View Content Model for
   <% @sites = ::Site.order(:name) %>
   <% @sites.each do |site|  %>
-    <p><%= link_to site.name, templatelist_path(site) %>
+    <%= link_to site.name, templatelist_path(site) %><br>
   <% end %>
 </div>

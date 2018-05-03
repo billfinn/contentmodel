@@ -14,7 +14,7 @@ gem 'draper'
 gem 'pundit'
 
 
-gem 'bootstrap-sass', '~> 3.3.7'
+gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 gem 'ancestry'
 gem 'paperclip'
@@ -27,6 +27,7 @@ gem 'activerecord-import'
 gem 'rchardet', '~> 1.7'
 gem 'pg_search'
 gem 'active_admin_role'
+gem 'smart_listing', '~> 1.2', '>= 1.2.2'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

@@ -1,0 +1,85 @@
+<%  @component = Component.find(params[:id])
+    @template = ::Template.find(params[:template])
+    @page = Page.find(params[:page])
+    @site = Site.find(params[:site])
+
+
+
+
+
+%>
+
+  <div class="row">
+		<div class="col-xs-4">
+
+      <%= render "siteMap" %>
+
+
+			<h3>Notes</h3>
+      
+      <!-- Display Component relationships -->
+            <p>Component: <%= @component.name %>
+              <p>Template: <%= @template.name %>
+                <p>Page: <%= @page.name %>
+                  <p>Site: <%= @site.name %>
+
+		</div>
+		<div class="col-xs-8">
+			<h1>Component</h1>
+
+
+<!-- Component guidelines -->
+
+          <h3><%= @component.name %> <% if @component.componenttype_id == 1 %>
+                    <span class="badge badge-light">Existing</span>
+                  <% else %>
+                  <% end %>
+                  <% if @component.componenttype_id == 2 %>
+                    <span class="badge badge-light">Existing->Update</span>
+                  <% else %>
+                  <% end %><small class="text-muted">Component</small></h3>
+
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Attribute</th>
+                <th scope="col">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">Goal</td>
+                <td><i><%= @component.goal %></i></td>
+              </tr>
+              <tr>
+                <td scope="row">Description</td>
+                <td><i><%= @component.description %></i></td>
+              </tr>
+              <tr>
+                <td scope="row">CTA</td>
+                <td><i><%= @component.cta %></i></td>
+              </tr>
+              <tr>
+                <td scope="row">Content Assets</td>
+                <td><i><%= @component.content_assets %></i></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <% @component.text_items.each do |t| %>
+                <h5 class="text-info"><%= t.name %> <small class='text-muted'>Item</small></h5>
+                   <p><%= t.itemtext %> </p>
+          <% end %>
+
+
+
+		</div>
+	</div>
+  	<hr>
+  <div class="row">
+    <div class="col-xs-12">
+
+              <%= render "footer" %>
+
+    </div>
+  </div>

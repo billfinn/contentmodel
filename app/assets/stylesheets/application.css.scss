@@ -12,7 +12,7 @@
  *
  */
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"*/
- @import "bootstrap-sprockets";
+
  @import "bootstrap";
  @import "ancestry-treeview";
  @import "font-awesome";
@@ -48,15 +48,16 @@
 }
 
 .modal-dialog {
-  // display: inline-block;
+  display: inline-block;
   text-align: left;
   // vertical-align: middle;
+  margin:30px;
   position: absolute;
   top: 0px;
   right: 0px;
   bottom: 0;
   left: 0;
-  width:60%;
+  max-width: 100%;
   z-index: 10040;
   overflow: auto;
   overflow-y: auto;

@@ -35,6 +35,7 @@ switch (site_id) {
         break;
 }
 
+console.log(site_id)
 console.log(site_data);
 
 //set the dimensions
@@ -129,7 +130,8 @@ function update(source) {
         if (data_type == "taxonomy") {
             alert(d.name);
         } else if (data_type == "sitemap") {
-            window.location.href = "/page/" + d.id;
+            // alert("/page/" + d.id + "?site=" + site_id);
+            window.location.href = "/page/" + d.id + "?site=" + site_id +"";
         } else {
             alert("An error occurred. Please contact a site administrator.");
         }
