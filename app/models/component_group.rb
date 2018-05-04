@@ -1,0 +1,2 @@
+class ComponentGroup < ApplicationRecord
+end

@@ -29,7 +29,8 @@
 
 
 <!-- Component guidelines -->
-
+      <div class="card">
+        <div class="card-header">
           <h3><%= @component.name %> <% if @component.componenttype_id == 1 %>
                     <span class="badge badge-light">Existing</span>
                   <% else %>
@@ -38,7 +39,8 @@
                     <span class="badge badge-light">Existing->Update</span>
                   <% else %>
                   <% end %><small class="text-muted">Component</small></h3>
-
+        </div>
+        <div class="card-body">
           <table class="table table-hover">
             <thead>
               <tr>
@@ -65,7 +67,8 @@
               </tr>
             </tbody>
           </table>
-
+        </div>
+      </div>
           <% @component.text_items.each do |t| %>
                 <h5 class="text-info"><%= t.name %> <small class='text-muted'>Item</small></h5>
                    <p><%= t.itemtext %> </p>

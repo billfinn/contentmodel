@@ -2,7 +2,7 @@ ActiveAdmin.register Component do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :list, :of, :attributes, :on, :model, :name, :componenttype_id, :goal, :cta, :content_assets, :image, :description, component_items_attributes: [:id, :component_id, :text_item_id, :position, :_destroy, :_update], component_types_attributes: [:id, :name]
+permit_params :list, :of, :attributes, :on, :model, :name, :componenttype_id, :component_group, :goal, :cta, :content_assets, :image, :description, component_items_attributes: [:id, :component_id, :text_item_id, :position, :_destroy, :_update], component_types_attributes: [:id, :name], component_groups_attributes: [:id, :name]
 #
 # or
 #
@@ -14,15 +14,15 @@ permit_params :list, :of, :attributes, :on, :model, :name, :componenttype_id, :g
 
 menu parent: 'Content Model', priority: 1
 
-index do
-  column :name do |component|
-    link_to component.name, admin_component_path(component)
-  end
-
-  actions
-end
-# filter only by title
-filter :name
+# index do
+#   column :name do |component|
+#     link_to component.name, admin_component_path(component)
+#   end
+#
+#   actions
+# end
+# # filter only by title
+# filter :name
 
 show do |component|
   attributes_table do
@@ -37,6 +37,7 @@ form do |f|
   f.inputs "Component" do
     f.input :name
     f.input :componenttype_id, :label => 'Component Tag', :as => :select, :collection => ComponentType.all.map{|c| ["#{c.name}", c.id, include_blank: true]}
+    f.input :component_group, :label => 'Component Group', :as => :select, :collection => ComponentGroup.all.map{|g| ["#{g.name}", g.id, include_blank: true]}
     f.input :goal
     f.input :cta
     f.input :content_assets
