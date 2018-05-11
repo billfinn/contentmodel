@@ -13,15 +13,17 @@ menu parent: 'Content Model', priority: 0
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-index do
-  column :name do |template|
-    link_to template.name, admin_template_path(template)
-  end
 
-  actions
-end
-# filter only by title
-filter :name
+
+# index do
+#   column :name do |template|
+#     link_to template.name, admin_template_path(template)
+#   end
+#
+#   actions
+# end
+# # filter only by title
+# filter :name
 
 
 show do |template|
