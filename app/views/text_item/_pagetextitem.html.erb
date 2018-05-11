@@ -1,0 +1,18 @@
+
+<%= div_for pagetextitem do %>
+
+  <%= pagetextitem.name %>: <strong><%= pagetextitem.itemtext %></strong>
+  <%= link_to "(remove)", pagetextitem, method: :delete, data: {confirm: "Are you sure?"} %>
+  <%= link_to "(update)", pagetextitem, method: :update, data: {confirm: "Are you sure?"} %>
+
+  <%= form_for @textitem, url: text_item_index_path, remote: true do |f| %>
+    <%= f.hidden_field :text_id, value: pagetextitem.text_id %>
+    <%= f.hidden_field :component_id, :value => pagetextitem.component_id %>
+    <%= f.hidden_field :page_id, value: 84 %>
+    <%= f.hidden_field :order, :value => pagetextitem.order %>
+    <%= f.hidden_field :name, :value => pagetextitem.name %>
+    <%= f.text_field :itemtext %>
+    <%= f.submit "Update" %>
+  <% end %>
+
+<% end %>

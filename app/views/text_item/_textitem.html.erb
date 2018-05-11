@@ -1,0 +1,12 @@
+
+<li><%= textitem.name %> <%= link_to "(remove)", textitem, method: :delete, data: {confirm: "Are you sure?"} %> <!--| <%= link_to "New Text Item", new_text_item_path, id: "new_link", remote: true %>-->
+  <div id="new_textitem_<%= textitem.id %>"><%= form_for @textitem, url: text_item_index_path, remote: true do |f| %>
+    <%= f.hidden_field :text_id, value: textitem.text_id %>
+    <%= f.hidden_field :component_id, :value => textitem.component_id %>
+    <%= f.hidden_field :page_id, value: 84 %>
+    <%= f.hidden_field :order, :value => textitem.order %>
+    <%= f.hidden_field :name, :value => textitem.name %>
+    <%= f.text_field :itemtext %>
+    <%= f.submit %>
+  <% end %></div>
+</li>

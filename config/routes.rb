@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get  '/templates', to: 'pages#templates'
   get  '/templatedetail/:id', to: 'pages#templatedetail', as: 'templatedetail'
   get  '/templatelist/:id', to: 'pages#templatelist', as: 'templatelist'
+  resources :text_item
   get 'tree/' => 'tree#index'
   get 'tree/data', :defaults => { :format => 'json' }
   get 'tree/jcitags', :defaults => { :format => 'json' }

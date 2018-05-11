@@ -1,0 +1,2 @@
+$('form').hide();
+$('div#<%= dom_id(@textitem) %>').replaceWith('<%= j render partial: "textitem", locals: {textitem: @textitem} %>');

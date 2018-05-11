@@ -69,11 +69,23 @@
           </table>
         </div>
       </div>
-          <% @component.text_items.each do |t| %>
+          <!-- <% @component.text_items.each do |t| %>
                 <h5 class="text-info"><%= t.name %> <small class='text-muted'>Item</small></h5>
                    <p><%= t.itemtext %> </p>
+          <% end %> -->
+
+          <% @component.text_items.each do |t| %>
+                <<%= t.text.name %>><%= t.itemtext %></<%= t.text.name %>>
+                <%= link_to "Add New", new_text_item_path, remote: true %>
+                <div id="textitem-form" style="display:none;"><%= render 'form' %></div>
+
           <% end %>
 
+
+          <!-- <% @pagetext = TextItem.order(:order).where page_id: (params[:id]) %>
+          <% @pagetext.each do |pt| %>
+              <<%= pt.text.name %>><%#= pt.order %><%= pt.itemtext %></<%= pt.text.name %>>
+          <% end %> -->
 
 
 		</div>

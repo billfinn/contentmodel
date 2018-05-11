@@ -8,14 +8,14 @@
 
     %>
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-sm">
       <div class="alert alert-warning" role="alert">
         This page is under development for information display.
       </div>
     </div>
   </div>
   <div class="row">
-		<div class="col-xs-4">
+		<div class="col-sm-3">
 
             <%= render "siteMap" %>
 
@@ -46,7 +46,7 @@
 
       <!-- <h3>Desired Actions</h3> -->
 		</div>
-		<div class="col-xs-8">
+		<div class="col-sm-9">
       <!-- hack to display the page name if not yet associated with a template (all pages should be associated with a template) -->
       <% if @thispage.templates.empty? %>
         <h1><%= @thispage.name %></h1>
@@ -82,7 +82,7 @@
 	</div>
   	<hr>
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-sm">
 
               <%= render "footer" %>
 
