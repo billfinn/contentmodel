@@ -21,7 +21,7 @@
       <% @siteflows.each do |flow|  %>
       <h5><%= flow.name %></h5>
       <p>
-        <%= safe_join(flow.templates.map { |d| link_to(d.name, templatedetail_path(d, flow: flow.id), :class => "btn btn-info align-center") }, "&nbsp;&nbsp;>&nbsp;&nbsp;".html_safe) %>
+        <%= safe_join(flow.templates.map { |d| link_to(d.name, templatedetail_path(d, site: @site.id), :class => "btn btn-info align-center") }, "&nbsp;&nbsp;>&nbsp;&nbsp;".html_safe) %>
       </p>
       <% end %>
 
