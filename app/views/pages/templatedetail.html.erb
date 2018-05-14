@@ -93,15 +93,19 @@
         <span class="badge badge-light">Existing</span>
         <% else %>
         <% end %>
-        <small class="text-muted">Page Template
-          <% if @thistemplate.image.blank? == false %>
-           / <a href="<%= @thistemplate.image %>" target="_blank">view layout</a>
-          <% else %>
-          <% end %>
-        </small>
+        <br><small class="text-muted">Page Template        </small>
       </h1>
 
+      <% if @thistemplate.document.blank? == false %>
       <%= link_to "Download Page Requirements Document (PRD)", @thistemplate.document, :class => "btn btn-info", target: "_blank" %>
+      <% else %>
+      <% end %>
+
+      <% if @thistemplate.image.blank? == false %>
+      <%= link_to "View Layout", @thistemplate.image, :class => "btn btn-info", target: "_blank" %>
+      <% else %>
+      <% end %>
+
           <!-- <ol class="breadcrumb">
           <% @thistemplate.components.each do |b| %>
               <li class="breadcrumb-item"><a href="#<%= b.name %>"><%= b.name %></a></li>
