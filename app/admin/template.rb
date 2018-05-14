@@ -2,7 +2,7 @@ ActiveAdmin.register Template do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :list, :of, :attributes, :on, :model, :name, :image, :existing, :description, :flow_id, :order, :page_purpose, :audience, :kpi, :likely_task, :personalization_needs, :creation_guidelines, template_components_attributes: [:id, :template_id, :component_id, :position, :_destroy, :_update], :hierarchy_ids => [], hierarchy_mappings_attributes: [:id, :hierarchy_id, :template_id, :destroy], site_template_mappings_attributes: [:id, :site_id, :template_id, :_destroy, :_update]
+permit_params :list, :of, :attributes, :on, :model, :name, :image, :document, :existing, :description, :flow_id, :order, :page_purpose, :audience, :kpi, :likely_task, :personalization_needs, :creation_guidelines, template_components_attributes: [:id, :template_id, :component_id, :position, :_destroy, :_update], :hierarchy_ids => [], hierarchy_mappings_attributes: [:id, :hierarchy_id, :template_id, :destroy], site_template_mappings_attributes: [:id, :site_id, :template_id, :_destroy, :_update]
 
 menu parent: 'Content Model', priority: 0
 #
@@ -39,6 +39,7 @@ form do |f|
   f.inputs "Page Template" do
     f.input :name
     f.input :existing
+    f.input :document
     f.input :image
     f.input :page_purpose
     f.input :audience
