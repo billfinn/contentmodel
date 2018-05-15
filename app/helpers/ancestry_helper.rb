@@ -23,6 +23,7 @@ module AncestryHelper
       when :bootstrap_list_group
         options[:ul_class] << ['list-group']
         options[:li_class] << ['list-group-item']
+      
     end
     options[:list_style] = ''
 
