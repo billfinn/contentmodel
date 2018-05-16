@@ -11,27 +11,23 @@
 
 		</div>
 		<div class="col-sm-9">
-			<h1>Messaging Hierarchy</h1>
+			<h1><%= @site.name %><small class="text-muted"> Messaging Hierarchy</small></h1>
 
         <%= render "siteMessaging" %>
-
+        <hr>
         <% @messages = AudienceMessage.includes(:hierarchy, :audience).where site_id: (params[:id]) %>
-        <% #@templates = Template.joins(:hierarchy_mappings).where hierarchy_mappings: { hierarchy_id: => :@messages.hierarchy_id })%>
-        <% #@levels = @messages.group_by(&:hierarchy) %>
 
-        <% @messages.group_by(&:hierarchy).sort.each do |hierarchy, messages| %>
-          <h5><%= hierarchy.name %></h5>
-          <p class="text-muted"><%= hierarchy.description %></p>
+        <% @messages.group_by(&:hierarchy).sort.each do |hierarchy, message| %>
+        <h5><%= hierarchy.name %></h5>
+        <p><small class="text-muted"><%= hierarchy.description %></small></p>
           <table class="table table-hover">
             <tbody>
-            <% messages.each do |message| %>
-            <tr>
-              <td scope="row" width="30%"><p><%=message.audience.name %></td><td><%=message.message %></td>
-            </tr>
-            <% end %>
-        <% end %>
+            <% message.each do |m| %>
+                <tr scope="row" width="30%"><td><strong><%= m.audience.name %></strong></td><td><%= m.message %></td></tr>
+                <% end %>
             </tbody>
           </table>
+        <% end %>
 
 
 		</div>

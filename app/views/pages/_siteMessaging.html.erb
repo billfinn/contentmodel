@@ -1,5 +1,5 @@
 <div class="well">
-    View Messaging Hierarchy for&nbsp;
+    View for&nbsp;
       <% @sites = ::Site.order(:name) %>
       <% @sites.each do |site|  %>
         <%= link_to site.name, messagingdetail_path(site) %>&nbsp;&nbsp;
