@@ -42,7 +42,14 @@
           </div>
         </div>
         <div class="col-8 col-sm-2">
-          <img style="margin-top:30px;" src="<%= tl.image %>" height="200">
+          <% if tl.image.blank? %>
+          <% else %>
+              <% if tl.image.include? "invision" %>
+                  <%= link_to "View Comp", tl.image, target: "_blank" %><br>
+                  <% else %>
+                  <img src="<%= tl.image %>" height="200">
+                  <% end %>
+          <% end %>
         </div>
       </div>
 
