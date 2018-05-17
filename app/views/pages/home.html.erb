@@ -1,17 +1,13 @@
-
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-4">Content Cookbook</h1>
+      <p class="lead">Ingredients, instructions and tools for creating and managing website content.</p>
+    </div>
+  </div>
 
   <div class="row">
-		<div class="col-sm-3">
-
-		</div>
-		<div class="col-sm-9">
-      <h1>Content Cookbook</h1>
-      <hr>
-      <h4>Introduction</h4>
-      <p>A cookbook is a collection of recipes that list ingredients, supply instructions for preparation and show examples of finished results.</p>
-      <p>This Content Cookbook is a central location for source documentation, instructions and examples for content on JohnsonControls.com and Tyco.com.</p>
-      <p><em>Check back often - you'll find updates to guidance and documentation appearing here regularly.</em></p>
-      <h4>Who should use the Content Cookbook</h4>
+		<div class="col-sm-4">
+      <h4>The Cookbook is for:</h4>
         <ul>
           <li>Content creators</li>
           <li>Content editors</li>
@@ -19,19 +15,29 @@
           <li>Marketers</li>
           <li>Website developers</li>
         </ul>
-        <h4>Things the Cookbook can help with</h4>
-          <ul>
-            <li>Guidance on the intent of an individual page content and templates</li>
-            <li>Content tagging</li>
-            <li>Crafting messaging for webpages</li>
-            <li>What elements appear on a webpage and why</li>
-            <li>Maps for understanding websites</li>
-          </ul>
-
+		</div>
+    <div class="col-sm-4">
+      <h4>The Cookbook helps with:</h4>
+        <ul>
+          <li>Guidance on the intent of an individual page content and templates</li>
+          <li>Content tagging</li>
+          <li>Crafting messaging for webpages</li>
+          <li>What elements appear on a webpage and why</li>
+          <li>Maps for understanding websites</li>
+        </ul>
+		</div>
+		<div class="col-sm-4">
+      <!-- <h1>Content Cookbook</h1>
+      <hr>
+      <h4>Introduction</h4>
+      <p>A cookbook is a collection of recipes that list ingredients, supply instructions for preparation and show examples of finished results.</p>
+      <p>This Content Cookbook is a central location for source documentation, instructions and examples for content on JohnsonControls.com and Tyco.com.</p>
+      <p><em>Check back often - you'll find updates to guidance and documentation appearing here regularly.</em></p> -->
       <h4>Next Steps</h4>
-        <p>Each page in the destination site is based on a pre-existing and pre-defined <%= link_to "sitemap", sitemap_path %>, <%= link_to "taxonomy", taxonomy_path %> (for tagging and SEO), messaging structure (hierarchy) and <%= link_to "templates", templates_path %>.
+        <p><%= link_to "Sitemap", sitemap_path %>, <%= link_to "taxonomy", taxonomy_path %> (for tagging and SEO), <%= link_to "messaging structure (hierarchy)", messagingdetail_path(1) %> and <%= link_to "templates", templates_path %> are the foundation of your website experience. In the Cookbook, they're linked and connected so you understand the factors that deliver an optimal content experience.
+        <!-- <p>Each page in the destination site is based on a pre-existing and pre-defined <%= link_to "sitemap", sitemap_path %>, <%= link_to "taxonomy", taxonomy_path %> (for tagging and SEO), <%= link_to "messaging structure (hierarchy)", messagingdetail_path(1) %> and <%= link_to "templates", templates_path %>.
           All elements and page components are approved, and follow guidelines for content development and load into the content management system (CMS): Sitecore. This ensures the integrity of the design system (e.g., interface design; component use;
-design patterns; headline and subhead intent, length and re-use; content markup; etc.).</p>
+design patterns; headline and subhead intent, length and re-use; content markup; etc.).</p> -->
 
 
 		</div>
