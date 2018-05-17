@@ -1,38 +1,44 @@
 <% @site = Site.find(params[:id]) %>
 
   <div class="row">
-		<div class="col-sm-3">
+		<div class="col-sm">
 
-
-
-
-			<h3>Notes</h3>
-
-
-		</div>
-		<div class="col-sm-9">
 			<h1><%= @site.name %><small class="text-muted"> Messaging Hierarchy</small></h1>
 
         <%= render "siteMessaging" %>
         <hr>
+    </div>
+  </div>
+
+
         <% @messages = AudienceMessage.includes(:hierarchy, :audience).where site_id: (params[:id]) %>
-
         <% @messages.group_by(&:hierarchy).sort.each do |hierarchy, message| %>
-        <h5><%= hierarchy.name %></h5>
-        <p><small class="text-muted"><%= hierarchy.description %></small></p>
-          <table class="table table-hover">
-            <tbody>
-            <% message.each do |m| %>
-                <tr scope="row" width="30%"><td><strong><%= m.audience.name %></strong></td><td><%= m.message %></td></tr>
+        <% @templates = ::Template.joins(:hierarchy_mappings).where(hierarchy_mappings: { hierarchy_id: hierarchy.id }) %>
+  <div class="row">
+          <div class="col-sm-4">
+            <p>Applies to Templates:<br>
+              <% @templates.each do |t| %>
+                <%= link_to t.name, templatedetail_path(:id => t.id, :site => @site.id) %><br>
                 <% end %>
-            </tbody>
-          </table>
-        <% end %>
+          </div>
+          <div class="col-sm-8">
 
+            <h5><%= hierarchy.name %></h5>
+            <p><small class="text-muted"><%= hierarchy.description %></small></p>
 
-		</div>
+              <table class="table table-hover">
+                <tbody>
+                <% message.each do |m| %>
+                    <tr scope="row" width="30%"><td><strong><%= m.audience.name %></strong></td><td><%= m.message %></td></tr>
+                    <% end %>
+                </tbody>
+              </table>
+          </div>
 	</div>
-  	<hr>
+            <% end %>
+
+
+
   <div class="row">
     <div class="col-sm">
 
