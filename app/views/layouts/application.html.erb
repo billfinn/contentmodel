@@ -60,8 +60,8 @@
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Migration & Publishing</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <%= link_to "Legacy Site List", legacysites_path, class: "dropdown-item" %>
-                <%= link_to "Taxonomy", taxonomy_path, class: "dropdown-item" %>
-                <%= link_to "Sitemap", sitemap_path, class: "dropdown-item" %>
+                <%= link_to "Taxonomy", taxonomysite_path(1), class: "dropdown-item" %>
+                <%= link_to "Sitemap", sitemapdetail_path(1), class: "dropdown-item" %>
                 <%= link_to "Web Footprint (Sites)", webfootprint_path, class: "dropdown-item" %>
                 <%= link_to "Content Mapping", contentmapping_path, class: "dropdown-item" %>
               </div>

@@ -1,19 +1,19 @@
-
+<% @site = Site.find(params[:id]) %>
+<%= content_tag "div", id: "site", data: {site: @site.id} do %>
+<% end %>
+<%= content_tag "div", id: "type", data: {type: "taxonomy"} do %>
+<% end %>
 
   <div class="row">
 
 		<div class="col-sm">
 
-      <%= render "siteTaxonomy" %>
-
-      <% @site = Site.find(params[:id]) %>
-      <%= content_tag "div", id: "site", data: {site: @site.id} do %>
-      <% end %>
-      <%= content_tag "div", id: "type", data: {type: "taxonomy"} do %>
-      <% end %>
 
 			<h1>Taxonomy<small class="text-muted"> <%= @site.name %></small></h1>
-      <p>Click any circle to expand an item. Click and drag the visualization to pan up and down, right and left. Use the mouse wheel to zoom in and out.</p>
+
+      <%= render "siteTaxonomy" %>
+      
+      <small class="text-muted">Click any circle to expand an item. Click and drag the visualization to pan up and down, right and left. Use the mouse wheel to zoom in and out.</small>
 
               <div id="tree"></div>
 
