@@ -32,8 +32,9 @@
   <% @pagetext.each do |pagetextitem| %>
       <tr>
         <td>
-        <<%= pagetextitem.text.name %>><a href="#" style="text-decoration: none; color: #666;" data-toggle="tooltip" data-placement="top" title="<%= pagetextitem.name %>"><%= pagetextitem.itemtext %></a>
-            </<%= pagetextitem.text.name %>>
+        <<%= pagetextitem.text.name %>>
+        <a href="#" style="color: #666;" data-toggle="tooltip" data-placement="top" title="<%= pagetextitem.name %>"><%= pagetextitem.itemtext %></a>
+        </<%= pagetextitem.text.name %>>
 
           <div id="form<%= pagetextitem.id %>" style="display:none;">
             <%= form_for pagetextitem, url: "/text_item/#{pagetextitem.id}", remote: true do |f| %>
