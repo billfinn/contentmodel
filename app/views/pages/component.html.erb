@@ -73,11 +73,16 @@
                 <h5 class="text-info"><%= t.name %> <small class='text-muted'>Item</small></h5>
                    <p><%= t.itemtext %> </p>
           <% end %> -->
+          <b>Component Template Items</b>
+
+          <div id="textitemlist">
+            <%= render :partial => "textitem", :collection => @textitemstemplate %>
+          </div>
+          <hr>
+
 
           <% @component.text_items.each do |t| %>
-                <<%= t.text.name %>><%= t.itemtext %></<%= t.text.name %>>
-                <%= link_to "Add New", new_text_item_path, remote: true %>
-                <div id="textitem-form" style="display:none;"><%= render 'form' %></div>
+
 
           <% end %>
 

@@ -1,0 +1,41 @@
+<% #@site = Site.find(params[:id]) %>
+
+  <div class="row">
+		<div class="col-sm">
+
+			<h1><%#= @site.name %><small class="text-muted"> Components</small></h1>
+
+        <hr>
+    </div>
+  </div>
+
+
+        <% @components = Component.includes(:component_type, :component_group) %>
+        <% @components.each do |component| %>
+        <% @templates = ::Template.joins(:template_components).where(template_components: { component_id: @component.id }) %>
+  <div class="row">
+          <div class="col-sm-4">
+            <p>Applies to Templates:<br>
+              <% @templates.each do |t| %>
+                <%= link_to t.name, templatedetail_path(:id => t.id, :site => @site.id) %><br>
+                <% end %>
+          </div>
+          <div class="col-sm-8">
+
+            <h5><%= component.name %></h5>
+            <p><small class="text-muted"><%= component.description %></small></p>
+
+
+          </div>
+	</div>
+            <% end %>
+
+
+
+  <div class="row">
+    <div class="col-sm">
+
+              <%= render "footer" %>
+
+    </div>
+  </div>

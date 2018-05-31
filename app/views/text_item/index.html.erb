@@ -1,10 +1,147 @@
-<b>Component Template Items</b>
+<%  @component = Component.find(params[:id])
+    @template = ::Template.find(params[:template])
+    @page = Page.find(params[:page])
+    @site = Site.find(params[:site])
+%>
 
-<ul id="textitems">
-<%= render :partial => "textitem", :collection => @textitemstemplate %>
-</ul>
+<div class="row">
+  <div class="col-sm-3">
+
+        <div style="margin-top: 20px;">
+        <%= render "/pages/siteMap" %>
+        </div>
+
+    <h3 style="margin-top: 40px;">Structure</h3>
+
+    <!-- Display Component relationships -->
+          <p>Component: <br><%= @component.name %>
+            <p>Page: <br><%= link_to @page.name, page_path(:id => @page.id, :site => @site.id) %>
+              <p>Template: <br><%= link_to @template.name, templatedetail_path(:id => @template.id, :site => @site.id ) %>
+                <p>Site: <br><%= link_to @site.name, sitemapdetail_path(:id => @site.id) %>
+
+  </div>
+  <div class="col-sm-9">
+    <h1>Component</h1>
+<!-- Component Copy for Specific Page -->
 <hr>
-<b>Component Items for Page</b>
-<ul>
-<%= render :partial => "pagetextitem", :collection => @textitemspage %>
-</ul>
+<!-- <b>Component Items for Page</b> -->
+<div id="pagetextitemlist">
+  <table width="100%">
+
+  <% @pagetext = TextItem.order(:order).where page_id: (params[:page]) %>
+  <% @pagetext.each do |pagetextitem| %>
+      <tr>
+        <td>
+        <<%= pagetextitem.text.name %>><a href="#" style="text-decoration: none; color: #666;" data-toggle="tooltip" data-placement="top" title="<%= pagetextitem.name %>"><%= pagetextitem.itemtext %></a>
+            </<%= pagetextitem.text.name %>>
+
+          <div id="form<%= pagetextitem.id %>" style="display:none;">
+            <%= form_for pagetextitem, url: "/text_item/#{pagetextitem.id}", remote: true do |f| %>
+              <%= f.hidden_field :_method, value: "patch" %>
+              <%= f.hidden_field :id, value: pagetextitem.id %>
+              <%= f.hidden_field :text_id, value: pagetextitem.text_id %>
+              <%= f.hidden_field :component_id, :value => pagetextitem.component_id %>
+              <%= f.hidden_field :page_id, :value => pagetextitem.page_id %>
+              <%= f.hidden_field :order, :value => pagetextitem.order %>
+              <%= f.hidden_field :name, :value => pagetextitem.name %>
+              <%= f.text_field :itemtext %>
+              <%= f.submit "Update" %>
+            <% end %>
+          </div>
+        </td>
+        <td>
+          <%= link_to "remove", text_item_path(:id => pagetextitem.id, :component => @component.id, :template => @template.id, :page => @page.id, :site => @site.id), method: :delete, data: {confirm: "Are you sure?"}, :class => "badge badge-warning" %>
+              <%= link_to "update", text_item_path(pagetextitem), remote: true, :class => "badge badge-primary" %>
+        </td>
+      </tr>
+    <% end %>
+  </div>
+  </table>
+</div>
+
+<!-- Component guidelines -->
+<p>&nbsp;</p>
+    <div class="card">
+      <div class="card-header">
+        <h3><%= @component.name %> <% if @component.componenttype_id == 1 %>
+                  <span class="badge badge-light">Existing</span>
+                <% else %>
+                <% end %>
+                <% if @component.componenttype_id == 2 %>
+                  <span class="badge badge-light">Existing->Update</span>
+                <% else %>
+                <% end %><small class="text-muted">Component</small></h3>
+      </div>
+      <div class="card-body">
+
+
+        <b>Component Template Items</b>
+
+        <div id="textitemlist">
+          <% @component.text_items.each do |textitem| %>
+            <div>
+              <%= textitem.name %> <%= link_to "(remove)", textitem, method: :delete, data: {confirm: "Are you sure?"} %> |
+                <%= link_to "(new)", text_item_path(textitem), remote: true %>
+                <div id="form<%= textitem.id %>" style="display:none;">
+                  <%= form_for @textitem, url: "/text_item/", remote: true do |f| %>
+                  <%= f.hidden_field :text_id, value: textitem.text_id %>
+                  <%= f.hidden_field :component_id, :value => textitem.component_id %>
+                  <%= f.hidden_field :page_id, :value => @page.id %>
+                  <%= f.hidden_field :order, :value => textitem.order %>
+                  <%= f.hidden_field :name, :value => textitem.name %>
+                  <%= f.text_field :itemtext %>
+                  <%= f.submit %>
+                <% end %></div>
+            </div>
+          <% end %>
+
+        </div>
+
+<br>
+
+
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Attribute</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td scope="row">Goal</td>
+              <td><i><%= @component.goal %></i></td>
+            </tr>
+            <tr>
+              <td scope="row">Description</td>
+              <td><i><%= @component.description %></i></td>
+            </tr>
+            <tr>
+              <td scope="row">CTA</td>
+              <td><i><%= @component.cta %></i></td>
+            </tr>
+            <tr>
+              <td scope="row">Content Assets</td>
+              <td><i><%= @component.content_assets %></i></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+
+
+
+
+
+</div>
+</div>
+<hr>
+<div class="row">
+<div class="col-sm">
+
+          <%= render "/pages/footer" %>
+
+</div>
+</div>

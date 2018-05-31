@@ -21,3 +21,7 @@
 //= require tree
 //= require treelayout
 //= require smart_listing
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});

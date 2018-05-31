@@ -6,7 +6,7 @@
     <%= form_for @textitem, url: "/text_item/", remote: true do |f| %>
     <%= f.hidden_field :text_id, value: textitem.text_id %>
     <%= f.hidden_field :component_id, :value => textitem.component_id %>
-    <%= f.hidden_field :page_id, :value => textitem. %>
+    <%= f.hidden_field :page_id, value: 84 %>
     <%= f.hidden_field :order, :value => textitem.order %>
     <%= f.hidden_field :name, :value => textitem.name %>
     <%= f.text_field :itemtext %>

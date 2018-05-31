@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root "pages#show", page: "home"
 
   get  '/component/:id', to: 'pages#component', as: 'component'
+  get  '/components/', to: 'pages#components', as: 'components'
   get  '/contentmapping', to: 'pages#contentmapping'
   get  '/home', to: 'pages#home'
   get  '/flows', to: 'pages#flows'

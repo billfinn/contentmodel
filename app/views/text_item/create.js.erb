@@ -1,3 +1,2 @@
-$('#new_textitem').remove();
-// $('#new_link').show();
-$('#textitems').append('<%= j render(:partial => "textitem", :collection => @textitems) %>')
+$('#textitemlist').load(location.href+" #textitemlist>*", "");
+$('#pagetextitemlist').load(location.href+" #pagetextitemlist>*", "");

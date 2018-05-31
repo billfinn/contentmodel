@@ -66,7 +66,7 @@
           <h5>Template Components - click to view detail and customize for page</h5>
           <ol>
           <% c.components.each do |b| %>
-              <li><%= link_to b.name, component_path(:id => b.id, :template => c.id, :page => @thispage.id, :site => @site.id) %></li>
+              <li><%= link_to b.name, text_item_index_path(:id => b.id, :template => c.id, :page => @thispage.id, :site => @site.id) %></li>
           <% end %>
           </ol>
 

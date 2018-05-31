@@ -1,15 +1,18 @@
 class TextItemController < ApplicationController
+  respond_to :html
+  respond_to :js
+
 
   def index
     @textitems = TextItem.all
     @textitem = TextItem.new
     @textitemstemplate = TextItem.where page_id: nil
-    @textitemspage = TextItem.where page_id: 84
+    @textitemspage = TextItem.where page_id: params[:page]
 
   end
 
-  def new
-    @textitem = TextItem.new
+  def show
+       # render js: "alert('The number is: #{params[:id]}')"
   end
 
     def create
@@ -18,7 +21,7 @@ class TextItemController < ApplicationController
       # redirect_to text_item_url
       # redirect_to "/text_item/"
       respond_to do |f|
-        f.html { redirect_to "/text_item/" }
+        f.html { redirect_to text_item_index_path }
         f.js
       end      # @textitem = TextItem.new(params[:textitem])
       #
@@ -31,10 +34,11 @@ class TextItemController < ApplicationController
 
   def update
      @textitem = TextItem.find(params[:id])
-     @task.update_attributes!(allowed_params)
+     @textitem.update_attributes!(allowed_params)
 
      respond_to do |f|
-       f.html { redirect_to "/text_item/" }
+       # f.html { redirect_to "/text_item/" }
+       f.html {redirect_to text_item_index_path}
        f.js
      end
   end
@@ -44,7 +48,7 @@ class TextItemController < ApplicationController
 
     # redirect_to text_item_index_path
     respond_to do |f|
-      f.html { redirect_to "/text_item/" }
+      f.html { redirect_to text_item_index_path(:id => params[:component], :template => params[:template], :page => params[:page], :site => params[:site]) }
       f.js
     end
   end
