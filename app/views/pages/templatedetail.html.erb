@@ -132,6 +132,14 @@
               </thead>
               <tbody>
                 <tr>
+                  <td scope="row">Tag Groups</td>
+                  <td><% if c.is_taggable == true %><i><%= c.tag_groups %></i><% else %><i>No tag groups will display.</i><% end %></td>
+                </tr>
+                <tr>
+                  <td scope="row">Personalization</td>
+                  <td><% if c.ispersonalized == true %><i><%= c.personalization_rules %></i><% else %><i>No personalization on this component.</i><% end %></td>
+                </tr>
+                <tr>
                   <td scope="row">Goal</td>
                   <td><i><%= c.goal %></i></td>
                 </tr>

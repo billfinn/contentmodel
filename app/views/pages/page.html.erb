@@ -7,13 +7,13 @@
 
 
     %>
-  <div class="row">
+  <!-- <div class="row">
     <div class="col-sm">
       <div class="alert alert-warning" role="alert">
         This page is under development for information display.
       </div>
     </div>
-  </div>
+  </div> -->
   <div class="row">
 		<div class="col-sm-3">
 
@@ -52,10 +52,13 @@
         <h1><%= @thispage.name %></h1>
         <p class="text-muted">This page requires template and content configuration.</p>
       <% end %>
+
       <% @thispage.templates.each do |c| %>
-          <span class="badge badge-light">Template</span> <%= link_to c.name, templatedetail_path(:id => c.id, :site => @site.id) %>
 
       <h1><%= @thispage.name %></h1>
+            <hr>
+      <h5>Template</h5>
+      <p><%= link_to c.name, templatedetail_path(:id => c.id, :site => @site.id) %></p>
 
           <!-- display Messaging Hierarchy assigned to the template for this page -->
           <% c.hierarchies.each do |h| %>
@@ -63,18 +66,21 @@
             <%= h.description %>
           <% end %>
 
-          <h5>Template Components - click to view detail and customize for page</h5>
+          <h5>Template Components</h5>
+            <small class="text-muted">Click to view detail and customize template content for page.</small>
           <ol>
           <% c.components.each do |b| %>
               <li><%= link_to b.name, text_item_index_path(:id => b.id, :template => c.id, :page => @thispage.id, :site => @site.id) %></li>
           <% end %>
           </ol>
 
-      <hr>
+      <h5>Page Content</h5>
+      <div style="border:1px solid #999; padding:15px;">
         <% @pagetext = TextItem.order(:order).where page_id: (params[:id]) %>
         <% @pagetext.each do |pt| %>
             <<%= pt.text.name %>><%#= pt.order %><%= pt.itemtext %></<%= pt.text.name %>>
         <% end %>
+      </div>
 
      <!-- below is the closing tag for the templates.each do |c| -->
      <% end %>
