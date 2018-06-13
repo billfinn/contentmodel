@@ -21,6 +21,7 @@
 //= require tree
 //= require treelayout
 //= require smart_listing
+//= require tinymce
 
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();

@@ -29,6 +29,7 @@ gem 'pg_search'
 gem 'active_admin_role'
 gem 'smart_listing', '~> 1.2', '>= 1.2.2'
 gem 'record_tag_helper', '~> 1.0'
+gem 'tinymce-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'

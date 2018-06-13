@@ -11,6 +11,7 @@ ActiveAdmin.setup do |config|
     end
   end
 
+  config.register_javascript 'tinymce.js'
   # == Site Title
   #
   # Set the title that is displayed on the main layout

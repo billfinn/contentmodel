@@ -14,15 +14,15 @@ permit_params :list, :of, :attributes, :on, :model, :name, :componenttype_id, :c
 
 menu parent: 'Content Model', priority: 1
 
-# index do
-#   column :name do |component|
-#     link_to component.name, admin_component_path(component)
-#   end
-#
-#   actions
-# end
-# # filter only by title
-# filter :name
+index do
+  column :name do |component|
+    link_to component.name, admin_component_path(component)
+  end
+
+  actions
+end
+# filter only by title
+filter :name
 
 show do |component|
   attributes_table do
@@ -45,7 +45,8 @@ form do |f|
     f.input :goal
     f.input :cta
     f.input :content_assets
-    f.input :description
+    f.input :description, :input_html => { :class => 'tinymce' }
+    # tinymce
   f.inputs "Text Items" do
     f.has_many  :component_items, sortable: :position, sortable_start: 1 do |deg|
       deg.input :text_item
