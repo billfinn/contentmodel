@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180606141335) do
+ActiveRecord::Schema.define(version: 20180613165059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -139,6 +139,8 @@ ActiveRecord::Schema.define(version: 20180606141335) do
     t.text "personalization_rules"
     t.integer "is_taggable"
     t.string "tag_groups"
+    t.text "requirements"
+    t.text "data"
   end
 
   create_table "flows", force: :cascade do |t|
