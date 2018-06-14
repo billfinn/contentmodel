@@ -10,20 +10,27 @@
   </div>
 
 
-        <% @components = Component.includes(:component_type, :component_group) %>
+
+        <% @components = Component.all %>
         <% @components.each do |component| %>
-        <% @templates = ::Template.joins(:template_components).where(template_components: { component_id: @component.id }) %>
+        <% #@templates = ::Template.joins(:template_components).where(template_components: { component_id: (@component.id) }) %>
   <div class="row">
           <div class="col-sm-4">
             <p>Applies to Templates:<br>
-              <% @templates.each do |t| %>
-                <%= link_to t.name, templatedetail_path(:id => t.id, :site => @site.id) %><br>
-                <% end %>
+              <% #@templates.each do |t| %>
+                <%#= link_to t.name, templatedetail_path(:id => t.id, :site => @site.id) %><br>
+                <% #end %>
           </div>
           <div class="col-sm-8">
 
-            <h5><%= component.name %></h5>
-            <p><small class="text-muted"><%= component.description %></small></p>
+            <h5><%= component.name %> <small class="text-muted">ID: <%= component.id %></small></h5>
+            <img src="http://contentmodel-jci-assets.s3.amazonaws.com/images/components/<%= component.image %>">
+            <p><small class="text-muted"><strong>Requirements</strong></small></p>
+            <p><small class="text-muted"><%=raw component.requirements %></small></p>
+            <p><small class="text-muted"><strong>Data</strong></small></p>
+            <p><small class="text-muted"><%=raw component.data %></small></p>
+            <p><small class="text-muted"><strong>Description</strong></small></p>
+            <p><small class="text-muted"><%=raw component.description %></small></p>
 
 
           </div>
