@@ -1,4 +1,10 @@
 ActiveAdmin.register Component do
+
+  active_admin_import  validate: false,
+                        csv_options: {col_sep: "," },
+                        # before_import: ->(importer){ SiteCrawl.delete_all },
+                        batch_size: 2000
+
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
