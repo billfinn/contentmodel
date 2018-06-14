@@ -47,6 +47,7 @@ form do |f|
     f.input :name
     f.input :componenttype_id, :label => 'Component Type', :as => :select, :collection => ComponentType.all.map{|c| ["#{c.name}", c.id, include_blank: true]}
     f.input :component_group, :label => 'Component Group', :as => :select, :collection => ComponentGroup.all.map{|g| ["#{g.name}", g.id, include_blank: true]}
+    f.input :image, :label => 'Image'
     f.input :is_taggable, :label => 'Is Taggable?', as: :boolean
     f.input :tag_groups, :label => 'Tag Groups'
     f.input :ispersonalized, :label => 'Is Personalized?', as: :boolean
