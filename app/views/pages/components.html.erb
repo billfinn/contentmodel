@@ -24,7 +24,10 @@
           <div class="col-sm-8">
 
             <h5><%= component.name %> <small class="text-muted">ID: <%= component.id %></small></h5>
+            <% if component.image.blank? %>
+            <% else %>
             <img src="http://contentmodel-jci-assets.s3.amazonaws.com/images/components/<%= component.image %>">
+            <% end %>
             <p><small class="text-muted"><strong>Requirements</strong></small></p>
             <p><small class="text-muted"><%=raw component.requirements %></small></p>
             <p><small class="text-muted"><strong>Data</strong></small></p>
