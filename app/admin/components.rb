@@ -24,6 +24,9 @@ index do
   column :name do |component|
     link_to component.name, admin_component_path(component)
   end
+  column :component_group do |cg|
+    cg.component_group
+  end
 
   actions
 end
@@ -53,7 +56,7 @@ form do |f|
     f.input :content_assets
     f.input :requirements, :label => 'Requirements'
     f.input :data, :label => 'Data'
-    f.input :description, :label => 'Data', :input_html => { :class => 'tinymce' }
+    f.input :description, :label => 'Description', :input_html => { :class => 'tinymce' }
   f.inputs "Text Items" do
     f.has_many  :component_items, sortable: :position, sortable_start: 1 do |deg|
       deg.input :text_item
