@@ -13,6 +13,7 @@
 
         <% @components = Component.all %>
         <% @components.each do |component| %>
+
         <% #@templates = ::Template.joins(:template_components).where(template_components: { component_id: (@component.id) }) %>
   <div class="row">
           <div class="col-sm-4">
@@ -23,21 +24,25 @@
           </div>
           <div class="col-sm-8">
 
-            <h5><%= component.name %> <small class="text-muted">ID: <%= component.id %></small></h5>
+            <h5><%= component.name %><br><small class="text-muted">ID: <%= component.id %> Group: <%= component.component_group.name %></small></h5>
             <% if component.image.blank? %>
             <% else %>
-            <img src="http://contentmodel-jci-assets.s3.amazonaws.com/images/components/<%= component.image %>">
+            <img src="http://contentmodel-jci-assets.s3.amazonaws.com/images/components/<%= component.image %>" width="50%">
             <% end %>
             <p><small class="text-muted"><strong>Requirements</strong></small></p>
             <p><small class="text-muted"><%=raw component.requirements %></small></p>
             <p><small class="text-muted"><strong>Data</strong></small></p>
             <p><small class="text-muted"><%=raw component.data %></small></p>
+            <% if component.description.blank? %>
+            <% else %>
             <p><small class="text-muted"><strong>Description</strong></small></p>
             <p><small class="text-muted"><%=raw component.description %></small></p>
+            <% end %>
 
 
           </div>
 	</div>
+  <hr>
             <% end %>
 
 

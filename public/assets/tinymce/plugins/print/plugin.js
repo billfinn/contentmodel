@@ -1,1 +1,1 @@
-plugin-1ba88c314fa4c0c47ab0af0aa908c03d7906a77fef6a319a302ffff44099fe26.js
+!function(){"use strict";var t=tinymce.util.Tools.resolve("tinymce.PluginManager"),n=function(t){t.addCommand("mcePrint",function(){t.getWin().print()})},i=function(t){t.addButton("print",{title:"Print",cmd:"mcePrint"}),t.addMenuItem("print",{text:"Print",cmd:"mcePrint",icon:"print"})};t.add("print",function(t){n(t),i(t),t.addShortcut("Meta+P","","mcePrint")})}();

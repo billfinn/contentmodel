@@ -1,3 +1,3 @@
 class ComponentType < ApplicationRecord
-  belongs_to :component
+  has_many :components
 end
