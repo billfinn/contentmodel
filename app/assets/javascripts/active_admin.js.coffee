@@ -10,15 +10,11 @@
 # });
 $(document).ready ->
   tinyMCE.init
-    mode: 'textareas'
+    # mode: 'textareas'
+    selector: "textarea.tinymce"
     theme: 'modern'
-    # plugins: "lists"
-    # theme: 'inlite',
+    menubar: false
     plugins: 'lists table link paste contextmenu textpattern autolink codesample',
     insert_toolbar: 'quickimage quicktable media codesample',
     selection_toolbar: 'bold italic | quicklink h2 h3 blockquote',
-    # inline: true,
-    # toolbar: "numlist bullist"
-    # plugins: "advlist"
-    # inline: true
   return

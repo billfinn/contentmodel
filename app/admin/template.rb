@@ -15,15 +15,17 @@ menu parent: 'Content Model', priority: 0
 # end
 
 
-# index do
-#   column :name do |template|
-#     link_to template.name, admin_template_path(template)
-#   end
-#
-#   actions
-# end
-# # filter only by title
-# filter :name
+index do
+  column :name do |template|
+    link_to template.name, admin_template_path(template)
+  end
+  # column :site do |s|
+  #   link_to s.site_template_mappings.site_id
+  # end
+  actions
+end
+# filter only by title
+filter :name
 
 
 show do |template|

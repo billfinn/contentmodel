@@ -55,8 +55,8 @@ form do |f|
     f.input :goal
     f.input :cta
     f.input :content_assets
-    f.input :requirements, :label => 'Requirements'
-    f.input :data, :label => 'Data'
+    f.input :requirements, :label => 'Requirements', :input_html => { :class => 'tinymce' }
+    f.input :data, :label => 'Data', :input_html => { :class => 'tinymce' }
     f.input :description, :label => 'Description', :input_html => { :class => 'tinymce' }
   f.inputs "Text Items" do
     f.has_many  :component_items, sortable: :position, sortable_start: 1 do |deg|
