@@ -21,6 +21,9 @@ permit_params :list, :of, :attributes, :on, :model, :name, :componenttype_id, :c
 menu parent: 'Content Model', priority: 1
 
 index do
+  column :id do |cid|
+    cid.id
+  end
   column :name do |component|
     link_to component.name, admin_component_path(component)
   end

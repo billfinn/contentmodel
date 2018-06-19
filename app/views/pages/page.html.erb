@@ -62,12 +62,13 @@
 
           <!-- display Messaging Hierarchy assigned to the template for this page -->
           <% c.hierarchies.each do |h| %>
-            <h5><span class="badge badge-light">Message Hierarchy</span> <%= h.name %></h5>
-            <%= h.description %>
+            <h6>Messaging Hierarchy</h6>
+            <h6 class="text-muted"><%= h.name %></h6>
+            <p><small class="text-muted"><%= h.description %></small></p>
           <% end %>
 
           <h5>Template Components</h5>
-            <small class="text-muted">Click to view detail and customize template content for page.</small>
+            Click to view detail and customize template content for page.</small>
           <ol>
           <% c.components.each do |b| %>
               <li><%= link_to b.name, text_item_index_path(:id => b.id, :template => c.id, :page => @thispage.id, :site => @site.id) %></li>
@@ -75,15 +76,21 @@
           </ol>
 
       <h5>Page Content</h5>
-      <div style="border:1px solid #999; padding:15px;">
-        <% @pagetext = TextItem.order(:order).where page_id: (params[:id]) %>
-        <% @pagetext.each do |pt| %>
-            <<%= pt.text.name %>><%#= pt.order %><%= pt.itemtext %></<%= pt.text.name %>>
-        <% end %>
-      </div>
 
-     <!-- below is the closing tag for the templates.each do |c| -->
-     <% end %>
+
+      <% c.components.each do |pc| %>
+      <% @pagetext = TextItem.order(:order).where ({page_id: @thispage.id, component_id: pc.id}) %>
+          <div style="border:1px solid #999; padding:15px; margin-bottom: 20px;">
+            <small class="text-muted">ComponentID <%= pc.id %> | PageID <%= @thispage.id %></small></br>
+
+            <% @pagetext.each do |pt| %>
+              <<%= pt.text.name %>><%#= pt.order %><%= pt.itemtext %></<%= pt.text.name %>>
+            <% end %>
+          </div>
+      <% end %>
+
+      <!-- below is the closing tag for the templates.each do |c| -->
+      <% end %>
 		</div>
 	</div>
   	<hr>

@@ -28,7 +28,14 @@
 <div id="pagetextitemlist">
   <table width="100%">
 
-  <% @pagetext = TextItem.order(:order).where page_id: (params[:page]) %>
+  C<%= @component.id %><br>
+  P<%= @page.id %><br>
+  <% @pagetest = TextItem.where ({page_id: @page.id, component_id: @component.id}) %>
+  <% @pagetest.each do |t| %>
+    <%= t.id %> <%= t.name %> / C<%= t.component_id %> / P<%= t.page_id %> <br>
+  <% end %>
+  <%# @pagetext = TextItem.order(:order).where page_id: (params[:page]) %>
+  <% @pagetext = TextItem.order(:order).where ({page_id: @page.id, component_id: @component.id}) %>
   <% @pagetext.each do |pagetextitem| %>
       <tr>
         <td>
@@ -81,12 +88,12 @@
         <div id="textitemlist">
           <% @component.text_items.each do |textitem| %>
             <div>
-              <%= textitem.name %> <%= link_to "(remove)", textitem, method: :delete, data: {confirm: "Are you sure?"} %> |
+              <%= textitem.name %> <!-- <%= link_to "(remove)", textitem, method: :delete, data: {confirm: "Are you sure?"} %> | -->
                 <%= link_to "(new)", text_item_path(textitem), remote: true %>
                 <div id="form<%= textitem.id %>" style="display:none;">
                   <%= form_for @textitem, url: "/text_item/", remote: true do |f| %>
                   <%= f.hidden_field :text_id, value: textitem.text_id %>
-                  <%= f.hidden_field :component_id, :value => textitem.component_id %>
+                  <%= f.hidden_field :component_id, :value => @component.id %>
                   <%= f.hidden_field :page_id, :value => @page.id %>
                   <%= f.hidden_field :order, :value => textitem.order %>
                   <%= f.hidden_field :name, :value => textitem.name %>
