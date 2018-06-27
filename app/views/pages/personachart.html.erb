@@ -1,0 +1,29 @@
+<%# @site = Site.find(params[:id]) %>
+<%#= content_tag "div", id: "site", data: {site: @site.id} do %>
+<%# end %>
+<%#= content_tag "div", id: "type", data: {type: "taxonomy"} do %>
+<%# end %>
+
+  <div class="row">
+
+		<div class="col-sm">
+
+
+			<h1>Personas<small class="text-muted"> <%#= @site.name %></small></h1>
+
+      <%#= render "siteTaxonomy" %>
+
+      <small class="text-muted">Click any circle to expand an item. Click and drag the visualization to pan up and down, right and left. Use the mouse wheel to zoom in and out.</small>
+
+              		<div class="radarChart"></div>
+
+		</div>
+	</div>
+  	<hr>
+  <div class="row">
+    <div class="col-sm">
+
+        <%= render "footer" %>
+
+    </div>
+  </div>

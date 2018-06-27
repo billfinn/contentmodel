@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get  '/legacysitedetail/:id', to: 'pages#legacysitedetail', as: 'legacysitedetail'
   get  '/messaging', to: 'pages#messaging'
   get  '/messagingdetail/:id', to: 'pages#messagingdetail', as: 'messagingdetail'
+  get  '/personachart/', to: 'pages#personachart', as: 'personachart'
   get  '/page/:id', to: 'pages#page', as: 'page'
   get   "/pages/:page" => "pages#show"
   get  '/searchtest', to: 'pages#searchtest'

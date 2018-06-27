@@ -20,6 +20,8 @@
 //= require active_admin.js
 //= require tree
 //= require treelayout
+//= require radarchart
+//= require radarchartlayout
 //= require smart_listing
 //= require tinymce
 
