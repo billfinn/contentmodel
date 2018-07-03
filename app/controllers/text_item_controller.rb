@@ -48,7 +48,7 @@ class TextItemController < ApplicationController
 
     # redirect_to text_item_index_path
     respond_to do |f|
-      f.html { redirect_to text_item_index_path(:id => params[:component], :template => params[:template], :page => params[:page], :site => params[:site]) }
+      f.html { redirect_to text_item_index_path(:id => params[:component], :instance => params[:instance], :template => params[:template], :page => params[:page], :site => params[:site]) }
       f.js
     end
   end
@@ -56,7 +56,7 @@ class TextItemController < ApplicationController
   private
 
   def allowed_params
-    params.require(:text_item).permit(:name, :itemtext, :text_id, :page_id, :order, :component_id)
+    params.require(:text_item).permit(:name, :itemtext, :text_id, :page_id, :order, :component_id, :template_component_id)
   end
 
 

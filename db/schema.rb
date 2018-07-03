@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180627211610) do
+ActiveRecord::Schema.define(version: 20180703212453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -373,6 +373,7 @@ ActiveRecord::Schema.define(version: 20180627211610) do
     t.integer "page_id"
     t.integer "order"
     t.integer "component_id"
+    t.integer "template_component_id"
   end
 
   create_table "texts", force: :cascade do |t|
