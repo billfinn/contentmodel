@@ -82,10 +82,10 @@
 
       <% @cinstance.each do |pc| %>
 
-      <% @pagetext = TextItem.order(:order).where ({page_id: @thispage.id, component_id: pc.component.id, template_component_id: pc.id}) %>
+      <% @pagetext = TextItem.order(:order).includes(:component).references(:component).where ({page_id: @thispage.id, component_id: pc.component.id, template_component_id: pc.id}) %>
           <div style="border:1px solid #999; padding:15px; margin-bottom: 20px;">
             <!-- <small class="text-muted">ComponentInstanceID <%= pc.id %> | PageID <%= @thispage.id %></small></br> -->
-
+            <%= link_to pc.component.name, text_item_index_path(:id => pc.component.id, :instance => pc.id, :template => pc.template.id, :page => @thispage.id, :site => @site.id), :class => "badge badge-secondary" %></br>
             <% @pagetext.each do |pt| %>
               <!-- <small class="text-muted">TextInstanceID <%=pt.id %></small></br> -->
               <<%= pt.text.name %>><%#= pt.order %><%= pt.itemtext %></<%= pt.text.name %>>
