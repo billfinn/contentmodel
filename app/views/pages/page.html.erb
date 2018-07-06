@@ -24,24 +24,19 @@
         <hr> -->
 
 
-      <h5>Tags</h5>
-      <% @pagetags = TagMapping.where page_id: (params[:id]) %>
-        <% if @pagetags.empty? %>
-          <p class="text-muted">No tags assigned.</p>
-        <% end %>
-      <% @pagetags.each do |t| %>
-            <a href="#" class="badge badge-info"><%= t.tag.name %></a>
-      <% end %>
-          <hr>
-      <h5>SEO Terms</h5>
-      <% @pageterms = SeoMapping.where page_id: (params[:id]) %>
-        <% if @pageterms.empty? %>
-          <p class="text-muted">No SEO terms assigned.</p>
-        <% end %>
-      <% @pageterms.each do |s| %>
-          <%= s.term.name + (", ").html_safe %>
-      <% end %>
-          <hr>
+          <% @thispage.templates.each do |b| %>
+
+          <h5>Template</h5>
+          <p><%= link_to b.name, templatedetail_path(:id => b.id, :site => @site.id) %></p>
+
+              <!-- display Messaging Hierarchy assigned to the template for this page -->
+              <% b.hierarchies.each do |h| %>
+                <h5>Messaging</h5>
+                <strong class="text-muted"><%= h.name %></strong>
+                <p><small class="text-muted"><%= h.description %></small></p>
+              <% end %>
+          <% end %>
+
       <% @thispage.templates.each do |a| %>
       <h5>Template Components</h5>
         Click to view detail and customize template content for page.</small>
@@ -66,33 +61,75 @@
       <% @thispage.templates.each do |c| %>
 
       <h1><%= @thispage.name %></h1>
+
             <hr>
-      <h5>Template</h5>
-      <p><%= link_to c.name, templatedetail_path(:id => c.id, :site => @site.id) %></p>
 
-          <!-- display Messaging Hierarchy assigned to the template for this page -->
-          <% c.hierarchies.each do |h| %>
-            <h6>Messaging Hierarchy</h6>
-            <h6 class="text-muted"><%= h.name %></h6>
-            <p><small class="text-muted"><%= h.description %></small></p>
-          <% end %>
-
+      <h5>Tags</h5>
+      <% @pagetags = TagMapping.where page_id: (params[:id]) %>
+        <% if @pagetags.empty? %>
+          <p class="text-muted">No tags assigned.</p>
+        <% end %>
+      <% @pagetags.each do |t| %>
+            <a href="#" class="badge badge-info"><%= t.tag.name %></a>
+      <% end %>
+        <hr>
+      <h5>SEO Terms</h5>
+      <% @pageterms = SeoMapping.where page_id: (params[:id]) %>
+        <% if @pageterms.empty? %>
+          <p class="text-muted">No SEO terms assigned.</p>
+        <% end %>
+      <% @pageterms.each do |s| %>
+          <%= s.term.name + (", ").html_safe %>
+      <% end %>
+        <hr>
 
 
       <h5>Page Content</h5>
 
 
       <% @cinstance.each do |pc| %>
-
       <% @pagetext = TextItem.order(:order).includes(:component).references(:component).where ({page_id: @thispage.id, component_id: pc.component.id, template_component_id: pc.id}) %>
-          <div style="border:1px solid #999; padding:15px; margin-bottom: 20px;">
+
+      <div class="card-group">
+
+        <% case pc.component.name %>
+        <% when "Product Card" %>
+            <div class="card" style="margin-bottom:15px;">
+              <div class="card-body">
+                <%= link_to pc.component.name, text_item_index_path(:id => pc.component.id, :instance => pc.id, :template => pc.template.id, :page => @thispage.id, :site => @site.id), :class => "badge badge-secondary", :style => "margin-bottom:10px;",  :title => "Edit "+pc.component.name %></br>
+                <% @pagetext.each do |pt| %>
+                  <!-- <small class="text-muted">TextInstanceID <%=pt.id %></small></br> -->
+                  <<%= pt.text.name %>><%#= pt.order %><%= pt.itemtext %></<%= pt.text.name %>>
+                <% end %>
+              </div>
+            </div>
+        <% when "Solution Card" %>
+            <div class="card" style="margin-bottom:15px;">
+              <div class="card-body">
+                <%= link_to pc.component.name, text_item_index_path(:id => pc.component.id, :instance => pc.id, :template => pc.template.id, :page => @thispage.id, :site => @site.id), :class => "badge badge-secondary", :style => "margin-bottom:10px;",  :title => "Edit "+pc.component.name %></br>
+                <% @pagetext.each do |pt| %>
+                  <!-- <small class="text-muted">TextInstanceID <%=pt.id %></small></br> -->
+                  <<%= pt.text.name %>><%#= pt.order %><%= pt.itemtext %></<%= pt.text.name %>>
+                <% end %>
+              </div>
+            </div>
+
+
+        <% else %>
+
+          <div class="card" style="margin-bottom:15px;">
+            <div class="card-body">
             <!-- <small class="text-muted">ComponentInstanceID <%= pc.id %> | PageID <%= @thispage.id %></small></br> -->
-            <%= link_to pc.component.name, text_item_index_path(:id => pc.component.id, :instance => pc.id, :template => pc.template.id, :page => @thispage.id, :site => @site.id), :class => "badge badge-secondary", :title => "Edit "+pc.component.name %></br>
-            <% @pagetext.each do |pt| %>
-              <!-- <small class="text-muted">TextInstanceID <%=pt.id %></small></br> -->
-              <<%= pt.text.name %>><%#= pt.order %><%= pt.itemtext %></<%= pt.text.name %>>
+              <%= link_to pc.component.name, text_item_index_path(:id => pc.component.id, :instance => pc.id, :template => pc.template.id, :page => @thispage.id, :site => @site.id), :class => "badge badge-secondary", :style => "margin-bottom:10px;", :title => "Edit "+pc.component.name %></br>
+              <% @pagetext.each do |pt| %>
+                <!-- <small class="text-muted">TextInstanceID <%=pt.id %></small></br> -->
+                <<%= pt.text.name %>><%#= pt.order %><%= pt.itemtext %></<%= pt.text.name %>>
             <% end %>
+            </div>
           </div>
+
+        <% end %>
+      </div>
       <% end %>
 
       <!-- below is the closing tag for the templates.each do |c| -->
