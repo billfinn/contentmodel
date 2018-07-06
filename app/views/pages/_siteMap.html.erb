@@ -1,7 +1,9 @@
 
       <% @sites = ::Site.order(:name) %>
+      <h5>Sites</h5>
       <% @sites.each do |site|  %>
-      <%= link_to site.name, sitemapdetail_path(site) %>&nbsp;&nbsp;
+      <%= link_to site.name, sitemapdetail_path(site) %><br>
       <% end %>
+      <hr>
 
 <!-- sitemapdetail_path(site) -->

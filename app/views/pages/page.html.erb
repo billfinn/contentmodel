@@ -22,11 +22,9 @@
       <!-- <p>User Workflow > Template
       <p>Breadcrumbs > Information Architecture path
         <hr> -->
-      <h3>Notes</h3>
-      <p><i></i></p>
-          <hr>
 
-      <h3>Tags</h3>
+
+      <h5>Tags</h5>
       <% @pagetags = TagMapping.where page_id: (params[:id]) %>
         <% if @pagetags.empty? %>
           <p class="text-muted">No tags assigned.</p>
@@ -35,13 +33,25 @@
             <a href="#" class="badge badge-info"><%= t.tag.name %></a>
       <% end %>
           <hr>
-      <h3>SEO Terms</h3>
+      <h5>SEO Terms</h5>
       <% @pageterms = SeoMapping.where page_id: (params[:id]) %>
         <% if @pageterms.empty? %>
           <p class="text-muted">No SEO terms assigned.</p>
         <% end %>
       <% @pageterms.each do |s| %>
           <%= s.term.name + (", ").html_safe %>
+      <% end %>
+          <hr>
+      <% @thispage.templates.each do |a| %>
+      <h5>Template Components</h5>
+        Click to view detail and customize template content for page.</small>
+
+        <% @cinstance = TemplateComponent.order(:position).includes(:component, :template).references(:component, :template).where ({template_id: a.id}) %>
+        <ol>
+          <!-- top version includes component instance ID for debugging -->
+          <%#= safe_join ( @cinstance.all.map { |x| ["<li>".html_safe, x.id, " ", link_to(x.component.name, text_item_index_path(:id => x.component.id, :instance => x.id, :template => x.template.id, :page => @thispage.id, :site => @site.id)),"</li>".html_safe] }) %>
+          <%= safe_join ( @cinstance.all.map { |x| ["<li>".html_safe, link_to(x.component.name, text_item_index_path(:id => x.component.id, :instance => x.id, :template => x.template.id, :page => @thispage.id, :site => @site.id)),"</li>".html_safe] }) %>
+        </ol>
       <% end %>
 
       <!-- <h3>Desired Actions</h3> -->
@@ -67,15 +77,7 @@
             <p><small class="text-muted"><%= h.description %></small></p>
           <% end %>
 
-          <h5>Template Components</h5>
-            Click to view detail and customize template content for page.</small>
 
-            <% @cinstance = TemplateComponent.order(:position).includes(:component, :template).references(:component, :template).where ({template_id: c.id}) %>
-            <ol>
-              <!-- top version includes component instance ID for debugging -->
-              <%#= safe_join ( @cinstance.all.map { |x| ["<li>".html_safe, x.id, " ", link_to(x.component.name, text_item_index_path(:id => x.component.id, :instance => x.id, :template => x.template.id, :page => @thispage.id, :site => @site.id)),"</li>".html_safe] }) %>
-              <%= safe_join ( @cinstance.all.map { |x| ["<li>".html_safe, link_to(x.component.name, text_item_index_path(:id => x.component.id, :instance => x.id, :template => x.template.id, :page => @thispage.id, :site => @site.id)),"</li>".html_safe] }) %>
-            </ol>
 
       <h5>Page Content</h5>
 
@@ -85,7 +87,7 @@
       <% @pagetext = TextItem.order(:order).includes(:component).references(:component).where ({page_id: @thispage.id, component_id: pc.component.id, template_component_id: pc.id}) %>
           <div style="border:1px solid #999; padding:15px; margin-bottom: 20px;">
             <!-- <small class="text-muted">ComponentInstanceID <%= pc.id %> | PageID <%= @thispage.id %></small></br> -->
-            <%= link_to pc.component.name, text_item_index_path(:id => pc.component.id, :instance => pc.id, :template => pc.template.id, :page => @thispage.id, :site => @site.id), :class => "badge badge-secondary" %></br>
+            <%= link_to pc.component.name, text_item_index_path(:id => pc.component.id, :instance => pc.id, :template => pc.template.id, :page => @thispage.id, :site => @site.id), :class => "badge badge-secondary", :title => "Edit "+pc.component.name %></br>
             <% @pagetext.each do |pt| %>
               <!-- <small class="text-muted">TextInstanceID <%=pt.id %></small></br> -->
               <<%= pt.text.name %>><%#= pt.order %><%= pt.itemtext %></<%= pt.text.name %>>
