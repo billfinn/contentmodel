@@ -43,7 +43,7 @@ var m = [20, 120, 20, 120],
     // w = d3.select('.col-xs-12').node();
     //     element.getBoundingClientRect().width;
     w = 1280 - m[1] - m[3],
-    h = 800 - m[0] - m[2],
+    h = 2000 - m[0] - m[2],
     i = 0,
     root;
 
