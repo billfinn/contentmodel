@@ -12,50 +12,36 @@
 		<div class="col-sm-9">
       <% @templatelist = ::Template.joins( :site_template_mappings ).where( site_template_mappings: { site_id: (params[:id]) }).order(:name) %>
       <% @site = Site.find(params[:id]) %>
-      <h1>Template List<small class="text-muted"> <%= @site.name %></small></h1>
-      <% @templatelist.each do |tl| %>
+      <h1>Templates<small class="text-muted"> <%= @site.name %></small></h1>
       <div class="row">
         <div class="col-8 col-sm-8">
-          <div class="card border-secondary mb-3">
-            <h3 class="card-header"><%= link_to tl.name, templatedetail_path(:id => tl.id, :site => @site.id) %>
+          <ol>
+      <% @templatelist.each do |tl| %>
+            <li><%= link_to tl.name, templatedetail_path(:id => tl.id, :site => @site.id) %>
               <% if tl.existing == true %>
               <span class="badge badge-light">Existing</span>
               <% else %>
               <% end %>
-              <small class="text-muted">Page Template</small>
-            </h3>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item disabled">Components</li>
-              <% tl.components.each do |n| %>
-              <li class="list-group-item"><%= n.name %>
-                <% if n.componenttype_id == 1 %>
-                  <span class="badge badge-light">Existing</span>
-                <% else %>
-                <% end %>
-                <% if n.componenttype_id == 2 %>
-                  <span class="badge badge-light">Existing->Update</span>
-                <% else %>
-                <% end %>
-              </li>
+              <% if tl.image.blank? %>
+              <% else %>
+                  <% if tl.image.include? "invision" %>
+                      &nbsp;| <%= link_to "View Comp", tl.image, target: "_blank" %><br>
+                      <% else %>
+                      <br><img src="<%= tl.image %>" height="200">
+                      <% end %>
               <% end %>
-            </ul>
+            </li>
+            <% end %>
+          </ol>
           </div>
         </div>
         <div class="col-8 col-sm-2">
-          <% if tl.image.blank? %>
-          <% else %>
-              <% if tl.image.include? "invision" %>
-                  <%= link_to "View Comp", tl.image, target: "_blank" %><br>
-                  <% else %>
-                  <img src="<%= tl.image %>" height="200">
-                  <% end %>
-          <% end %>
         </div>
       </div>
 
 
 
-      <% end %>
+
     </div>
 
 

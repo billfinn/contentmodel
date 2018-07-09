@@ -20,12 +20,13 @@ index do
     link_to template.name, admin_template_path(template)
   end
   # column :site do |s|
-  #   link_to s.site_template_mappings.site_id
+  #   link_to s.sites.site.name
   # end
   actions
 end
 # filter only by title
 filter :name
+
 
 
 show do |template|

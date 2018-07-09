@@ -6,8 +6,19 @@
 			<h1><%#= @site.name %><small class="text-muted"> Components</small></h1>
 
         <hr>
+        <!-- IN PROGRESS PILL NAV FILTER LISTING BY GROUP -->
+        <% @componentgroups = ComponentGroup.all %>
+        <!-- <ul class="nav nav-pills">
+          <% @componentgroups.each do |group| %>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#"><%= group.name %></a>
+          </li>
+          <% end %>
+        </ul> -->
+
     </div>
   </div>
+
 
 
 

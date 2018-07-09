@@ -1,6 +1,6 @@
 <%  @component = Component.find(params[:id])
+    @instance = TemplateComponent.find(params[:instance])
     @template = ::Template.find(params[:template])
-    @page = Page.find(params[:page])
     @site = Site.find(params[:site])
 
 
@@ -18,15 +18,20 @@
 			<h3>Notes</h3>
 
       <!-- Display Component relationships -->
-            <p>Component: <%= @component.name %>
-              <p>Template: <%= @template.name %>
-                <p>Page: <%= @page.name %>
-                  <p>Site: <%= @site.name %>
+            <p>Component: <br><%= @component.name %>
+              <p>Template: <br><%= link_to @template.name, templatedetail_path(:id => @template.id, :site => @site.id ) %>
+                  <p>Site: <br><%= link_to @site.name, templatelist_path(:id => @site.id) %>
 
 		</div>
 		<div class="col-sm-9">
 			<h1>Component</h1>
 
+      <% @pagetext = TextItem.order(:order).where ({page_id: nil, component_id: @component.id, template_component_id: @instance.id}) %>
+        <% @pagetext.each do |pagetextitem| %>
+              <<%= pagetextitem.text.name %>>
+              <a href="#" style="color: #666;" data-toggle="tooltip" data-placement="top" title="<%= pagetextitem.name %>"><%= pagetextitem.itemtext %></a>
+              </<%= pagetextitem.text.name %>>
+        <% end %>
 
 <!-- Component guidelines -->
       <div class="card">
@@ -51,11 +56,11 @@
             <tbody>
               <tr>
                 <td scope="row">Tag Groups</td>
-                <td><% if c.is_taggable == true %><i><%= c.tag_groups %></i><% else %><i>No tag groups will display.</i><% end %></td>
+                <td><% if @component.is_taggable == true %><i><%= c.tag_groups %></i><% else %><i>No tag groups will display.</i><% end %></td>
               </tr>
               <tr>
                 <td scope="row">Personalization</td>
-                <td><% if c.ispersonalized == true %><i><%= c.personalization_rules %></i><% else %><i>No personalization on this component.</i><% end %></td>
+                <td><% if @component.ispersonalized == true %><i><%= c.personalization_rules %></i><% else %><i>No personalization on this component.</i><% end %></td>
               </tr>
               <tr>
                 <td scope="row">Goal</td>
