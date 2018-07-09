@@ -15,20 +15,15 @@
         <% @components.each do |component| %>
         <% @templates = TemplateComponent.order(:position).includes(:component, :template).references(:component, :template).where ({component_id: component.id})  %>
   <div class="row">
-          <div class="col-sm-4">
+          <div class="col-sm-3">
             <p>Applies to Templates:<br>
               <%#= safe_join ( @templates.all.map { |x| [link_to(x.template.name, templatedetail_path(id: => x.template.id, site: => @site.id)),"<br>".html_safe] }) %>
               <% @templates.each do |t| %>
                 <%= link_to t.template.name, templatedetail_path(:id => t.template.id, :site => @site.id) %><br>
                 <% end %>
           </div>
-          <div class="col-sm-8">
-
+          <div class="col-sm-4">
             <h5><%= component.name %><br><small class="text-muted">Group: <%= component.component_group.name %></small></h5>
-            <% if component.image.blank? %>
-            <% else %>
-            <img src="http://contentmodel-jci-assets.s3.amazonaws.com/images/components/<%= component.image %>" width="50%">
-            <% end %>
             <p><small class="text-muted"><strong>Requirements</strong></small></p>
             <p><small class="text-muted"><%=raw component.requirements %></small></p>
             <p><small class="text-muted"><strong>Data</strong></small></p>
@@ -38,8 +33,12 @@
             <p><small class="text-muted"><strong>Description</strong></small></p>
             <p><small class="text-muted"><%=raw component.description %></small></p>
             <% end %>
-
-
+          </div>
+          <div class="col-sm-5">
+            <% if component.image.blank? %>
+            <% else %>
+            <img src="http://contentmodel-jci-assets.s3.amazonaws.com/images/components/<%= component.image %>" width="100%">
+            <% end %>
           </div>
 	</div>
   <hr>
