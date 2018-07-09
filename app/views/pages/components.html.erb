@@ -24,15 +24,46 @@
           </div>
           <div class="col-sm-4">
             <h5><%= component.name %><br><small class="text-muted">Group: <%= component.component_group.name %></small></h5>
+            <% if component.invision_link.blank? %>
+            <% else %>
+            <p><small class="text-muted"><strong>Invision Link</strong></small></p>
+            <p><small class="text-muted"><%=raw component.invision_link %></small></p>
+            <% end %>
+
+            <% if component.requirements.blank? %>
+            <% else %>
             <p><small class="text-muted"><strong>Requirements</strong></small></p>
             <p><small class="text-muted"><%=raw component.requirements %></small></p>
+            <% end %>
+
+            <% if component.full_width.blank? %>
+            <% else %>
+            <p><small class="text-muted"><strong>Full Width:</strong> <%=raw component.full_width %></small></p>
+            <% end %>
+
+            <% if component.personalization_rules.blank? %>
+            <% else %>
+            <p><small class="text-muted"><strong>Personalization</strong> <%=raw component.personalization_rules %></small></p>
+            <% end %>
+
+            <% if component.data.blank? %>
+            <% else %>
             <p><small class="text-muted"><strong>Data</strong></small></p>
             <p><small class="text-muted"><%=raw component.data %></small></p>
+            <% end %>
+
+            <% if component.allowed_controls.blank? %>
+            <% else %>
+            <p><small class="text-muted"><strong>Allowed Controls</strong></small></p>
+            <p><small class="text-muted"><%=raw component.allowed_controls %></small></p>
+            <% end %>
+
             <% if component.description.blank? %>
             <% else %>
             <p><small class="text-muted"><strong>Description</strong></small></p>
             <p><small class="text-muted"><%=raw component.description %></small></p>
             <% end %>
+
           </div>
           <div class="col-sm-5">
             <% if component.image.blank? %>
