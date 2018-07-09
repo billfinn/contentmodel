@@ -81,6 +81,23 @@
       <% @pageterms.each do |s| %>
           <%= s.term.name + (", ").html_safe %>
       <% end %>
+            <% @pagekeywords = Page.find(params[:id]) %>
+            <%= form_for @pagekeywords do |f| %>
+                  <%= f.hidden_field :id, value: @pagekeywords.id %>
+                  <div class="row">
+                    <%= f.label :terms %>
+                    <%= f.select :id,
+                      SeoTerm.all.map { |k| [k.term, k.id] },
+                                      { include_blank: true },
+                                      { :multiple => true, class: 'chosen-select' }
+                    %>
+                  </div>
+
+                  <div class="row">
+                    <%= f.submit "Save Terms" %>
+                  </div>
+            <% end %>
+
         <hr>
 
 

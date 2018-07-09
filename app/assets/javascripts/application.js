@@ -24,7 +24,14 @@
 //= require radarchartlayout
 //= require smart_listing
 //= require tinymce
+//= require chosen-jquery
+
 
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
+    $('.chosen-select').chosen({
+      allow_single_deselect: true,
+      no_results_text: 'No results matched',
+      width: '100%'
+    });
 });

@@ -1,4 +1,4 @@
-<% #@site = Site.find(params[:id]) %>
+<% @site = Site.find(1) %>
 
   <div class="row">
 		<div class="col-sm">
@@ -13,18 +13,18 @@
 
         <% @components = Component.all %>
         <% @components.each do |component| %>
-
-        <% #@templates = ::Template.joins(:template_components).where(template_components: { component_id: (@component.id) }) %>
+        <% @templates = TemplateComponent.order(:position).includes(:component, :template).references(:component, :template).where ({component_id: component.id})  %>
   <div class="row">
           <div class="col-sm-4">
             <p>Applies to Templates:<br>
-              <% #@templates.each do |t| %>
-                <%#= link_to t.name, templatedetail_path(:id => t.id, :site => @site.id) %><br>
-                <% #end %>
+              <%#= safe_join ( @templates.all.map { |x| [link_to(x.template.name, templatedetail_path(id: => x.template.id, site: => @site.id)),"<br>".html_safe] }) %>
+              <% @templates.each do |t| %>
+                <%= link_to t.template.name, templatedetail_path(:id => t.template.id, :site => @site.id) %><br>
+                <% end %>
           </div>
           <div class="col-sm-8">
 
-            <h5><%= component.name %><br><small class="text-muted">ID: <%= component.id %> Group: <%= component.component_group.name %></small></h5>
+            <h5><%= component.name %><br><small class="text-muted">Group: <%= component.component_group.name %></small></h5>
             <% if component.image.blank? %>
             <% else %>
             <img src="http://contentmodel-jci-assets.s3.amazonaws.com/images/components/<%= component.image %>" width="50%">
