@@ -11,9 +11,8 @@
 
       <%= render "siteContentModel" %>
 
-      <!-- <p>User Workflow > Template
-      <p>Breadcrumbs > Information Architecture path
-        <hr> -->
+      <hr>
+
       <h4>Page Purpose</h4>
       <p><%= @thistemplate.page_purpose %></p>
       <hr>
@@ -106,19 +105,22 @@
       <% else %>
       <% end %>
 
-          <!-- <ol class="breadcrumb">
-          <% @thistemplate.components.each do |b| %>
-              <li class="breadcrumb-item"><a href="#<%= b.name %>"><%= b.name %></a></li>
-          <% end %>
-          </ol> -->
-
+        <h5 style="margin-top:30px;">Components</h5>
         <% @cinstance = TemplateComponent.order(:position).includes(:component, :template).references(:component, :template).where ({template_id: @thistemplate.id}) %>
         <ol>
           <!-- top version includes component instance ID for debugging -->
           <%#= safe_join ( @cinstance.all.map { |x| ["<li>".html_safe, x.id, " ", link_to(x.component.name, text_item_index_path(:id => x.component.id, :instance => x.id, :template => x.template.id, :page => @thispage.id, :site => @site.id)),"</li>".html_safe] }) %>
-          <%= safe_join ( @cinstance.all.map { |x| ["<li>".html_safe, link_to(x.component.name, component_path(:id => x.component.id, :instance => x.id, :template => x.template.id, :site => @site.id)),"</li>".html_safe] }) %>
+          <%= safe_join ( @cinstance.all.map { |x| ["<li>".html_safe, link_to(x.component.name, component_path(:id => x.component.id, :template => x.template.id, :site => @site.id)),"</li>".html_safe] }) %>
         </ol>
 
+        <!-- <h5>Pages Using This Template</h5> -->
+        <%# @pages = PageTemplateMappings.order(:page_id).includes(:page).references(:page).where template_id: @thistemplate.id %>
+        <ol style="margin-top:30px;">
+          <!-- top version includes component instance ID for debugging -->
+          <%#= safe_join ( @cinstance.all.map { |x| ["<li>".html_safe, x.id, " ", link_to(x.component.name, text_item_index_path(:id => x.component.id, :instance => x.id, :template => x.template.id, :page => @thispage.id, :site => @site.id)),"</li>".html_safe] }) %>
+          <%#= safe_join ( @pages.all.map { |a| ["<li>".html_safe, link_to(a.page.name, page_path(:id => a.page.id, :site => @site.id)),"</li>".html_safe] }) %>
+        </ol>
+<!--
         <% @thistemplate.components.each do |c| %>
             <a id="<%= c.name %>"></a>
             <h3><%= c.name %> <% if c.componenttype_id == 1 %>
@@ -167,11 +169,7 @@
 
 
 
-                <!-- <% c.text_items.each do |t| %>
-                      <h5 class="text-info"><%= t.name %> <small class='text-muted'>Item</small></h5>
-                         <p><%= t.itemtext %> </p>
-                <% end %> -->
-        <% end %>
+        <% end %> -->
 
 
 

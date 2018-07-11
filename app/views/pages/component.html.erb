@@ -1,5 +1,4 @@
 <%  @component = Component.find(params[:id])
-    @instance = TemplateComponent.find(params[:instance])
     @template = ::Template.find(params[:template])
     @site = Site.find(params[:site])
 
@@ -26,12 +25,6 @@
 		<div class="col-sm-9">
 			<h1>Component</h1>
 
-      <% @pagetext = TextItem.order(:order).where ({page_id: nil, component_id: @component.id, template_component_id: @instance.id}) %>
-        <% @pagetext.each do |pagetextitem| %>
-              <<%= pagetextitem.text.name %>>
-              <a href="#" style="color: #666;" data-toggle="tooltip" data-placement="top" title="<%= pagetextitem.name %>"><%= pagetextitem.itemtext %></a>
-              </<%= pagetextitem.text.name %>>
-        <% end %>
 
 <!-- Component guidelines -->
       <div class="card">
@@ -43,10 +36,19 @@
                   <% if @component.componenttype_id == 2 %>
                     <span class="badge badge-light">Existing->Update</span>
                   <% else %>
-                  <% end %><small class="text-muted">Component</small></h3>
+                  <% end %></h3>
         </div>
         <div class="card-body">
-          <table class="table table-hover">
+          <span class="badge badge-secondary">Component Text Elements</span><br>
+          <% @pagetext = TextItem.order(:order).where ({page_id: nil , component_id: @component.id}) %>
+            <% @pagetext.each do |pagetextitem| %>
+                  <<%= pagetextitem.text.name %>>
+                  <a href="#" style="color: #666;" data-toggle="tooltip" data-placement="top" title="<%= pagetextitem.name %>"><%= pagetextitem.itemtext %></a>
+                  </<%= pagetextitem.text.name %>>
+            <% end %>
+
+
+          <table class="table table-hover" style="margin-top:30px;">
             <thead>
               <tr>
                 <th scope="col">Attribute</th>
@@ -82,28 +84,6 @@
           </table>
         </div>
       </div>
-          <!-- <% @component.text_items.each do |t| %>
-                <h5 class="text-info"><%= t.name %> <small class='text-muted'>Item</small></h5>
-                   <p><%= t.itemtext %> </p>
-          <% end %> -->
-          <b>Component Template Items</b>
-
-          <div id="textitemlist">
-            <%= render :partial => "textitem", :collection => @textitemstemplate %>
-          </div>
-          <hr>
-
-
-          <% @component.text_items.each do |t| %>
-
-
-          <% end %>
-
-
-          <!-- <% @pagetext = TextItem.order(:order).where page_id: (params[:id]) %>
-          <% @pagetext.each do |pt| %>
-              <<%= pt.text.name %>><%#= pt.order %><%= pt.itemtext %></<%= pt.text.name %>>
-          <% end %> -->
 
 
 		</div>
