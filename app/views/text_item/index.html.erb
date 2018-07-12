@@ -29,13 +29,13 @@
 <div id="pagetextitemlist">
   <table width="100%">
 
-  <!-- C<%= @component.id %><br>
-  P<%= @page.id %><br> -->
+  <!-- C<%#= @component.id %><br>
+  P<%#= @page.id %><br> -->
   <%# @pagetest = TextItem.order(:order).where ({page_id: @page.id, component_id: @component.id, template_component_id: @instance.id}) %>
   <!-- Debugging section
-  <% @pagetest.each do |t| %>
-    <%= t.id %> <%= t.name %> / C<%= t.component_id %> / P<%= t.page_id %> /  instance<%= t.template_component_id %> <br>
-  <% end %>
+  <%# @pagetest.each do |t| %>
+    <%#= t.id %> <%#= t.name %> / C<%#= t.component_id %> / P<%#= t.page_id %> /  instance<%#= t.template_component_id %> <br>
+  <%# end %>
    -->
 
   <% @pagetext = TextItem.order(:order).where ({page_id: @page.id, component_id: @component.id, template_component_id: @instance.id}) %>
