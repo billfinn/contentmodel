@@ -14,4 +14,8 @@ ActiveAdmin.register TextItem do
 
   menu parent: 'Content Model'
 
+
+
+
+
 end
