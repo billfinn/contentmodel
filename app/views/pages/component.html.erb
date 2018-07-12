@@ -44,13 +44,6 @@
           <% @component.text_items.each do |textitem| %>
             <<%= textitem.text.name %>><%= textitem.name %></<%= textitem.text.name %>>
           <% end %>
-          <% @pagetext = TextItem.order(:order).where component_id: @component.id %>
-            <% @pagetext.each do |pagetextitem| %>
-                  <<%= pagetextitem.text.name %>>
-                  <a href="#" style="color: #666;" data-toggle="tooltip" data-placement="top" title="<%= pagetextitem.name %>"><%= pagetextitem.itemtext %></a>
-                  </<%= pagetextitem.text.name %>>
-            <% end %>
-
 
           <table class="table table-hover" style="margin-top:30px;">
             <thead>
@@ -60,30 +53,59 @@
               </tr>
             </thead>
             <tbody>
+              <% if @component.invision_link.blank? %>
+              <% else %>
+              <tr>
+                <td scope="row">Invision Link</td>
+                <td><i><%= @component.invision_link.html_safe %></i></td>
+              </tr>
+              <% end %>
               <tr>
                 <td scope="row">Tag Groups</td>
-                <td><% if @component.is_taggable == true %><i><%= c.tag_groups %></i><% else %><i>No tag groups will display.</i><% end %></td>
+                <td><% if @component.tag_groups.blank? %><i>No tag groups will display.</i><% else %><i><%= @component.tag_groups %></i><% end %></td>
               </tr>
               <tr>
                 <td scope="row">Personalization</td>
-                <td><% if @component.ispersonalized == true %><i><%= c.personalization_rules %></i><% else %><i>No personalization on this component.</i><% end %></td>
+                <td><% if @component.personalization_rules.blank? %><i>No personalization on this component.</i></i><% else %><i><%= @component.personalization_rules.html_safe %><% end %></td>
               </tr>
               <tr>
                 <td scope="row">Goal</td>
                 <td><i><%= @component.goal %></i></td>
               </tr>
               <tr>
-                <td scope="row">Description</td>
-                <td><i><%= @component.description %></i></td>
-              </tr>
-              <tr>
                 <td scope="row">CTA</td>
                 <td><i><%= @component.cta %></i></td>
               </tr>
               <tr>
-                <td scope="row">Content Assets</td>
-                <td><i><%= @component.content_assets %></i></td>
+                <td scope="row">Full-Width</td>
+                <td><i>
+                  <% case @component.full_width %>
+                    <% when 0 %>
+                      No
+                    <% when 1 %>
+                      Yes
+                    <% when blank? %>
+                      no
+                    <% else %><% end %>
+                  </i></td>
               </tr>
+              <tr>
+                <td scope="row">Data</td>
+                <td><i><%= @component.data.html_safe %></i></td>
+              </tr>
+              <tr>
+                <td scope="row">Requirements</td>
+                <td><i><%= @component.requirements.html_safe %></i></td>
+              </tr>
+              <tr>
+                <td scope="row">Description</td>
+                <td><i><%= @component.description.html_safe %></i></td>
+              </tr>
+              <tr>
+                <td scope="row">Interaction Notes</td>
+                <td><i><%= @component.interaction_notes.html_safe %></i></td>
+              </tr>
+              <tr>
             </tbody>
           </table>
         </div>
