@@ -39,8 +39,12 @@
                   <% end %></h3>
         </div>
         <div class="card-body">
-          <span class="badge badge-secondary">Component Text Elements</span><br>
-          <% @pagetext = TextItem.order(:order).where ({page_id: nil , component_id: @component.id}) %>
+          <span class="badge badge-secondary" style="margin-bottom: 20px;">Component Text Elements</span><br>
+          <%# @pagetext = TextItem.order(:order).where ({page_id: nil , component_id: @component.id}) %>
+          <% @component.text_items.each do |textitem| %>
+            <<%= textitem.text.name %>><%= textitem.name %></<%= textitem.text.name %>>
+          <% end %>
+          <% @pagetext = TextItem.order(:order).where component_id: @component.id %>
             <% @pagetext.each do |pagetextitem| %>
                   <<%= pagetextitem.text.name %>>
                   <a href="#" style="color: #666;" data-toggle="tooltip" data-placement="top" title="<%= pagetextitem.name %>"><%= pagetextitem.itemtext %></a>
