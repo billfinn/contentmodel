@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get  '/home', to: 'pages#home'
   get  '/flows', to: 'pages#flows'
   get  '/flowdetail/:id', to: 'pages#flowdetail', as: 'flowdetail'
+  get  '/iframe', to: 'pages#iframe', as: 'iframe'
   get  '/legacysites', to: 'pages#legacysites'
   get  '/legacysitedetail/:id', to: 'pages#legacysitedetail', as: 'legacysitedetail'
   get  '/messaging', to: 'pages#messaging'
