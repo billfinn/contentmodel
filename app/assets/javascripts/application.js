@@ -10,10 +10,12 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
+
 //= require turbolinks
-//= require jquery3
+//= require jquery
 //= require jquery_ujs
+//= require rails-ujs
+//= require smart_listing
 //= require popper
 //= require bootstrap
 
@@ -22,7 +24,7 @@
 //= require treelayout
 //= require radarchart
 //= require radarchartlayout
-//= require smart_listing
+
 //= require tinymce
 //= require chosen-jquery
 

@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get   "/pages/:page" => "pages#show"
   get  '/searchtest', to: 'pages#searchtest'
   resources :search, only: [:index]
+  resources :site_crawl
   get  '/sitemap', to: 'pages#sitemap'
   get  '/sitemapdetail/:id', to: 'pages#sitemapdetail', as: 'sitemapdetail'
   resources :sitepage

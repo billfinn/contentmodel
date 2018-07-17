@@ -73,19 +73,19 @@
             <a href="#" class="badge badge-info"><%= t.tag.name %></a>
       <% end %>
         <hr>
-      <h5>SEO Terms</h5>
-      <% @pageterms = SeoMapping.where page_id: (params[:id]) %>
-        <% if @pageterms.empty? %>
+      <!-- <h5>SEO Terms</h5>
+      <%# @pageterms = SeoMapping.where page_id: (params[:id]) %>
+        <%# if @pageterms.empty? %>
           <p class="text-muted">No SEO terms assigned.</p>
-        <% end %>
-      <% @pageterms.each do |s| %>
-          <%= s.term.name + (", ").html_safe %>
-      <% end %>
-            <%= form_with model: @page do |f| %>
+        <%# end %>
+      <%# @pageterms.each do |s| %>
+          <%#= s.term.name + (", ").html_safe %>
+      <%# end %>
+            <%#= form_with model: @page do |f| %>
                   <%#= f.hidden_field :page_id, value: @thispage.id %>
                   <div class="row">
-                    <%= f.label :terms %>
-                    <%= f.select :seo_term_id,
+                    <%#= f.label :terms %>
+                    <%#= f.select :seo_term_id,
                       SeoTerm.all.map { |k| [k.term, k.id] },
                                       { include_blank: true },
                                       { :multiple => true, class: 'chosen-select' }
@@ -93,11 +93,11 @@
                   </div>
 
                   <div class="row">
-                    <%= f.submit "Save Terms" %>
+                    <%#= f.submit "Save Terms" %>
                   </div>
-            <% end %>
+            <%# end %>
 
-        <hr>
+        <hr>-->
 
 
       <h5>Page Content</h5>

@@ -1,0 +1,33 @@
+<% unless smart_listing.empty? %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Retain</th>
+      <th scope="col">Update</th>
+      <th scope="col">Retire</th>
+      <th scope="col">Page</th>
+      <th scope="col">ID</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  <% smart_listing.collection.each do |site|  %>
+  <tr>
+    <td>select</td>
+    <td>select</td>
+    <td>select</td>
+    <td><%= link_to truncate(site.address, :length => 100), site.address, target: :_blank %></td>
+    <td><%= site.id %></td>
+  </tr>
+
+  <% end %>
+  </tbody>
+</table>
+
+<%= smart_listing.paginate %>
+<%= smart_listing.pagination_per_page_links %>
+
+<% else %>
+<p class="warning">No records</p>
+<% end %>

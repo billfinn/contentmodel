@@ -1,0 +1,18 @@
+- unless smart_listing.empty?
+  %table.table.table-striped
+    %thead
+      %th.col= "SiteID"
+      %th.col= smart_listing.sortable "Address", "address"
+      %th.col= "ID"
+    %tbody
+      - smart_listing.collection.each do |o|
+        %tr
+          %td=o.site_id
+          %td=link_to truncate(o.address, :length => 100), o.address, target: :_blank
+          %td=o.id
+
+  -# Render nice pagination links fitted for Bootstrap 3 by default
+  = smart_listing.paginate
+  = smart_listing.pagination_per_page_links
+- else
+  %p.warning No records!

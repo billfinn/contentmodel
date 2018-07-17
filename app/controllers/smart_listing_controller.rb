@@ -2,11 +2,8 @@ class SmartListingController < ApplicationController
   include SmartListing::Helper::ControllerExtensions
   helper  SmartListing::Helper
 
-  # def index
-  #   @sitepages = smart_listing_create(:sitepages, SiteCrawl.all, partial: "smart_listing/listing")
-  # end
   def index
-    smart_listing_create :sitepages, SiteCrawl.all, partial: "smart_listing/listing"
+    @sitecrawls = smart_listing_create(:sitecrawls, SiteCrawl.all, partial: "site_crawl/listing")
   end
 
 end

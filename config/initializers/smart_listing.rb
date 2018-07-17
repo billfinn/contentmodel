@@ -10,9 +10,9 @@ SmartListing.configure do |config|
     :unlimited_per_page             => false,                       # allow infinite page size
     :paginate                       => true,                        # allow pagination
     :memorize_per_page              => false,                       # save per page settings in the cookie
-    # :page_sizes                     => DEFAULT_PAGE_SIZES,          # set available page sizes array
-    #:kaminari_options               => {:theme => "smart_listing"}, # Kaminari's paginate helper options
-    #:sort_dirs                      => [nil, "asc", "desc"],        # Default sorting directions cycle of sortables
+    :page_sizes                     => [10, 20, 50, 100],          # set available page sizes array
+    :kaminari_options               => {:theme => "smart_listing"}, # Kaminari's paginate helper options
+    :sort_dirs                      => [nil, "asc", "desc"],        # Default sorting directions cycle of sortables
   })
 
   config.constants :classes, {
@@ -42,14 +42,14 @@ SmartListing.configure do |config|
     :filtering_cancel      => "glyphicon-remove",
     :filtering_disabled    => "disabled",
     :sortable              => "sortable",
-    :icon_new              => "glyphicon glyphicon-plus",
-    :icon_edit             => "glyphicon glyphicon-pencil",
+    :icon_new              => "fa fa-plus",
+    :icon_edit             => "fa fa-pencil",
     :icon_trash            => "glyphicon glyphicon-trash",
     :icon_inactive         => "glyphicon glyphicon-circle",
     :icon_show             => "glyphicon glyphicon-share-alt",
-    :icon_sort_none        => "glyphicon glyphicon-resize-vertical",
-    :icon_sort_up          => "glyphicon glyphicon-chevron-up",
-    :icon_sort_down        => "glyphicon glyphicon-chevron-down",
+    :icon_sort_none        => "fa fa-sort",
+    :icon_sort_up          => "fa fa-thumbs-o-up",
+    :icon_sort_down        => "fa fa-thumbs-o-down",
     :muted                 => "text-muted",
   }
 
@@ -70,15 +70,15 @@ SmartListing.configure do |config|
   }
 
   config.constants :selectors, {
-    # :item_action_destroy   => "a.destroy",
-    # :edit_cancel           => "button.cancel",
-    # :row                   => "tr",
-    # :head                  => "thead",
-    # # :filtering_icon        => "i",
-    # :filtering_button      => "button",
+    :item_action_destroy   => "a.destroy",
+    :edit_cancel           => "button.cancel",
+    :row                   => "tr",
+    :head                  => "thead",
+    :filtering_icon        => "i",
+    :filtering_button      => "button",
     # :filtering_icon        => "button span",
-    # :filtering_input       => ".filter input",
-    # :pagination_count      => ".pagination-per-page .count",
+    :filtering_input       => ".filter input",
+    :pagination_count      => ".pagination-per-page .count",
   }
 
   config.constants :element_templates, {
@@ -86,6 +86,6 @@ SmartListing.configure do |config|
   }
 
   config.constants :bootstrap_commands, {
-    :popover_destroy       => "destroy", # Bootstrap 4 requries dipsose instead of destroy
+    :popover_destroy       => "dispose", # Bootstrap 4 requries dipsose instead of destroy
   }
 end
