@@ -33,6 +33,7 @@ gem 'chosen-rails'
 gem 'haml'
 gem 'kaminari'
 gem 'smart_listing'
+gem 'filterrific'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'

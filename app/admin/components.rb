@@ -3,6 +3,9 @@ ActiveAdmin.register Component do
   active_admin_import  validate: false,
                         csv_options: {col_sep: "," },
                         before_import: ->(importer){ Component.delete_all },
+                        # before_batch_import: ->(importer) {
+                        #     Component.where(id: importer.values_at('id')).delete_all
+                        # }
                         batch_size: 2000
 
 # See permitted parameters documentation:

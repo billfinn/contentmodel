@@ -123,14 +123,7 @@
 <!--
         <% @thistemplate.components.each do |c| %>
             <a id="<%= c.name %>"></a>
-            <h3><%= c.name %> <% if c.componenttype_id == 1 %>
-                      <span class="badge badge-light">Existing</span>
-                    <% else %>
-                    <% end %>
-                    <% if c.componenttype_id == 2 %>
-                      <span class="badge badge-light">Existing->Update</span>
-                    <% else %>
-                    <% end %><small class="text-muted">Component</small></h3>
+            <h3><%= c.name %> <small class="text-muted">Component</small></h3>
 
             <table class="table table-hover">
               <thead>
@@ -141,28 +134,16 @@
               </thead>
               <tbody>
                 <tr>
-                  <td scope="row">Tag Groups</td>
-                  <td><% if c.is_taggable == true %><i><%= c.tag_groups %></i><% else %><i>No tag groups will display.</i><% end %></td>
-                </tr>
-                <tr>
                   <td scope="row">Personalization</td>
-                  <td><% if c.ispersonalized == true %><i><%= c.personalization_rules %></i><% else %><i>No personalization on this component.</i><% end %></td>
+                  <td><i><%= c.personalization_rules %></i></td>
                 </tr>
                 <tr>
                   <td scope="row">Goal</td>
                   <td><i><%= c.goal %></i></td>
                 </tr>
                 <tr>
-                  <td scope="row">Description</td>
-                  <td><i><%= c.description %></i></td>
-                </tr>
-                <tr>
                   <td scope="row">CTA</td>
                   <td><i><%= c.cta %></i></td>
-                </tr>
-                <tr>
-                  <td scope="row">Content Assets</td>
-                  <td><i><%= c.content_assets %></i></td>
                 </tr>
               </tbody>
             </table>

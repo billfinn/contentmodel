@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180709183734) do
+ActiveRecord::Schema.define(version: 20180719192800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -118,6 +118,26 @@ ActiveRecord::Schema.define(version: 20180709183734) do
     t.integer "position"
   end
 
+  create_table "component_temp", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.string "goal"
+    t.string "cta"
+    t.string "image"
+    t.text "page"
+    t.text "requirements"
+    t.text "interaction_notes"
+    t.integer "full_width"
+    t.integer "component_group_id"
+    t.text "personalization_rules"
+    t.text "data"
+    t.string "allowed_controls"
+    t.string "need_info"
+    t.text "design_questions"
+    t.text "dev_notes"
+    t.string "invision_link"
+    t.bigint "xid"
+  end
+
   create_table "component_types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -128,16 +148,11 @@ ActiveRecord::Schema.define(version: 20180709183734) do
     t.string "name"
     t.string "goal"
     t.string "cta"
-    t.string "content_assets"
     t.string "image"
-    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "componenttype_id"
     t.integer "component_group_id"
-    t.integer "ispersonalized"
     t.text "personalization_rules"
-    t.integer "is_taggable"
     t.string "tag_groups"
     t.text "requirements"
     t.text "data"
@@ -148,7 +163,7 @@ ActiveRecord::Schema.define(version: 20180709183734) do
     t.text "dev_notes"
     t.string "invision_link"
     t.string "interaction_notes"
-    t.string "vsts_id"
+    t.string "page"
   end
 
   create_table "flows", force: :cascade do |t|

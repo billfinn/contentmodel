@@ -1,0 +1,24 @@
+<%# app/views/students/_list.html.erb %>
+<div id="filterrific_results">
+
+  <div>
+    <%= page_entries_info sitecrawls # provided by will_paginate %>
+  </div>
+
+  <table>
+    <tr>
+      <th>SiteID</th>
+      <th>Address</th>
+      <th>ID</th>
+    </tr>
+    <% sitecrawls.each do |item| %>
+      <tr>
+        <td><%= item.site_id %></td>
+        <td><%= item.address %></td>
+        <td><%= item.id %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<%= will_paginate sitecrawls # provided by will_paginate %>

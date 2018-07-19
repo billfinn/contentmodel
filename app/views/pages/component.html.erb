@@ -39,14 +39,7 @@
 <!-- Component guidelines -->
       <div class="card">
         <div class="card-header">
-          <h3><%= @component.name %> <% if @component.componenttype_id == 1 %>
-                    <span class="badge badge-light">Existing</span>
-                  <% else %>
-                  <% end %>
-                  <% if @component.componenttype_id == 2 %>
-                    <span class="badge badge-light">Existing->Update</span>
-                  <% else %>
-                  <% end %></h3>
+          <h3><%= @component.name %></h3>
         </div>
         <div class="card-body">
           <span class="badge badge-secondary" style="margin-bottom: 20px;">Component Text Elements</span><br>
@@ -70,10 +63,6 @@
                 <td><i><%= @component.invision_link.html_safe %></i></td>
               </tr>
               <% end %>
-              <tr>
-                <td scope="row">Tag Groups</td>
-                <td><% if @component.tag_groups.blank? %><i>No tag groups will display.</i><% else %><i><%= @component.tag_groups %></i><% end %></td>
-              </tr>
               <tr>
                 <td scope="row">Personalization</td>
                 <td><% if @component.personalization_rules.blank? %><i>No personalization on this component.</i></i><% else %><i><%= @component.personalization_rules.html_safe %><% end %></td>
@@ -106,10 +95,6 @@
               <tr>
                 <td scope="row">Requirements</td>
                 <td><i><%= @component.requirements.html_safe %></i></td>
-              </tr>
-              <tr>
-                <td scope="row">Description</td>
-                <td><i><%= @component.description %></i></td>
               </tr>
               <tr>
                 <td scope="row">Interaction Notes</td>

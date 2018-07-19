@@ -37,3 +37,12 @@ $(document).ready(function(){
       width: '100%'
     });
 });
+
+$(document).on("turbolinks:load", function() {
+  // Disable ajax remote loading of smart listing links
+  // See https://github.com/sology/smart_listing/issues/135
+  $(".smart-listing a").on("click", function(e) {
+    e.preventDefault();
+    Turbolinks.visit(this.href);
+  });
+});
