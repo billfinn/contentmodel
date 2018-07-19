@@ -51,23 +51,16 @@ form do |f|
   f.semantic_errors *f.object.errors.keys
   f.inputs "Component" do
     f.input :name
-    f.input :componenttype_id, :label => 'Component Type', :as => :select, :collection => ComponentType.all.map{|c| ["#{c.name}", c.id, include_blank: true]}
     f.input :component_group_id, :label => 'Component Group', :as => :select, :collection => ComponentGroup.all.map{|g| ["#{g.name}", g.id, include_blank: true]}
     f.input :image, :label => 'Image'
     f.input :invision_link, :label => 'Invision Link'
-    f.input :vsts_id, :label => 'VSTS ID'
     f.input :full_width, :label => 'Full-Width?', as: :boolean
-    f.input :is_taggable, :label => 'Is Taggable?', as: :boolean
-    f.input :tag_groups, :label => 'Tag Groups'
-    f.input :ispersonalized, :label => 'Is Personalized?', as: :boolean
     f.input :personalization_rules, :label => 'Personalization Rules'
     f.input :goal
     f.input :cta
-    f.input :content_assets
     f.input :requirements, :label => 'Requirements'
     f.input :data, :label => 'Data', :input_html => { :class => 'tinymce' }
     f.input :allowed_controls, :label => 'Allowed Controls'
-    f.input :description, :label => 'Description'
     f.input :dev_notes, :label => 'Dev Notes'
     f.input :interaction_notes, :label => 'Interaction Notes', :input_html => { :class => 'tinymce' }
   f.inputs "Text Items" do
