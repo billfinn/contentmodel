@@ -52,6 +52,14 @@
             </tr>
             <% end %>
 
+            <% if component.interaction_notes.blank? %>
+            <% else %>
+            <tr>
+              <td valign="top"><small class="text-muted"><strong>Interaction Notes</strong></small></td>
+              <td valign="top"><small class="text-muted"><%=raw component.interaction_notes %></small></td>
+            </tr>
+            <% end %>
+
             <% if component.full_width.blank? %>
             <% else %>
             <tr>
@@ -83,13 +91,38 @@
               <td valign="top"><small class="text-muted"><%=raw component.allowed_controls %></small></td>
             </tr>
             <% end %>
+
+            <% if component.need_info.blank? %>
+            <% else %>
+            <tr>
+              <td valign="top"><small class="text-muted"><strong>Need Info</strong></small></td>
+              <td valign="top"><small class="text-muted"><% if component.need_info == "x" %>Yes<% else %>No<% end %></small></td>
+            </tr>
+            <% end %>
+
+            <% if component.design_questions.blank? %>
+            <% else %>
+            <tr>
+              <td valign="top"><small class="text-muted"><strong>Design Questions</strong></small></td>
+              <td valign="top"><small class="text-muted"><%=raw component.design_questions %></small></td>
+            </tr>
+            <% end %>
+
+            <% if component.dev_notes.blank? %>
+            <% else %>
+            <tr>
+              <td valign="top"><small class="text-muted"><strong>Dev Notes</strong></small></td>
+              <td valign="top"><small class="text-muted"><%=raw component.dev_notes %></small></td>
+            </tr>
+            <% end %>
+
           </tbody>
           </table>
           </div>
           <div class="col-sm-5">
             <% if component.image.blank? %>
             <% else %>
-            <img src="http://contentmodel-jci-assets.s3.amazonaws.com/images/components/<%= component.image %>" width="100%">
+            <img alt="<%= component.image %>" src="http://contentmodel-jci-assets.s3.amazonaws.com/images/components/<%= component.image %>" width="100%">
             <% end %>
           </div>
 	</div>
