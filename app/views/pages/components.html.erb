@@ -34,41 +34,57 @@
                 <% end %>
           </div>
           <div class="col-sm-4">
-            <h5><%= component.name %><br><small class="text-muted">Group: <%= component.component_group.name %></small></h5>
+            <h5><%= component.name %> <span class="badge badge-pill badge-secondary"><%= component.component_group.name %></span></h5>
+            <table class="table table-striped">
+            <tbody>
             <% if component.invision_link.blank? %>
             <% else %>
-            <p><small class="text-muted"><strong>Invision Link</strong></small></p>
-            <p><small class="text-muted"><%=raw component.invision_link %></small></p>
+            <tr>
+              <td valign="top" colspan="2"><small class="text-muted"><%= link_to "Invision Link", component.invision_link, target: "_blank" %></small></td>
+            </tr>
             <% end %>
 
             <% if component.requirements.blank? %>
             <% else %>
-            <p><small class="text-muted"><strong>Requirements</strong></small></p>
-            <p><small class="text-muted"><%=raw component.requirements %></small></p>
+            <tr>
+              <td valign="top"><small class="text-muted"><strong>Requirements</strong></small></td>
+              <td valign="top"><small class="text-muted"><%=raw component.requirements %></small></td>
+            </tr>
             <% end %>
 
             <% if component.full_width.blank? %>
             <% else %>
-            <p><small class="text-muted"><strong>Full Width:</strong> <%=raw component.full_width %></small></p>
+            <tr>
+              <td valign="top"><small class="text-muted"><strong>Full Width:</strong></td>
+              <td valign="top"><small class="text-muted"><% if component.full_width == 1 %>Yes<% else %>No<% end %></small></td>
+            </tr>
             <% end %>
 
             <% if component.personalization_rules.blank? %>
             <% else %>
-            <p><small class="text-muted"><strong>Personalization</strong> <%=raw component.personalization_rules %></small></p>
+            <tr>
+              <td valign="top"><small class="text-muted"><strong>Personalization</strong></small></td>
+              <td valign="top"><small class="text-muted"><%=raw component.personalization_rules %></small></td>
+            </tr>
             <% end %>
 
             <% if component.data.blank? %>
             <% else %>
-            <p><small class="text-muted"><strong>Data</strong></small></p>
-            <p><small class="text-muted"><%=raw component.data %></small></p>
+            <tr>
+              <td valign="top"><small class="text-muted"><strong>Data</strong></small></td>
+              <td valign="top"><small class="text-muted"><%=raw component.data %></small></td>
+            </tr>
             <% end %>
 
             <% if component.allowed_controls.blank? %>
             <% else %>
-            <p><small class="text-muted"><strong>Allowed Controls</strong></small></p>
-            <p><small class="text-muted"><%=raw component.allowed_controls %></small></p>
+            <tr>
+              <td valign="top"><small class="text-muted"><strong>Allowed Controls</strong></small></td>
+              <td valign="top"><small class="text-muted"><%=raw component.allowed_controls %></small></td>
+            </tr>
             <% end %>
-
+          </tbody>
+          </table>
           </div>
           <div class="col-sm-5">
             <% if component.image.blank? %>
