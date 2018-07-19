@@ -44,6 +44,14 @@
             </tr>
             <% end %>
 
+            <% if component.page.blank? %>
+            <% else %>
+            <tr>
+              <td valign="top"><small class="text-muted"><strong>Page</strong></small></td>
+              <td valign="top"><small class="text-muted"><%= component.page %></small></td>
+            </tr>
+            <% end %>
+
             <% if component.requirements.blank? %>
             <% else %>
             <tr>
