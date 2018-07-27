@@ -11,7 +11,7 @@ ActiveAdmin.register Component do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :list, :of, :attributes, :on, :model, :name, :componenttype_id, :component_group_id, :goal, :cta, :content_assets, :image, :description, :ispersonalized, :personalization_rules, :is_taggable, :tag_groups, :requirements, :data, :invision_link, :interaction_notes, component_items_attributes: [:id, :component_id, :text_item_id, :position, :_destroy, :_update], component_types_attributes: [:id, :name, :_update], component_groups_attributes: [:id, :name]
+permit_params :list, :of, :attributes, :on, :model, :name, :componenttype_id, :component_group_id, :goal, :cta, :content_assets, :image, :description, :ispersonalized, :personalization_rules, :is_taggable, :tag_groups, :requirements, :data, :invision_link, :image_sizes, :interaction_notes, component_items_attributes: [:id, :component_id, :text_item_id, :position, :_destroy, :_update], component_types_attributes: [:id, :name, :_update], component_groups_attributes: [:id, :name]
 #
 # or
 #
@@ -54,6 +54,7 @@ form do |f|
     f.input :component_group_id, :label => 'Component Group', :as => :select, :collection => ComponentGroup.all.map{|g| ["#{g.name}", g.id, include_blank: true]}
     f.input :image, :label => 'Image'
     f.input :invision_link, :label => 'Invision Link'
+    f.input :image_sizes
     f.input :full_width, :label => 'Full-Width?', as: :boolean
     f.input :personalization_rules, :label => 'Personalization Rules'
     f.input :goal

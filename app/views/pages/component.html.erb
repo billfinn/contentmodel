@@ -59,48 +59,98 @@
               <% if @component.invision_link.blank? %>
               <% else %>
               <tr>
-                <td scope="row">Invision Link</td>
-                <td><i><%= @component.invision_link.html_safe %></i></td>
+                <td valign="top"><small class="text-muted"><strong>Design Link</strong></small></td>
+                <td><i><%= link_to @component.invision_link, @component.invision_link, target: "_blank" %></i></td>
               </tr>
               <% end %>
+
+              <% if @component.image_sizes.blank? %>
+              <% else %>
               <tr>
-                <td scope="row">Personalization</td>
-                <td><% if @component.personalization_rules.blank? %><i>No personalization on this component.</i></i><% else %><i><%= @component.personalization_rules.html_safe %><% end %></td>
+                <td valign="top"><small class="text-muted"><strong>Image Sizes</strong></small></td>
+                <td valign="top"><%= image_tag(@component.image_sizes, width: '100%', alt: "Image Sizes") %></td>
               </tr>
+              <% end %>
+
+              <% if @component.page.blank? %>
+              <% else %>
               <tr>
-                <td scope="row">Goal</td>
-                <td><i><%= @component.goal %></i></td>
+                <td valign="top"><small class="text-muted"><strong>Page</strong></small></td>
+                <td valign="top"><small class="text-muted"><%= @component.page %></small></td>
               </tr>
+              <% end %>
+
+              <% if @component.requirements.blank? %>
+              <% else %>
               <tr>
-                <td scope="row">CTA</td>
-                <td><i><%= @component.cta %></i></td>
+                <td valign="top"><small class="text-muted"><strong>Requirements</strong></small></td>
+                <td valign="top"><small class="text-muted"><%=raw @component.requirements %></small></td>
               </tr>
+              <% end %>
+
+              <% if @component.interaction_notes.blank? %>
+              <% else %>
               <tr>
-                <td scope="row">Full-Width</td>
-                <td><i>
-                  <% case @component.full_width %>
-                    <% when 0 %>
-                      No
-                    <% when 1 %>
-                      Yes
-                    <% when blank? %>
-                      no
-                    <% else %><% end %>
-                  </i></td>
+                <td valign="top"><small class="text-muted"><strong>Interaction Notes</strong></small></td>
+                <td valign="top"><small class="text-muted"><%=raw @component.interaction_notes %></small></td>
               </tr>
+              <% end %>
+
+              <% if @component.full_width.blank? %>
+              <% else %>
               <tr>
-                <td scope="row">Data</td>
-                <td><i><%= @component.data.html_safe %></i></td>
+                <td valign="top"><small class="text-muted"><strong>Full Width:</strong></td>
+                <td valign="top"><small class="text-muted"><% if @component.full_width == 1 %>Yes<% else %>No<% end %></small></td>
               </tr>
+              <% end %>
+
+              <% if @component.personalization_rules.blank? %>
+              <% else %>
               <tr>
-                <td scope="row">Requirements</td>
-                <td><i><%= @component.requirements.html_safe %></i></td>
+                <td valign="top"><small class="text-muted"><strong>Personalization</strong></small></td>
+                <td valign="top"><small class="text-muted"><%=raw @component.personalization_rules %></small></td>
               </tr>
+              <% end %>
+
+              <% if @component.data.blank? %>
+              <% else %>
               <tr>
-                <td scope="row">Interaction Notes</td>
-                <td><i><%= @component.interaction_notes %></i></td>
+                <td valign="top"><small class="text-muted"><strong>Data</strong></small></td>
+                <td valign="top"><small class="text-muted"><%=raw @component.data %></small></td>
               </tr>
+              <% end %>
+
+              <% if @component.allowed_controls.blank? %>
+              <% else %>
               <tr>
+                <td valign="top"><small class="text-muted"><strong>Allowed Controls</strong></small></td>
+                <td valign="top"><small class="text-muted"><%=raw @component.allowed_controls %></small></td>
+              </tr>
+              <% end %>
+
+              <% if @component.need_info.blank? %>
+              <% else %>
+              <tr>
+                <td valign="top"><small class="text-muted"><strong>Need Info</strong></small></td>
+                <td valign="top"><small class="text-muted"><% if @component.need_info == "x" %>Yes<% else %>No<% end %></small></td>
+              </tr>
+              <% end %>
+
+              <% if @component.design_questions.blank? %>
+              <% else %>
+              <tr>
+                <td valign="top"><small class="text-muted"><strong>Design Questions</strong></small></td>
+                <td valign="top"><small class="text-muted"><%=raw @component.design_questions %></small></td>
+              </tr>
+              <% end %>
+
+              <% if @component.dev_notes.blank? %>
+              <% else %>
+              <tr>
+                <td valign="top"><small class="text-muted"><strong>Dev Notes</strong></small></td>
+                <td valign="top"><small class="text-muted"><%=raw @component.dev_notes %></small></td>
+              </tr>
+              <% end %>
             </tbody>
           </table>
         </div>

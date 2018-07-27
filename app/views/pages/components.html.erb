@@ -44,6 +44,13 @@
             </tr>
             <% end %>
 
+            <% if component.image_sizes.blank? %>
+            <% else %>
+            <tr>
+              <td valign="top" colspan="2"><%= image_tag(component.image_sizes, width: '50%', alt: "Image Sizes") %></td>
+            </tr>
+            <% end %>
+
             <% if component.page.blank? %>
             <% else %>
             <tr>
