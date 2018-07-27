@@ -101,9 +101,15 @@
       <% end %>
 
       <% if @thistemplate.image.blank? == false %>
-      <%= link_to "View Layout", @thistemplate.image, :class => "btn btn-info", target: "_blank" %>
+      <%= link_to "Design", @thistemplate.image, :class => "btn btn-info", target: "_blank" %>
       <% else %>
       <% end %>
+
+      <% if @thistemplate.image_sizes.blank? == false %>
+      <%= link_to "Image Sizes", @thistemplate.image_sizes, :class => "btn btn-info", target: "_blank" %>
+      <% else %>
+      <% end %>
+
 
         <h5 style="margin-top:30px;">Components</h5>
         <% @cinstance = TemplateComponent.order(:position).includes(:component, :template).references(:component, :template).where ({template_id: @thistemplate.id}) %>
