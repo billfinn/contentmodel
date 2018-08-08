@@ -68,7 +68,7 @@
               <% else %>
               <tr>
                 <td valign="top"><small class="text-muted"><strong>Image Sizes</strong></small></td>
-                <td valign="top"><%= image_tag(@component.image_sizes, width: '100%', alt: "Image Sizes") %></td>
+                <td valign="top"><small class="text-muted"><%= @component.image_sizes %></small></td>
               </tr>
               <% end %>
 
