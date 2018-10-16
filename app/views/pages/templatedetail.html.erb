@@ -156,7 +156,12 @@
       <hr>
       <h4>Core functions required</h4>
         <h5>User Stories</h5>
-        <p></p>
+        <% @usinstance = TemplateUserStoryMapping.order(:position).includes(:user_story, :template).references(:user_story, :template).where ({template_id: @thistemplate.id}) %>
+        <ul>
+          <!-- top version includes component instance ID for debugging -->
+          <%#= safe_join ( @cinstance.all.map { |x| ["<li>".html_safe, x.id, " ", link_to(x.component.name, text_item_index_path(:id => x.component.id, :instance => x.id, :template => x.template.id, :page => @thispage.id, :site => @site.id)),"</li>".html_safe] }) %>
+          <%= safe_join ( @usinstance.all.map { |cg| ["<li>".html_safe, cg.user_story.name,"</li>".html_safe] }) %>
+        </ul>
         <h5>Additional requirements</h5>
         <p><%= @thistemplate.additional_requirements %></p>
       <hr>
