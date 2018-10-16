@@ -119,7 +119,7 @@
           </ol>
       <hr>
       <h4>What problem(s) does this solve for the user?</h4>
-      <p><%= @thistemplate.user_needs %></p>
+      <p><%= @thistemplate.user_needs.html_safe %></p>
       <hr>
       <h4>Related Strategic Pillars</h4>
       <% @spinstance = TemplateStrategicPillarMapping.order(:position).includes(:goals_strategy_pillar, :template).references(:goals_strategy_pillar, :template).where ({template_id: @thistemplate.id}) %>
@@ -133,7 +133,7 @@
       <h5>Short term:</h5>
       <p><%= @thistemplate.success_shortterm.html_safe %></p>
       <h5>Long term:</h5>
-      <p><%= @thistemplate.success_longterm %></p>
+      <p><%= @thistemplate.success_longterm.html_safe %></p>
       <hr>
       <h4>Related Business Goals</h4>
         <% @bginstance = TemplateBusinessGoalMapping.order(:position).includes(:goals_business, :template).references(:goals_business, :template).where ({template_id: @thistemplate.id}) %>
