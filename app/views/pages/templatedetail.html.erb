@@ -108,7 +108,7 @@
       <% end %>
       <hr>
       <h4>Definition</h4>
-      <p><%= @thistemplate.definition %></p>
+      <p><%= @thistemplate.definition.html_safe %></p>
       <hr>
       <h4>Who is this page for?</h4>
           <% @audienceinstance = TemplateAudienceMapping.includes(:audience, :template).references(:audience, :template).where ({template_id: @thistemplate.id}) %>
@@ -131,7 +131,7 @@
       <hr>
       <h4>How will we measure success?</h4>
       <h5>Short term:</h5>
-      <p><%= @thistemplate.success_shortterm %></p>
+      <p><%= @thistemplate.success_shortterm.html_safe %></p>
       <h5>Long term:</h5>
       <p><%= @thistemplate.success_longterm %></p>
       <hr>
@@ -140,7 +140,7 @@
         <ul>
           <!-- top version includes component instance ID for debugging -->
           <%#= safe_join ( @cinstance.all.map { |x| ["<li>".html_safe, x.id, " ", link_to(x.component.name, text_item_index_path(:id => x.component.id, :instance => x.id, :template => x.template.id, :page => @thispage.id, :site => @site.id)),"</li>".html_safe] }) %>
-          <%= safe_join ( @bginstance.all.map { |bg| ["<li>".html_safe, bg.goals_business.name,"</li>".html_safe] }) %>
+          <%= safe_join ( @bginstance.all.map { |bg| ["<li>".html_safe, bg.goals_business.name.html_safe,"</li>".html_safe] }) %>
         </ul>
       <hr>
       <h4>Related Customer Goals</h4>
@@ -148,11 +148,11 @@
         <ul>
           <!-- top version includes component instance ID for debugging -->
           <%#= safe_join ( @cinstance.all.map { |x| ["<li>".html_safe, x.id, " ", link_to(x.component.name, text_item_index_path(:id => x.component.id, :instance => x.id, :template => x.template.id, :page => @thispage.id, :site => @site.id)),"</li>".html_safe] }) %>
-          <%= safe_join ( @cginstance.all.map { |cg| ["<li>".html_safe, cg.goals_customer.name,"</li>".html_safe] }) %>
+          <%= safe_join ( @cginstance.all.map { |cg| ["<li>".html_safe, cg.goals_customer.name.html_safe,"</li>".html_safe] }) %>
         </ul>
       <hr>
       <h4>References</h4>
-      <p><%= @thistemplate.legacy_reference %></p>
+      <p><%= @thistemplate.legacy_reference.html_safe %></p>
       <hr>
       <h4>Core functions required</h4>
         <h5>User Stories</h5>
@@ -160,13 +160,13 @@
         <ul>
           <!-- top version includes component instance ID for debugging -->
           <%#= safe_join ( @cinstance.all.map { |x| ["<li>".html_safe, x.id, " ", link_to(x.component.name, text_item_index_path(:id => x.component.id, :instance => x.id, :template => x.template.id, :page => @thispage.id, :site => @site.id)),"</li>".html_safe] }) %>
-          <%= safe_join ( @usinstance.all.map { |cg| ["<li>".html_safe, cg.user_story.name,"</li>".html_safe] }) %>
+          <%= safe_join ( @usinstance.all.map { |cg| ["<li>".html_safe, cg.user_story.name.html_safe,"</li>".html_safe] }) %>
         </ul>
         <h5>Additional requirements</h5>
-        <p><%= @thistemplate.additional_requirements %></p>
+        <p><%= @thistemplate.additional_requirements.html_safe %></p>
       <hr>
       <h4>Dependencies & Questions</h4>
-      <p><%= @thistemplate.client_dependencies %></p>
+      <p><%= @thistemplate.client_dependencies.html_safe %></p>
 
 
 
