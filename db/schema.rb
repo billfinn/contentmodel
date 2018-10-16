@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180727152808) do
+ActiveRecord::Schema.define(version: 20181016160328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -173,6 +173,25 @@ ActiveRecord::Schema.define(version: 20180727152808) do
     t.datetime "updated_at", null: false
     t.integer "template_id"
     t.integer "order"
+  end
+
+  create_table "goals_businesses", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "goals_customers", force: :cascade do |t|
+    t.string "goal"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "goals_strategy_pillars", force: :cascade do |t|
+    t.integer "goal_id"
+    t.string "strategy_pillar"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "hierarchies", force: :cascade do |t|
@@ -350,12 +369,34 @@ ActiveRecord::Schema.define(version: 20180727152808) do
     t.index ["ancestry"], name: "index_tags_on_ancestry"
   end
 
+  create_table "template_audience_mappings", force: :cascade do |t|
+    t.integer "audience_id"
+    t.integer "template_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "template_business_goal_mappings", force: :cascade do |t|
+    t.integer "goals_business_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "template_id"
+    t.integer "position"
+  end
+
   create_table "template_components", force: :cascade do |t|
     t.integer "template_id"
     t.integer "component_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "position"
+  end
+
+  create_table "template_customer_goal_mappings", force: :cascade do |t|
+    t.integer "customergoal_id"
+    t.integer "template_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "template_flows", force: :cascade do |t|
@@ -366,12 +407,26 @@ ActiveRecord::Schema.define(version: 20180727152808) do
     t.integer "position"
   end
 
+  create_table "template_strategic_pillar_mappings", force: :cascade do |t|
+    t.integer "strategicpillar_id"
+    t.integer "template_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "template_user_story_mappings", force: :cascade do |t|
+    t.integer "userstory_id"
+    t.integer "template_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "templates", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "page_purpose"
+    t.string "definition"
     t.string "audience"
     t.string "likely_task"
     t.string "personalization_needs"
@@ -381,6 +436,13 @@ ActiveRecord::Schema.define(version: 20180727152808) do
     t.string "image"
     t.string "document"
     t.string "image_sizes"
+    t.text "user_needs"
+    t.text "success_longterm"
+    t.text "success_shortterm"
+    t.string "legacy_reference"
+    t.text "additional_requirements"
+    t.text "client_dependencies"
+    t.text "design_notes"
   end
 
   create_table "text_items", force: :cascade do |t|
@@ -393,6 +455,7 @@ ActiveRecord::Schema.define(version: 20180727152808) do
     t.integer "order"
     t.integer "component_id"
     t.integer "template_component_id"
+    t.integer "character_count"
   end
 
   create_table "texts", force: :cascade do |t|
@@ -400,6 +463,12 @@ ActiveRecord::Schema.define(version: 20180727152808) do
     t.text "example"
     t.text "description"
     t.integer "site_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_stories", force: :cascade do |t|
+    t.text "user_story"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

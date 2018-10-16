@@ -139,6 +139,7 @@
               <%= link_to pc.component.name, text_item_index_path(:id => pc.component.id, :instance => pc.id, :template => pc.template.id, :page => @thispage.id, :site => @site.id), :class => "badge badge-secondary", :style => "margin-bottom:10px;", :title => "Edit "+pc.component.name %></br>
               <% @pagetext.each do |pt| %>
                 <!-- <small class="text-muted">TextInstanceID <%=pt.id %></small></br> -->
+                <small class="text-muted">Character Count: <%= pt.itemtext.size %></small><br>
                 <<%= pt.text.name %>><%#= pt.order %><%= pt.itemtext %></<%= pt.text.name %>>
             <% end %>
             </div>
