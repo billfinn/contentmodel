@@ -13,42 +13,22 @@
       <% @templatelist = ::Template.joins( :site_template_mappings ).where( site_template_mappings: { site_id: (params[:id]) }).order(:name) %>
       <% @site = Site.find(params[:id]) %>
       <h1>Templates<small class="text-muted"> <%= @site.name %></small></h1>
-      <div class="row">
-        <div class="col-8 col-sm-8">
+      <%= link_to "Visual Design Table of Contents", "https://rightpoint.invisionapp.com/share/T2MSV1YYPS4#/screens/299954157_TOC", :class => "btn btn-info", target: "_blank" %>
+
+
+          <p>
           <ol>
       <% @templatelist.each do |tl| %>
             <li>
-              <table width="100%" border=0 cellspacing="0" cellpadding="0">
-                <tr>
-                  <td width="40%">
+
               <%= link_to tl.name, templatedetail_path(:id => tl.id, :site => @site.id) %>
-                  </td>
-                  <td width="30%">
-              <% if tl.image.blank? %>
-              <% else %>
-                  <% if tl.image.include? "invision" %>
-                      <%= link_to "View Comp", tl.image, target: "_blank" %><br>
-                      <% else %>
-                      <br><img src="<%= tl.image %>" height="200">
-                      <% end %>
-              <% end %>
-                  </td>
-                  <td width="30%">
-              <% if tl.image_sizes.blank? %>
-              <% else %>
-                      <%#= link_to "Image Sizes", tl.image_sizes, target: "_blank" %><br>
-              <% end %>
-                  </td>
-                </tr>
-              </table>
+
             </li>
             <% end %>
           </ol>
-          </div>
-        </div>
-        <div class="col-8 col-sm-2">
-        </div>
-      </div>
+
+
+    </div>
 
 
 
@@ -56,7 +36,7 @@
     </div>
 
 
-	</div>
+
   	<hr>
   <div class="row">
     <div class="col-sm">
