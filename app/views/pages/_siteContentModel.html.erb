@@ -3,7 +3,8 @@ View Content Model for
   <% @sites = ::Site.order(:name) %>
   <% @sites.each do |site|  %>
     <%= link_to site.name, templatelist_path(site) %><br>
-    <%= link_to "Content Author Guide", root_url+'author/JCI_Content_Author_Guide.docx', { target: '_blank' } %><br>
-    <%= link_to "Taxonomy", root_url+'content/Taxonomy_2018-08-16.xlsx', { target: '_blank' } %><br>
   <% end %>
+  <%= link_to "Content Author Guide", root_url+'author/JCI_Content_Author_Guide.docx', { target: '_blank' } %><br>
+  <%= link_to "Taxonomy", root_url+'content/Taxonomy_2018-08-16.xlsx', { target: '_blank' } %><br>
+
 </div>
