@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181016160328) do
+ActiveRecord::Schema.define(version: 20181115203552) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,6 +110,14 @@ ActiveRecord::Schema.define(version: 20181016160328) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "component_images", force: :cascade do |t|
+    t.integer "image_id"
+    t.integer "component_id"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "component_items", force: :cascade do |t|
     t.integer "component_id"
     t.integer "text_item_id"
@@ -182,14 +190,14 @@ ActiveRecord::Schema.define(version: 20181016160328) do
   end
 
   create_table "goals_customers", force: :cascade do |t|
-    t.string "goal"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "goals_strategy_pillars", force: :cascade do |t|
     t.integer "goal_id"
-    t.string "strategy_pillar"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -206,6 +214,14 @@ ActiveRecord::Schema.define(version: 20181016160328) do
   create_table "hierarchy_mappings", force: :cascade do |t|
     t.integer "hierarchy_id"
     t.integer "template_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string "name"
+    t.string "image_url"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -393,10 +409,11 @@ ActiveRecord::Schema.define(version: 20181016160328) do
   end
 
   create_table "template_customer_goal_mappings", force: :cascade do |t|
-    t.integer "customergoal_id"
+    t.integer "goals_customer_id"
     t.integer "template_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "position"
   end
 
   create_table "template_flows", force: :cascade do |t|
@@ -408,17 +425,19 @@ ActiveRecord::Schema.define(version: 20181016160328) do
   end
 
   create_table "template_strategic_pillar_mappings", force: :cascade do |t|
-    t.integer "strategicpillar_id"
+    t.integer "goals_strategy_pillar_id"
     t.integer "template_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "position"
   end
 
   create_table "template_user_story_mappings", force: :cascade do |t|
-    t.integer "userstory_id"
+    t.integer "user_story_id"
     t.integer "template_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "position"
   end
 
   create_table "templates", force: :cascade do |t|
@@ -426,12 +445,9 @@ ActiveRecord::Schema.define(version: 20181016160328) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "definition"
+    t.text "definition"
     t.string "audience"
-    t.string "likely_task"
-    t.string "personalization_needs"
     t.text "creation_guidelines"
-    t.string "kpi"
     t.boolean "existing"
     t.string "image"
     t.string "document"
@@ -439,7 +455,7 @@ ActiveRecord::Schema.define(version: 20181016160328) do
     t.text "user_needs"
     t.text "success_longterm"
     t.text "success_shortterm"
-    t.string "legacy_reference"
+    t.text "legacy_reference"
     t.text "additional_requirements"
     t.text "client_dependencies"
     t.text "design_notes"
@@ -468,7 +484,7 @@ ActiveRecord::Schema.define(version: 20181016160328) do
   end
 
   create_table "user_stories", force: :cascade do |t|
-    t.text "user_story"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

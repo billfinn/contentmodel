@@ -136,6 +136,12 @@
           </table>
           </div>
           <div class="col-sm-5">
+            <% component.images.each do |image| %>
+              <small class="text-muted"><strong><%= image.name %></strong><br>
+              <%= image.description %><br>
+              <%= image_tag(image.image_url, style: 'height:auto;width:100%;') %></small><br>
+            <% end %>
+
             <% if component.image.blank? %>
             <% else %>
             <img alt="<%= component.image %>" src="http://contentmodel-jci-assets.s3.amazonaws.com/images/components/<%= component.image %>" width="100%">

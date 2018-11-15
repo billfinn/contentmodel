@@ -42,6 +42,12 @@
           <h3><%= @component.name %></h3>
         </div>
         <div class="card-body">
+          <span class="badge badge-secondary" style="margin-bottom: 20px;">Component Images</span><br>
+          <% @component.images.each do |image| %>
+            <p><small class="text-muted"><strong><%= image.name %></strong><br>
+            <%= image.description %><br>
+            <%= image_tag(image.image_url) %></small></p>
+          <% end %>
           <span class="badge badge-secondary" style="margin-bottom: 20px;">Component Text Elements</span><br>
           <%# @pagetext = TextItem.order(:order).where ({page_id: nil , component_id: @component.id}) %>
           <% @component.text_items.each do |textitem| %>

@@ -11,5 +11,9 @@ class Component < ApplicationRecord
   has_many :template_components
   has_many :templates, :through => :template_components
 
+  has_many :component_images
+  has_many :images, :through => :component_images
+  accepts_nested_attributes_for :component_images, :allow_destroy => true
+
 
 end

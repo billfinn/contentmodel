@@ -11,7 +11,7 @@ ActiveAdmin.register Component do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :list, :of, :attributes, :on, :model, :name, :componenttype_id, :component_group_id, :goal, :cta, :content_assets, :image, :description, :ispersonalized, :personalization_rules, :is_taggable, :tag_groups, :requirements, :data, :invision_link, :image_sizes, :interaction_notes, component_items_attributes: [:id, :component_id, :text_item_id, :position, :_destroy, :_update], component_types_attributes: [:id, :name, :_update], component_groups_attributes: [:id, :name]
+permit_params :list, :of, :attributes, :on, :model, :name, :componenttype_id, :component_group_id, :goal, :cta, :content_assets, :image, :description, :ispersonalized, :personalization_rules, :is_taggable, :tag_groups, :requirements, :data, :invision_link, :image_sizes, :interaction_notes, component_items_attributes: [:id, :component_id, :text_item_id, :position, :_destroy, :_update], component_types_attributes: [:id, :name, :_update], component_groups_attributes: [:id, :name],:image_ids => [], component_images_attributes: [:id, :image_id, :component_id, :destroy]
 #
 # or
 #
@@ -52,18 +52,24 @@ form do |f|
   f.inputs "Component" do
     f.input :name
     f.input :component_group_id, :label => 'Component Group', :as => :select, :collection => ComponentGroup.all.map{|g| ["#{g.name}", g.id, include_blank: true]}
-    f.input :image, :label => 'Image'
-    f.input :invision_link, :label => 'Invision Link'
-    f.input :image_sizes
-    f.input :full_width, :label => 'Full-Width?', as: :boolean
-    f.input :personalization_rules, :label => 'Personalization Rules'
-    f.input :goal
-    f.input :cta
-    f.input :requirements, :label => 'Requirements'
-    f.input :data, :label => 'Data', :input_html => { :class => 'tinymce' }
-    f.input :allowed_controls, :label => 'Allowed Controls'
-    f.input :dev_notes, :label => 'Dev Notes'
-    f.input :interaction_notes, :label => 'Interaction Notes', :input_html => { :class => 'tinymce' }
+
+    f.inputs "Images" do
+      f.input :image, :label => 'Image'
+      f.input :invision_link, :label => 'Invision Link'
+      f.input :image_sizes
+      f.input :image_ids, as: :check_boxes, collection: Image.all.map{|image| [image.name, image.id]}
+    end
+    f.inputs "Attributes" do
+      f.input :full_width, :label => 'Full-Width?', as: :boolean
+      f.input :personalization_rules, :label => 'Personalization Rules'
+      f.input :goal
+      f.input :cta
+      f.input :requirements, :label => 'Requirements'
+      f.input :data, :label => 'Data', :input_html => { :class => 'tinymce' }
+      f.input :allowed_controls, :label => 'Allowed Controls'
+      f.input :dev_notes, :label => 'Dev Notes'
+      f.input :interaction_notes, :label => 'Interaction Notes', :input_html => { :class => 'tinymce' }
+    end
   f.inputs "Text Items" do
     f.has_many  :component_items, sortable: :position, sortable_start: 1 do |deg|
       deg.input :text_item
