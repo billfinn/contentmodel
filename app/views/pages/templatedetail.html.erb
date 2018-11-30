@@ -79,7 +79,7 @@
           <%= safe_join ( @cinstance.all.map { |x| ["<li>".html_safe, link_to(x.component.name, component_path(:id => x.component.id, :template => x.template.id, :site => @site.id)),"</li>".html_safe] }) %>
         </ol>
 
-        
+
 
 
 
@@ -100,7 +100,7 @@
       <% end %>
 
       <% if @thistemplate.image.blank? == false %>
-      <%= link_to "Design", @thistemplate.image, :class => "btn btn-info", target: "_blank" %>
+      <%= link_to "See the Design Comp", @thistemplate.image, :class => "btn btn-info", target: "_blank" %>
       <% else %>
       <% end %>
 
