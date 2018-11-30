@@ -79,6 +79,8 @@
           <%= safe_join ( @cinstance.all.map { |x| ["<li>".html_safe, link_to(x.component.name, component_path(:id => x.component.id, :template => x.template.id, :site => @site.id)),"</li>".html_safe] }) %>
         </ol>
 
+        
+
 
 
 		</div>

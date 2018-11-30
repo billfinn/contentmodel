@@ -1,0 +1,8 @@
+
+<hr>
+    <h5>Component Groups</h5>
+    <p>
+      <% @componentgroups = ::ComponentGroup.order(:id) %>
+      <% @componentgroups.each do |group|  %>
+        <div style="padding:5px 5px 5px 10px; margin-bottom:5px;background-color:<%=group.color%>"><%= group.name %></div>
+      <% end %>
