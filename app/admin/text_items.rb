@@ -12,8 +12,7 @@ ActiveAdmin.register TextItem do
   #   permitted
   # end
 
-  menu parent: 'Content Model'
-
+menu parent: 'Content Model', label: 'Component Text Items', priority: 7
 
 
 

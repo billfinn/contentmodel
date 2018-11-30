@@ -5,8 +5,9 @@ ActiveAdmin.setup do |config|
       menu.add label: 'Sites & Flow', priority: 1
       menu.add label: 'Content Model', priority: 2
       menu.add label: 'Messaging', priority: 3
-      menu.add label: "Users", url: "/", priority: 4
-      menu.add label: "App", url: "/", priority: 5
+      menu.add label: 'Strategy', priority: 4
+      menu.add label: "Users", url: "/", priority: 5
+      menu.add label: "App", url: "/", priority: 6
 
     end
   end
