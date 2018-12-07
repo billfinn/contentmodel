@@ -156,7 +156,7 @@
       <% else %>
       <% end %>
 
-      <% if @thistemplate.success_longterm.blank? && @thistemplate.success_shortterm.blank? == false %>
+      <%  if @thistemplate.success_longterm.blank? == false %>
       <hr>
       <h4>How will we measure success?</h4>
         <% if @thistemplate.success_shortterm.blank? == false %>
