@@ -112,63 +112,126 @@
       <h4>Definition</h4>
       <p><%= @thistemplate.definition.html_safe %></p>
       <hr>
-      <h4>Who is this page for?</h4>
-          <% @audienceinstance = TemplateAudienceMapping.includes(:audience, :template).references(:audience, :template).where ({template_id: @thistemplate.id}) %>
-          <ol>
-            <!-- top version includes component instance ID for debugging -->
-            <%#= safe_join ( @cinstance.all.map { |x| ["<li>".html_safe, x.id, " ", link_to(x.component.name, text_item_index_path(:id => x.component.id, :instance => x.id, :template => x.template.id, :page => @thispage.id, :site => @site.id)),"</li>".html_safe] }) %>
-            <%= safe_join ( @audienceinstance.all.map { |ai| ["<li>".html_safe, ai.audience.name,"</li>".html_safe] }) %>
-          </ol>
+
+
+      <% @cinstance = TemplateComponent.order(:position).includes(:component, :template).references(:component, :template).where ({template_id: @thistemplate.id}) %>
+
+      <% @cinstance.each do |c| %>
+        <div class="card" style="margin-bottom:15px; background-color:<%= c.component.component_group.color %>">
+          <div class="card-body">
+            <h5 class="card-title"><%= c.component.name %>&nbsp;<span class="badge badge-light"><%= c.component.component_group.name %></span></h5>
+            <p class="card-text"><%= c.component.goal %>
+          </div>
+        </div>
+      <% end%>
+
+      <% @audienceinstance = TemplateAudienceMapping.includes(:audience, :template).references(:audience, :template).where ({template_id: @thistemplate.id}) %>
+      <% if @audienceinstance.blank? == false %>
       <hr>
-      <h4>What problem(s) does this solve for the user?</h4>
-      <p><%= @thistemplate.user_needs.html_safe %></p>
+        <h4>Who is this page for?</h4>
+            <ol>
+              <!-- top version includes component instance ID for debugging -->
+              <%#= safe_join ( @cinstance.all.map { |x| ["<li>".html_safe, x.id, " ", link_to(x.component.name, text_item_index_path(:id => x.component.id, :instance => x.id, :template => x.template.id, :page => @thispage.id, :site => @site.id)),"</li>".html_safe] }) %>
+              <%= safe_join ( @audienceinstance.all.map { |ai| ["<li>".html_safe, ai.audience.name,"</li>".html_safe] }) %>
+            </ol>
+      <% else %>
+      <% end %>
+
+      <% if @thistemplate.user_needs.html_safe.blank? == false %>
       <hr>
-      <h4>Related Strategic Pillars</h4>
+        <h4>What problem(s) does this solve for the user?</h4>
+        <p><%= @thistemplate.user_needs.html_safe %></p>
+      <% else %>
+      <% end %>
+
       <% @spinstance = TemplateStrategicPillarMapping.order(:position).includes(:goals_strategy_pillar, :template).references(:goals_strategy_pillar, :template).where ({template_id: @thistemplate.id}) %>
-      <ul>
-        <!-- top version includes component instance ID for debugging -->
-        <%#= safe_join ( @cinstance.all.map { |x| ["<li>".html_safe, x.id, " ", link_to(x.component.name, text_item_index_path(:id => x.component.id, :instance => x.id, :template => x.template.id, :page => @thispage.id, :site => @site.id)),"</li>".html_safe] }) %>
-        <%= safe_join ( @spinstance.all.map { |sp| ["<li>".html_safe, sp.goals_strategy_pillar.name,"</li>".html_safe] }) %>
-      </ul>
+      <% if @spinstance.blank? == false %>
+      <hr>
+        <h4>Related Strategic Pillars</h4>
+        <ul>
+          <!-- top version includes component instance ID for debugging -->
+          <%#= safe_join ( @cinstance.all.map { |x| ["<li>".html_safe, x.id, " ", link_to(x.component.name, text_item_index_path(:id => x.component.id, :instance => x.id, :template => x.template.id, :page => @thispage.id, :site => @site.id)),"</li>".html_safe] }) %>
+          <%= safe_join ( @spinstance.all.map { |sp| ["<li>".html_safe, sp.goals_strategy_pillar.name,"</li>".html_safe] }) %>
+        </ul>
+      <% else %>
+      <% end %>
+
+      <% if @thistemplate.success_longterm.blank? && @thistemplate.success_shortterm.blank? == false %>
       <hr>
       <h4>How will we measure success?</h4>
-      <h5>Short term:</h5>
-      <p><%= @thistemplate.success_shortterm.html_safe %></p>
-      <h5>Long term:</h5>
-      <p><%= @thistemplate.success_longterm.html_safe %></p>
+        <% if @thistemplate.success_shortterm.blank? == false %>
+          <h5>Short term:</h5>
+          <p><%= @thistemplate.success_shortterm.html_safe %></p>
+        <% else %>
+        <% end %>
+        <% if @thistemplate.success_longterm.blank? == false %>
+          <h5>Long term:</h5>
+          <p><%= @thistemplate.success_longterm.html_safe %></p>
+        <% else %>
+        <% end %>
+      <% else %>
+      <% end %>
+
+
+      <% @bginstance = TemplateBusinessGoalMapping.order(:position).includes(:goals_business, :template).references(:goals_business, :template).where ({template_id: @thistemplate.id}) %>
+      <% if @bginstance.blank? == false %>
       <hr>
-      <h4>Related Business Goals</h4>
-        <% @bginstance = TemplateBusinessGoalMapping.order(:position).includes(:goals_business, :template).references(:goals_business, :template).where ({template_id: @thistemplate.id}) %>
-        <ul>
-          <!-- top version includes component instance ID for debugging -->
-          <%#= safe_join ( @cinstance.all.map { |x| ["<li>".html_safe, x.id, " ", link_to(x.component.name, text_item_index_path(:id => x.component.id, :instance => x.id, :template => x.template.id, :page => @thispage.id, :site => @site.id)),"</li>".html_safe] }) %>
-          <%= safe_join ( @bginstance.all.map { |bg| ["<li>".html_safe, bg.goals_business.name.html_safe,"</li>".html_safe] }) %>
-        </ul>
+        <h4>Related Business Goals</h4>
+          <% @bginstance = TemplateBusinessGoalMapping.order(:position).includes(:goals_business, :template).references(:goals_business, :template).where ({template_id: @thistemplate.id}) %>
+          <ul>
+            <!-- top version includes component instance ID for debugging -->
+            <%#= safe_join ( @cinstance.all.map { |x| ["<li>".html_safe, x.id, " ", link_to(x.component.name, text_item_index_path(:id => x.component.id, :instance => x.id, :template => x.template.id, :page => @thispage.id, :site => @site.id)),"</li>".html_safe] }) %>
+            <%= safe_join ( @bginstance.all.map { |bg| ["<li>".html_safe, bg.goals_business.name.html_safe,"</li>".html_safe] }) %>
+          </ul>
+      <% else %>
+      <% end %>
+
+      <% @cginstance = TemplateCustomerGoalMapping.order(:position).includes(:goals_customer, :template).references(:goals_customer, :template).where ({template_id: @thistemplate.id}) %>
+      <% if @cginstance.blank? == false %>
       <hr>
-      <h4>Related Customer Goals</h4>
-        <% @cginstance = TemplateCustomerGoalMapping.order(:position).includes(:goals_customer, :template).references(:goals_customer, :template).where ({template_id: @thistemplate.id}) %>
-        <ul>
-          <!-- top version includes component instance ID for debugging -->
-          <%#= safe_join ( @cinstance.all.map { |x| ["<li>".html_safe, x.id, " ", link_to(x.component.name, text_item_index_path(:id => x.component.id, :instance => x.id, :template => x.template.id, :page => @thispage.id, :site => @site.id)),"</li>".html_safe] }) %>
-          <%= safe_join ( @cginstance.all.map { |cg| ["<li>".html_safe, cg.goals_customer.name.html_safe,"</li>".html_safe] }) %>
-        </ul>
+        <h4>Related Customer Goals</h4>
+          <ul>
+            <!-- top version includes component instance ID for debugging -->
+            <%#= safe_join ( @cinstance.all.map { |x| ["<li>".html_safe, x.id, " ", link_to(x.component.name, text_item_index_path(:id => x.component.id, :instance => x.id, :template => x.template.id, :page => @thispage.id, :site => @site.id)),"</li>".html_safe] }) %>
+            <%= safe_join ( @cginstance.all.map { |cg| ["<li>".html_safe, cg.goals_customer.name.html_safe,"</li>".html_safe] }) %>
+          </ul>
+      <% else %>
+      <% end %>
+
+      <% if  @thistemplate.legacy_reference.blank? == false %>
       <hr>
-      <h4>References</h4>
-      <p><%= @thistemplate.legacy_reference.html_safe %></p>
+        <h4>References</h4>
+        <p><%= @thistemplate.legacy_reference.html_safe %></p>
+      <% else %>
+      <% end %>
+
+      <% @usinstance = TemplateUserStoryMapping.order(:position).includes(:user_story, :template).references(:user_story, :template).where ({template_id: @thistemplate.id}) %>
+      <% if  @usinstance.blank? == false %>
       <hr>
-      <h4>Core functions required</h4>
-        <h5>User Stories</h5>
-        <% @usinstance = TemplateUserStoryMapping.order(:position).includes(:user_story, :template).references(:user_story, :template).where ({template_id: @thistemplate.id}) %>
-        <ul>
-          <!-- top version includes component instance ID for debugging -->
-          <%#= safe_join ( @cinstance.all.map { |x| ["<li>".html_safe, x.id, " ", link_to(x.component.name, text_item_index_path(:id => x.component.id, :instance => x.id, :template => x.template.id, :page => @thispage.id, :site => @site.id)),"</li>".html_safe] }) %>
-          <%= safe_join ( @usinstance.all.map { |cg| ["<li>".html_safe, cg.user_story.name.html_safe,"</li>".html_safe] }) %>
-        </ul>
-        <h5>Additional requirements</h5>
+        <h4>Core functions required</h4>
+          <h5>User Stories</h5>
+          <ul>
+            <!-- top version includes component instance ID for debugging -->
+            <%#= safe_join ( @cinstance.all.map { |x| ["<li>".html_safe, x.id, " ", link_to(x.component.name, text_item_index_path(:id => x.component.id, :instance => x.id, :template => x.template.id, :page => @thispage.id, :site => @site.id)),"</li>".html_safe] }) %>
+            <%= safe_join ( @usinstance.all.map { |cg| ["<li>".html_safe, cg.user_story.name.html_safe,"</li>".html_safe] }) %>
+          </ul>
+      <% else %>
+      <% end %>
+
+
+      <% if  @thistemplate.additional_requirements.blank? == false %>
+      <hr>
+        <h4>Additional requirements</h4>
         <p><%= @thistemplate.additional_requirements.html_safe %></p>
+      <% else %>
+      <% end %>
+
+      <% if  @thistemplate.client_dependencies == false %>
       <hr>
-      <h4>Dependencies & Questions</h4>
-      <p><%= @thistemplate.client_dependencies.html_safe %></p>
+        <h4>Dependencies & Questions</h4>
+        <p><%= @thistemplate.client_dependencies.html_safe %></p>
+      <% else %>
+      <% end %>
 
 
 
