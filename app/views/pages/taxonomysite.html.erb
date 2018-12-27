@@ -9,13 +9,39 @@
 		<div class="col-sm">
 
 
-			<h1>Taxonomy<small class="text-muted"> <%= @site.name %></small></h1>
-
       <%= render "siteTaxonomy" %>
+
+      <nav>
+        <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
+          <% @sites.each do |sitetab|  %>
+            <% if sitetab.id == @site.id %>
+              <small><a class="nav-item nav-link active" id="nav-<%= sitetab.id %>-tab" data-toggle="tab" href="/taxonomysite/<%= @site.id %>" role="tab" aria-controls="nav-<%= sitetab.id %>" aria-selected="true"><%= sitetab.name %></a></small>
+            <% else %>
+              <small><a class="nav-item nav-link" id="nav-<%= sitetab.id %>-tab" href="/taxonomysite/<%= sitetab.id %>" role="tab" aria-controls="nav-<%= sitetab.id %>" aria-selected="false"><%= sitetab.name %></a></small>
+            <% end %>
+          <% end %>
+        </div>
+      </nav>   
+
+
+			<h1 style="margin-top: 20px">Taxonomy<small class="text-muted"> <%= @site.name %></small></h1>
+
+
       
       <small class="text-muted">Click any circle to expand an item. Click and drag the visualization to pan up and down, right and left. Use the mouse wheel to zoom in and out.</small>
 
-              <div id="tree"></div>
+      <div class="tab-content" id="nav-tabContent">
+          <% @sites.each do |sitecontent|  %>
+            <% if sitecontent.id == @site.id %>
+              <div class="tab-pane fade show active" id="nav-<%= sitecontent.id %>" role="tabpanel" aria-labelledby="nav-<%= sitecontent.id %>-tab">
+                <div id="tree"></div>
+              </div>
+            <% end %>
+          <% end %>
+      </div>
+
+
+
 
 		</div>
 	</div>
